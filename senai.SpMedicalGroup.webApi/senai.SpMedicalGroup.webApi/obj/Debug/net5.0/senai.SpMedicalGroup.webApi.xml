@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>senai.SpMedicalGroup.webApi</name>
+    </assembly>
+    <members>
+        <member name="P:senai.SpMedicalGroup.webApi.Controllers.ClinicasController._ClinicaRepository">
+            <summary>
+            Objeto _ClinicaRepository que irá receber todos os métodos definidos na interface IClinicaRepository
+            </summary>
+        </member>
+        <member name="M:senai.SpMedicalGroup.webApi.Controllers.ClinicasController.#ctor">
+            <summary>
+            Instancia o objeto _ClinicaRepository para que haja referência às implementações feitas no repositório ClinicaRepository
+            </summary>
+        </member>
+        <member name="M:senai.SpMedicalGroup.webApi.Controllers.ClinicasController.Cadastrar(senai.SpMedicalGroup.webApi.Domains.Clinica)">
+            <summary>
+            Cadastra uma Clinica
+            </summary>
+            <param name="ClinicaNova">>Objeto ClinicaNova com as informações</param>
+            <returns>Um status code 200 - Ok </returns>
+        </member>
+        <member name="M:senai.SpMedicalGroup.webApi.Controllers.ClinicasController.Atualizar(System.Int32,senai.SpMedicalGroup.webApi.Domains.Clinica)">
+            <summary>
+            Atualiza uma Clinica existente
+            </summary>
+            <param name="Id">Id da Clinica que será atualizada</param>
+            <param name="ClinicaAtualizada">>Objeto ClinicaAtualizada com as novas informações</param>
+            <returns>Um status code 200 - Ok</returns>
+        </member>
+        <member name="M:senai.SpMedicalGroup.webApi.Controllers.ClinicasController.BuscarPorId(System.Int32)">
+            <summary>
+            Busca uma Clinica pelo seu Id
+            </summary>
+            <param name="Id">Id da Clinica que será buscada</param>
+            <returns>Uma Clinica encontrada com o status code 200 - O</returns>
+        </member>
+        <member name="P:senai.SpMedicalGroup.webApi.Controllers.ConsultasController._ConsultaRepository">
+            <summary>
+            Objeto _ConsultaRepository que irá receber todos os métodos definidos na interface IConsultaRepository
+            </summary>
+        </member>
+        <member name="M:senai.SpMedicalGroup.webApi.Controllers.ConsultasController.#ctor">
+            <summary>
+            Instancia o objeto _ConsultaRepository para que haja referência às implementações feitas no repositório ConsultaRepository
+            </summary>
+        </member>
+        <member name="M:senai.SpMedicalGroup.webApi.Controllers.LoginController.Login(senai.SpMedicalGroup.webApi.ViewModels.LoginViewModel)">
+            <summary>
+            Valida o usuário
+            </summary>
+            <param name="Login">Objeto Login que contém e-mail e senha do usuário</param>
+            <returns>Retorna um token com as informações do usuário</returns>
+        </member>
+        <member name="M:senai.SpMedicalGroup.webApi.Interfaces.IClinicaRepository.ListarTodos">
+            <summary>
+            Método responsável por listar todas as Clinicas
+            </summary>
+            <returns>Uma lista de Clinicas</returns>
+        </member>
+        <member name="M:senai.SpMedicalGroup.webApi.Interfaces.IClinicaRepository.BuscarPoId(System.Int32)">
+            <summary>
+            Método responsável por buscar um Clinica pelo seu Id
+            </summary>
+            <param name="Id">Id da Clinica buscada</param>
+            <returns>A Clinica com o Id buscado</returns>
+        </member>
+        <member name="M:senai.SpMedicalGroup.webApi.Interfaces.IClinicaRepository.Deletar(System.Int32)">
+            <summary>
+            Método responsável por deletar uma Clinica pelo seu Id
+            </summary>
+            <param name="Id">Id da Clinica deletada</param>
+        </member>
+        <member name="M:senai.SpMedicalGroup.webApi.Interfaces.IClinicaRepository.Atualizar(System.Int32,senai.SpMedicalGroup.webApi.Domains.Clinica)">
+            <summary>
+            Método responsável por atualizar uma Clinica pelo seu Id
+            </summary>
+            <param name="Id">Id da Clinica atualizada</param>
+            <param name="ClinicaAtualizada">Novos valores para a atualização</param>
+        </member>
+        <member name="M:senai.SpMedicalGroup.webApi.Interfaces.IClinicaRepository.Cadastrar(senai.SpMedicalGroup.webApi.Domains.Clinica)">
+            <summary>
+            Método Responsável por cadastrar uma nova Clinica
+            </summary>
+            <param name="ClinicaNova">Nova Clinica a ser cadastrada</param>
+        </member>
+        <member name="M:senai.SpMedicalGroup.webApi.Interfaces.IConsultaRepository.ListarTodos">
+            <summary>
+            Método responsável por listar todas as Consultas
+            </summary>
+            <returns>Uma lista de Consultas</returns>
+        </member>
+        <member name="M:senai.SpMedicalGroup.webApi.Interfaces.IConsultaRepository.BuscarPoId(System.Int32)">
+            <summary>
+            Método responsável por buscar um Consulta pelo seu Id
+            </summary>
+            <param name="Id">Id da Consulta buscada</param>
+            <returns>A Consulta com o Id buscado</returns>
+        </member>
+        <member name="M:senai.SpMedicalGroup.webApi.Interfaces.IConsultaRepository.Deletar(System.Int32)">
+            <summary>
+            Método responsável por deletar uma Consulta pelo seu Id
+            </summary>
+            <param name="Id">Id da Consulta deletada</param>
+        </member>
+        <member name="M:senai.SpMedicalGroup.webApi.Interfaces.IConsultaRepository.Atualizar(System.Int32,senai.SpMedicalGroup.webApi.Domains.Consultum)">
+            <summary>
+            Método responsável por atualizar uma Consulta pelo seu Id
+            </summary>
+            <param name="Id">Id da Consulta atualizada</param>
+            <param name="ConsultaAtualizada">Novos valores para a atualização</param>
+        </member>
+        <member name="M:senai.SpMedicalGroup.webApi.Interfaces.IConsultaRepository.Cadastrar(senai.SpMedicalGroup.webApi.Domains.Consultum)">
+            <summary>
+            Método Responsável por cadastrar uma nova Consulta
+            </summary>
+            <param name="ConsultaNova">Nova Clinica a ser cadastrada</param>
+        </member>
+        <member name="M:senai.SpMedicalGroup.webApi.Interfaces.IUsuarioRepository.Login(System.String,System.String)">
+            <summary>
+            Valida o usuário
+            </summary>
+            <param name="Email">E-mail do usuário</param>
+            <param name="Senha">Senha do usuário</param>
+            <returns>Um objeto do tipo Usuario que foi encontrado</returns>
+        </member>
+        <member name="T:senai.SpMedicalGroup.webApi.ViewModels.LoginViewModel">
+            <summary>
+            Classe responsável pelo modelo de Login
+            </summary>
+        </member>
+    </members>
+</doc>
