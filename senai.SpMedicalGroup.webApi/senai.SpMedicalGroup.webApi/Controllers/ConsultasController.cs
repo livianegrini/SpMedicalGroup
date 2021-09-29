@@ -5,6 +5,7 @@ using senai.SpMedicalGroup.webApi.Interfaces;
 using senai.SpMedicalGroup.webApi.Repositories;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -35,5 +36,21 @@ namespace senai.SpMedicalGroup.webApi.Controllers
 
             return Ok();
         }
+
+        [HttpPatch("{Id}")]
+        public IActionResult AprovarRecusar(int Id, Consultum Situacao)
+        {
+            try
+            {
+                _ConsultaRepository.AprovarRecusar(Id, Situacao.IdSituacao.ToString());
+                return Ok();
+            }
+            catch (Exception Error)
+            {
+
+                return BadRequest(Error);
+            }
+        }
     }
 }
+

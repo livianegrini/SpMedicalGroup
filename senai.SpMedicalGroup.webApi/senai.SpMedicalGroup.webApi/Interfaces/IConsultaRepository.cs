@@ -37,7 +37,14 @@ namespace senai.SpMedicalGroup.webApi.Interfaces
         /// <summary>
         /// Método Responsável por cadastrar uma nova Consulta
         /// </summary>
-        /// <param name="ConsultaNova">Nova Clinica a ser cadastrada</param>
+        /// <param name="ConsultaNova">Nova Consulta a ser cadastrada</param>
         void Cadastrar(Consultum ConsultaNova);
+
+        /// <summary>
+        /// Método Responsável por alterar a situação de uma consulta
+        /// </summary>
+        /// <param name="IdConsulta">Id da Consulta que terá a situação alterada</param>
+        /// <param name="Situacao">Parâmetro que atualiza a situação da Consulta para 1 - Realizada, 2 - Agendada ou 3 - Cancelada</param>
+        void AprovarRecusar(int IdConsulta, string Situacao);
     }
 }

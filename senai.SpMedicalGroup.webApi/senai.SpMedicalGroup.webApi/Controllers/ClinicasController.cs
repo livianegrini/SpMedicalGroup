@@ -77,6 +77,11 @@ namespace senai.SpMedicalGroup.webApi.Controllers
             return Ok(ClinicaBuscada);
         }
 
+        /// <summary>
+        /// Deleta uma Clinica existente
+        /// </summary>
+        /// <param name="Id">Id da Clinica que será deletada</param>
+        /// <returns>Um status code 200 - Ok</returns>
         [HttpDelete("{Id}")]
         public IActionResult Deletar(int Id)
         {
@@ -84,6 +89,10 @@ namespace senai.SpMedicalGroup.webApi.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Lista todas as Clinicas
+        /// </summary>
+        /// <returns>Uma lita de Clinicas com o status code 200 - Ok</returns>
         [HttpGet]
         public IActionResult ListarTodos()
         {

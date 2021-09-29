@@ -12,8 +12,6 @@ namespace senai.SpMedicalGroup.webApi.Repositories
     public class ClinicaRepository : IClinicaRepository
     {
 
-        //Falta o Listar Todos
-
         SpMedicalGroupContext Ctx = new SpMedicalGroupContext();
 
         public void Atualizar(int Id, Clinica ClinicaAtualizada)
@@ -70,25 +68,6 @@ namespace senai.SpMedicalGroup.webApi.Repositories
         {
             return Ctx.Clinicas.Include(c => c.IdEnderecoNavigation).ToList();
         }
-
-        //public List<Clinica> ListarTodos()
-        //{
-        //    return Ctx.Clinicas.Select(c => new Clinica()
-        //    {
-        //        HorarioInicio = c.HorarioInicio,
-        //        HorarioFim = c.HorarioFim,
-        //        Cnpj = c.Cnpj,
-        //        NomeFantasia = c.NomeFantasia,
-        //        RazaoSocial = c.RazaoSocial,
-        //        IdEnderecoNavigation = new Endereco()
-        //        {
-        //            Logadouro = c.IdEnderecoNavigation.Logadouro,
-        //            Numero = c.IdEnderecoNavigation.Numero,
-        //            Bairro = c.IdEnderecoNavigation.Bairro,
-
-        //        }
-        //    })
-        //}
 
     }
 }
