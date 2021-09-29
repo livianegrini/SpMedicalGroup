@@ -22,12 +22,6 @@ namespace senai.SpMedicalGroup.webApi.Interfaces
         Consultum BuscarPoId(int Id);
 
         /// <summary>
-        /// Método responsável por deletar uma Consulta pelo seu Id
-        /// </summary>
-        /// <param name="Id">Id da Consulta deletada</param>
-        void Deletar(int Id);
-
-        /// <summary>
         /// Método responsável por atualizar uma Consulta pelo seu Id
         /// </summary>
         /// <param name="Id">Id da Consulta atualizada</param>
@@ -41,10 +35,23 @@ namespace senai.SpMedicalGroup.webApi.Interfaces
         void Cadastrar(Consultum ConsultaNova);
 
         /// <summary>
+        /// Método responsável por deletar uma Consulta pelo seu Id
+        /// </summary>
+        /// <param name="Id">Id da Consulta deletada</param>
+        void Deletar(int Id);
+
+        /// <summary>
         /// Método Responsável por alterar a situação de uma consulta
         /// </summary>
         /// <param name="IdConsulta">Id da Consulta que terá a situação alterada</param>
         /// <param name="Situacao">Parâmetro que atualiza a situação da Consulta para 1 - Realizada, 2 - Agendada ou 3 - Cancelada</param>
         void AprovarRecusar(int IdConsulta, string Situacao);
+
+        /// <summary>
+        /// Lista todoas Consultas que um determinado usuário participa
+        /// </summary>
+        /// <param name="IdUsuario">ID do usuário que participa das Consultas listadas</param>
+        /// <returns>Uma lista de Consultas com os dados</returns>
+        List<Consultum> ListarMinhas(int IdUsuario);
     }
 }

@@ -16,9 +16,6 @@ namespace senai.SpMedicalGroup.webApi.Controllers
     public class ClinicasController : ControllerBase
     {
 
-        //Falta o Listar Todos
-
-
         /// <summary>
         /// Objeto _ClinicaRepository que irá receber todos os métodos definidos na interface IClinicaRepository
         /// </summary>
@@ -34,30 +31,13 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         }
 
         /// <summary>
-        /// Cadastra uma Clinica
+        /// Lista todas as Clinicas
         /// </summary>
-        /// <param name="ClinicaNova">>Objeto ClinicaNova com as informações</param>
-        /// <returns>Um status code 200 - Ok </returns>
-        [HttpPost]
-        public IActionResult Cadastrar(Clinica ClinicaNova)
+        /// <returns>Uma lita de Clinicas com o status code 200 - Ok</returns>
+        [HttpGet]
+        public IActionResult ListarTodos()
         {
-            _ClinicaRepository.Cadastrar(ClinicaNova);
-
-            return Ok();
-        }
-
-        /// <summary>
-        /// Atualiza uma Clinica existente
-        /// </summary>
-        /// <param name="Id">Id da Clinica que será atualizada</param>
-        /// <param name="ClinicaAtualizada">>Objeto ClinicaAtualizada com as novas informações</param>
-        /// <returns>Um status code 200 - Ok</returns>
-        [HttpPut("{Id}")]
-        public IActionResult Atualizar(int Id, Clinica ClinicaAtualizada)
-        {
-            _ClinicaRepository.Atualizar(Id, ClinicaAtualizada);
-
-            return Ok();
+            return Ok(_ClinicaRepository.ListarTodos());
         }
 
         /// <summary>
@@ -78,6 +58,33 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         }
 
         /// <summary>
+        /// Atualiza uma Clinica existente
+        /// </summary>
+        /// <param name="Id">Id da Clinica que será atualizada</param>
+        /// <param name="ClinicaAtualizada">>Objeto ClinicaAtualizada com as novas informações</param>
+        /// <returns>Um status code 200 - Ok</returns>
+        [HttpPut("{Id}")]
+        public IActionResult Atualizar(int Id, Clinica ClinicaAtualizada)
+        {
+            _ClinicaRepository.Atualizar(Id, ClinicaAtualizada);
+
+            return Ok();
+        }
+
+        /// <summary>
+        /// Cadastra uma Clinica
+        /// </summary>
+        /// <param name="ClinicaNova">>Objeto ClinicaNova com as informações</param>
+        /// <returns>Um status code 200 - Ok </returns>
+        [HttpPost]
+        public IActionResult Cadastrar(Clinica ClinicaNova)
+        {
+            _ClinicaRepository.Cadastrar(ClinicaNova);
+
+            return Ok();
+        }
+
+        /// <summary>
         /// Deleta uma Clinica existente
         /// </summary>
         /// <param name="Id">Id da Clinica que será deletada</param>
@@ -88,15 +95,6 @@ namespace senai.SpMedicalGroup.webApi.Controllers
             _ClinicaRepository.Deletar(Id);
             return Ok();
         }
-
-        /// <summary>
-        /// Lista todas as Clinicas
-        /// </summary>
-        /// <returns>Uma lita de Clinicas com o status code 200 - Ok</returns>
-        [HttpGet]
-        public IActionResult ListarTodos()
-        {
-            return Ok(_ClinicaRepository.ListarTodos());
-        }
+        
     }
 }

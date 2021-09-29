@@ -1,4 +1,5 @@
-﻿using senai.SpMedicalGroup.webApi.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using senai.SpMedicalGroup.webApi.Context;
 using senai.SpMedicalGroup.webApi.Domains;
 using senai.SpMedicalGroup.webApi.Interfaces;
 using System;
@@ -42,7 +43,28 @@ namespace senai.SpMedicalGroup.webApi.Repositories
 
         public void Atualizar(int Id, Consultum ConsultaAtualizada)
         {
-            throw new NotImplementedException();
+            Consultum ConsultaBuscada = BuscarPoId(Id);
+
+            var HorarioMinimo = new TimeSpan(5, 0, 0);
+            var HorarioMaximo = new TimeSpan(22, 0, 0);
+
+            if (ConsultaAtualizada.IdPaciente > 0)
+            {
+                ConsultaBuscada.IdPaciente = ConsultaAtualizada.IdPaciente;
+            }
+            if (ConsultaAtualizada.IdMedico > 0)
+            {
+                ConsultaBuscada.IdMedico = ConsultaAtualizada.IdMedico;
+            }
+            if (ConsultaAtualizada.DataCon != DateTime.Now)
+            {
+                ConsultaBuscada.DataCon = ConsultaAtualizada.DataCon;
+            }
+            if (ConsultaAtualizada.Hora > HorarioMinimo && ConsultaAtualizada.Hora < HorarioMaximo)
+            {
+                ConsultaBuscada.Hora = ConsultaAtualizada.Hora;
+            }
+            
         }
 
         public Consultum BuscarPoId(int Id)
@@ -58,12 +80,40 @@ namespace senai.SpMedicalGroup.webApi.Repositories
 
         public void Deletar(int Id)
         {
-            //Ctx.Consulta.Remove();
+            Consultum ConsultaBuscada = BuscarPoId(Id);
+
+            Ctx.Consulta.Remove(ConsultaBuscada);
+
+            Ctx.SaveChanges();
         }
+
+        public List<Consultum> ListarMinhas(int IdUsuario)
+        {
+            return Ctx.Consulta
+                .Where(c => c.IdMedicoNavigation.IdUsuario == IdUsuario || c.IdPacienteNavigation.IdUsuario == IdUsuario)
+                .ToList();
+        }
+
+        //public List<Presenca> ListarMinhas(int idUsuario)
+        //{
+        //    // Retorna uma lista com todas as informações das presenças
+        //    return ctx.Presencas
+        //        .Include(p => p.IdUsuarioNavigation)
+        //        .Include(p => p.IdEventoNavigation.IdTipoEventoNavigation)
+        //        .Include(p => p.IdEventoNavigation.IdInstituicaoNavigation)
+        //        .Include("IdSituacaoNavigation")
+        //        // Estabele como parâmetro de consulta o ID do usuário recebido
+        //        .Where(p => p.IdUsuario == idUsuario)
+        //        .ToList();
+        //}
 
         public List<Consultum> ListarTodos()
         {
-            throw new NotImplementedException();
+            return Ctx.Consulta.ToList();
         }
     }
 }
+
+ //               .Include(c => c.IdMedicoNavigation)
+ //               .Include(c => c.IdPacienteNavigation)
+ //               .Include(c => c.IdSituacaoNavigation)

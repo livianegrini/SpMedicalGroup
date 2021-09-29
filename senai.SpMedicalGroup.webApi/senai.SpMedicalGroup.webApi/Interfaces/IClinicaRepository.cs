@@ -22,12 +22,6 @@ namespace senai.SpMedicalGroup.webApi.Interfaces
         Clinica BuscarPoId(int Id);
 
         /// <summary>
-        /// Método responsável por deletar uma Clinica pelo seu Id
-        /// </summary>
-        /// <param name="Id">Id da Clinica deletada</param>
-        void Deletar(int Id);
-
-        /// <summary>
         /// Método responsável por atualizar uma Clinica pelo seu Id
         /// </summary>
         /// <param name="Id">Id da Clinica atualizada</param>
@@ -39,5 +33,11 @@ namespace senai.SpMedicalGroup.webApi.Interfaces
         /// </summary>
         /// <param name="ClinicaNova">Nova Clinica a ser cadastrada</param>
         void Cadastrar(Clinica ClinicaNova);
+
+        /// <summary>
+        /// Método responsável por deletar uma Clinica pelo seu Id
+        /// </summary>
+        /// <param name="Id">Id da Clinica deletada</param>
+        void Deletar(int Id);
     }
 }

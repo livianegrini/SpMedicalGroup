@@ -18,11 +18,15 @@ namespace senai.SpMedicalGroup.webApi.Repositories
         {
             Clinica ClinicaBuscada = BuscarPoId(Id);
 
-            if (ClinicaAtualizada.HorarioInicio != null)
+            var HorarioMinimo = new TimeSpan(5, 0, 0);
+            var HorarioMaximo = new TimeSpan(22, 0, 0);
+
+
+            if (ClinicaAtualizada.HorarioInicio < HorarioMinimo)
             {
                 ClinicaBuscada.HorarioInicio = ClinicaAtualizada.HorarioInicio;
             }
-            if (ClinicaAtualizada.HorarioFim != null)
+            if (ClinicaAtualizada.HorarioFim > HorarioMaximo)
             {
                 ClinicaBuscada.HorarioFim = ClinicaAtualizada.HorarioFim;
             }

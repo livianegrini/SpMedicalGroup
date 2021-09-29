@@ -29,14 +29,6 @@ namespace senai.SpMedicalGroup.webApi.Controllers
             _ConsultaRepository = new ConsultaRepository();
         }
 
-        [HttpPost]
-        public IActionResult Cadastrar(Consultum ConsultaNova)
-        {
-            _ConsultaRepository.Cadastrar(ConsultaNova);
-
-            return Ok();
-        }
-
         [HttpPatch("{Id}")]
         public IActionResult AprovarRecusar(int Id, Consultum Situacao)
         {
@@ -47,10 +39,102 @@ namespace senai.SpMedicalGroup.webApi.Controllers
             }
             catch (Exception Error)
             {
-
                 return BadRequest(Error);
             }
         }
+
+        /// <summary>
+        /// Lista todas as Consultas
+        /// </summary>
+        /// <returns>Uma lita de Consultas com o status code 200 - Ok</returns>
+        [HttpGet]
+        public IActionResult ListarTodos()
+        {
+            return Ok(_ConsultaRepository.ListarTodos());
+        }
+
+
+        /// <summary>
+        /// Busca uma Consulta pelo seu Id
+        /// </summary>
+        /// <param name="Id">Id da Consulta que será buscada</param>
+        /// <returns>Uma Consulta encontrada com o status code 200 - O</returns>
+        [HttpGet("{id}")]
+        public  IActionResult BuscarPorId(int Id)
+        {
+            Consultum ConsultaBuscada = _ConsultaRepository.BuscarPoId(Id);
+
+            if (ConsultaBuscada == null)
+            {
+                return NotFound("Nenhuma consulta encontrada!");
+            }
+
+            return Ok(ConsultaBuscada);
+        }
+
+        /// <summary>
+        /// Atualiza uma Consulta existente
+        /// </summary>
+        /// <param name="Id">Id da Consulta que será atualizada</param>
+        /// <param name="ConsultaAtualizada">>Objeto ConsultaAtualizada com as novas informações</param>
+        /// <returns>Um status code 200 - Ok</returns>
+        [HttpPut("{Id}")]
+        public IActionResult Atualizar(int Id, Consultum ConsultaAtualizada)
+        {
+            _ConsultaRepository.Atualizar(Id, ConsultaAtualizada);
+
+            return Ok();
+        }
+
+        /// <summary>
+        /// Cadastra uma Consulta
+        /// </summary>
+        /// <param name="ConsultaNova">>Objeto ConsultaNova com as informações</param>
+        /// <returns>Um status code 200 - Ok </returns>
+        [HttpPost]
+        public IActionResult Cadastrar(Consultum ConsultaNova)
+        {
+            _ConsultaRepository.Cadastrar(ConsultaNova);
+
+            return Ok();
+        }
+
+        /// <summary>
+        /// Deleta uma Consulta existente
+        /// </summary>
+        /// <param name="Id">Id da Consulta que será deletada</param>
+        /// <returns>Um status code 200 - Ok</returns>
+        [HttpDelete("{Id}")]
+        public IActionResult Deletar(int Id)
+        {
+            _ConsultaRepository.Deletar(Id);
+            return Ok();
+        }
+
+        /// <summary>
+        /// Lista todas as Consultas de um determinado usuário 
+        /// </summary>
+        /// <returns>Uma lista de Consultas</returns>
+        [HttpGet("Minhas")]
+        public IActionResult ListarMinhas()
+        {
+            try
+            {
+                int IdUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
+
+                return Ok(_ConsultaRepository.ListarMinhas(IdUsuario));
+            }
+            catch (Exception Error)
+            {
+                return BadRequest(new
+                {
+                    mensagem = "Não é possível mostrar as consultas se o usuário não estiver logado!",
+                    Error
+
+                });
+            }
+        }
+
     }
 }
 
