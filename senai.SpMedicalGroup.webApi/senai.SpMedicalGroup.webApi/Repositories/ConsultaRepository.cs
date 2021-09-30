@@ -64,7 +64,10 @@ namespace senai.SpMedicalGroup.webApi.Repositories
             {
                 ConsultaBuscada.Hora = ConsultaAtualizada.Hora;
             }
-            
+
+            Ctx.Consulta.Update(ConsultaBuscada);
+
+            Ctx.SaveChanges();
         }
 
         public Consultum BuscarPoId(int Id)
@@ -91,21 +94,13 @@ namespace senai.SpMedicalGroup.webApi.Repositories
         {
             return Ctx.Consulta
                 .Where(c => c.IdMedicoNavigation.IdUsuario == IdUsuario || c.IdPacienteNavigation.IdUsuario == IdUsuario)
+                       .Include(c => c.IdMedicoNavigation)
+                       .Include(c => c.IdPacienteNavigation)
+                       .Include(c => c.IdSituacaoNavigation)
                 .ToList();
         }
 
-        //public List<Presenca> ListarMinhas(int idUsuario)
-        //{
-        //    // Retorna uma lista com todas as informações das presenças
-        //    return ctx.Presencas
-        //        .Include(p => p.IdUsuarioNavigation)
-        //        .Include(p => p.IdEventoNavigation.IdTipoEventoNavigation)
-        //        .Include(p => p.IdEventoNavigation.IdInstituicaoNavigation)
-        //        .Include("IdSituacaoNavigation")
-        //        // Estabele como parâmetro de consulta o ID do usuário recebido
-        //        .Where(p => p.IdUsuario == idUsuario)
-        //        .ToList();
-        //}
+   
 
         public List<Consultum> ListarTodos()
         {
@@ -113,7 +108,3 @@ namespace senai.SpMedicalGroup.webApi.Repositories
         }
     }
 }
-
- //               .Include(c => c.IdMedicoNavigation)
- //               .Include(c => c.IdPacienteNavigation)
- //               .Include(c => c.IdSituacaoNavigation)

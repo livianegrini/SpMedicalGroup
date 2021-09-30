@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using senai.SpMedicalGroup.webApi.Domains;
 using senai.SpMedicalGroup.webApi.Interfaces;
 using senai.SpMedicalGroup.webApi.Repositories;
 using System;
@@ -36,6 +37,62 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         public IActionResult ListarTodos()
         {
             return Ok(_MedicoRepository.ListarTodos());
+        }
+
+        /// <summary>
+        /// Busca um Medico pelo seu Id
+        /// </summary>
+        /// <param name="Id">Id do Medico que será buscado</param>
+        /// <returns>Um Medico encontrado com o status code 200 - O</returns>
+        [HttpGet("{Id}")]
+        public IActionResult BuscarPorId(int Id)
+        {
+            Medico MedicoBuscado = _MedicoRepository.BuscarPoId(Id);
+
+            if (MedicoBuscado == null)
+            {
+                return NotFound("Nenhum Medico encontrado!");
+            }
+            return Ok(MedicoBuscado);
+        }
+
+        /// <summary>
+        /// Atualiza um Medico existente
+        /// </summary>
+        /// <param name="Id">Id da Medico que será atualizado</param>
+        /// <param name="MedicoAtualizado">>Objeto MedicoAtualizado com as novas informações</param>
+        /// <returns>Um status code 200 - Ok</returns>
+        [HttpPut("{Id}")]
+        public IActionResult Atualizar(int Id, Medico MedicoAtualizado)
+        {
+            _MedicoRepository.Atualizar(Id, MedicoAtualizado);
+
+            return Ok();
+        }
+
+        /// <summary>
+        /// Cadastra um Medico
+        /// </summary>
+        /// <param name="MedicoNovo">>Objeto MedicoNovo com as informações</param>
+        /// <returns>Um status code 200 - Ok </returns>
+        [HttpPost]
+        public IActionResult Cadastrar(Medico MedicoNovo)
+        {
+            _MedicoRepository.Cadastrar(MedicoNovo);
+
+            return Ok();
+        }
+
+        /// <summary>
+        /// Deleta um Medico existente
+        /// </summary>
+        /// <param name="Id">Id do Medico que será deletado</param>
+        /// <returns>Um status code 200 - Ok</returns>
+        [HttpDelete("{Id}")]
+        public IActionResult Deletar(int Id)
+        {
+            _MedicoRepository.Deletar(Id);
+            return Ok();
         }
     }
 }

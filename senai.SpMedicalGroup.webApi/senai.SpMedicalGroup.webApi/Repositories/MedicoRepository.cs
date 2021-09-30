@@ -15,22 +15,32 @@ namespace senai.SpMedicalGroup.webApi.Repositories
 
         public void Atualizar(int Id, Medico MedicoAtualizado)
         {
-            throw new NotImplementedException();
+            Medico MedicoBuscado = BuscarPoId(Id);
+
+            //if (MedicoAtualizado.Nome)
+            //{
+            //    ClinicaBuscada.HorarioInicio = ClinicaAtualizada.HorarioInicio;
+            //}
         }
 
         public Medico BuscarPoId(int Id)
         {
-            throw new NotImplementedException();
+            return Ctx.Medicos.FirstOrDefault(c => c.IdMedico == Id);
         }
 
         public void Cadastrar(Medico MedicoNovo)
         {
-            throw new NotImplementedException();
+            Ctx.Medicos.Add(MedicoNovo);
+            Ctx.SaveChanges();
         }
 
         public void Deletar(int Id)
         {
-            throw new NotImplementedException();
+            Medico MedicoBuscado = BuscarPoId(Id);
+
+            Ctx.Medicos.Remove(MedicoBuscado);
+
+            Ctx.SaveChanges();
         }
 
         public List<Medico> ListarTodos()
