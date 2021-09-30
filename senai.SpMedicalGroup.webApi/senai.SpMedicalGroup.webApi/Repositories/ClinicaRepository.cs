@@ -50,7 +50,9 @@ namespace senai.SpMedicalGroup.webApi.Repositories
 
         public Clinica BuscarPoId(int Id)
         {
-           return Ctx.Clinicas.FirstOrDefault(c => c.IdClinica == Id);
+           return Ctx.Clinicas
+                .Include("IdEnderecoNavigation")
+                .FirstOrDefault(c => c.IdClinica == Id);
         }
 
         public void Cadastrar(Clinica ClinicaNova)

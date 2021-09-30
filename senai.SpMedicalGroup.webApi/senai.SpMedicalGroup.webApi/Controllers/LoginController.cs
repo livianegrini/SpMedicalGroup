@@ -20,8 +20,14 @@ namespace senai.SpMedicalGroup.webApi.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
+        /// <summary>
+        /// Objeto _UsuarioRepository que irá receber todos os métodos definidos na interface IUsuarioRepository
+        /// </summary>
         private IUsuarioRepository _UsuarioRepository { get; set; }
 
+        /// <summary>
+        /// Instancia o objeto _UsuarioRepository para que haja referência às implementações feitas no repositório UsuarioRepository
+        /// </summary>
         public LoginController()
         {
             _UsuarioRepository = new UsuarioRepository();

@@ -29,6 +29,12 @@ namespace senai.SpMedicalGroup.webApi.Controllers
             _ConsultaRepository = new ConsultaRepository();
         }
 
+        /// <summary>
+        /// Altera a situacao da consulta
+        /// </summary>
+        /// <param name="Id">Id da Consulta que será aprovada ou recusada</param>
+        /// <param name="Situacao">Situacao que a consulta irá receber</param>
+        /// <returns>Um status code 200 - Ok</returns>
         [HttpPatch("{Id}")]
         public IActionResult AprovarRecusar(int Id, Consultum Situacao)
         {
@@ -58,7 +64,7 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         /// Busca uma Consulta pelo seu Id
         /// </summary>
         /// <param name="Id">Id da Consulta que será buscada</param>
-        /// <returns>Uma Consulta encontrada com o status code 200 - O</returns>
+        /// <returns>Uma Consulta encontrada com o status code 200 - Ok</returns>
         [HttpGet("{id}")]
         public  IActionResult BuscarPorId(int Id)
         {
@@ -90,7 +96,7 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         /// Cadastra uma Consulta
         /// </summary>
         /// <param name="ConsultaNova">>Objeto ConsultaNova com as informações</param>
-        /// <returns>Um status code 200 - Ok </returns>
+        /// <returns>Um status code 200 - Ok</returns>
         [HttpPost]
         public IActionResult Cadastrar(Consultum ConsultaNova)
         {

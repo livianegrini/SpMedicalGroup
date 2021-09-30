@@ -43,7 +43,7 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         /// Busca um Endereco pelo seu Id
         /// </summary>
         /// <param name="Id">Id do Endereco que será buscado</param>
-        /// <returns>Um Endereco encontrado com o status code 200 - O</returns>
+        /// <returns>Um Endereco encontrado com o status code 200 - Ok</returns>
         [HttpGet("{Id}")]
         public IActionResult BuscarPorId(int Id)
         {
@@ -74,7 +74,7 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         /// Cadastra um Endereco
         /// </summary>
         /// <param name="EnderecoNovo">>Objeto EnderecoNovo com as informações</param>
-        /// <returns>Um status code 200 - Ok </returns>
+        /// <returns>Um status code 200 - Ok</returns>
         [HttpPost]
         public IActionResult Cadastrar(Endereco EnderecoNovo)
         {

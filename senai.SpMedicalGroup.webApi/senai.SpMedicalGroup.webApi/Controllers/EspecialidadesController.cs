@@ -43,7 +43,7 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         /// Busca uma Especialidade pelo seu Id
         /// </summary>
         /// <param name="Id">Id da Especialidade que será buscada</param>
-        /// <returns>Uma Especialidade encontrada com o status code 200 - O</returns>
+        /// <returns>Uma Especialidade encontrada com o status code 200 - Ok</returns>
         [HttpGet("{Id}")]
         public IActionResult BuscarPorId(int Id)
         {
@@ -65,16 +65,26 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         [HttpPut("{Id}")]
         public IActionResult Atualizar(int Id, Especialidade EspecialidadeAtualizada)
         {
-            _EspecialidadeRepository.Atualizar(Id, EspecialidadeAtualizada);
+            try
+            {
+                if (EspecialidadeAtualizada != null)
+                    _EspecialidadeRepository.Atualizar(Id, EspecialidadeAtualizada);
 
-            return Ok();
+                    return Ok();
+                
+            }
+            catch (Exception)
+            {
+                return BadRequest( new { mensagem = "A especialidade informada não existe" });
+            }
+            
         }
 
         /// <summary>
         /// Cadastra uma Especialidade
         /// </summary>
         /// <param name="EspecialidadeNova">>Objeto EspecialidadeNova com as informações</param>
-        /// <returns>Um status code 200 - Ok </returns>
+        /// <returns>Um status code 200 - Ok</returns>
         [HttpPost]
         public IActionResult Cadastrar(Especialidade EspecialidadeNova)
         {
@@ -91,8 +101,13 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         [HttpDelete("{Id}")]
         public IActionResult Deletar(int Id)
         {
-            _EspecialidadeRepository.Deletar(Id);
-            return Ok();
+            if (Id > 0)
+            {
+                _EspecialidadeRepository.Deletar(Id);
+                return Ok();
+            }
+            
+            return BadRequest(new { mensagem = "O Id informado não existe" });
         }
     }
 }

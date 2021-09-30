@@ -19,11 +19,11 @@ namespace senai.SpMedicalGroup.webApi.Repositories
             if (EspecialidadeAtualizada.Especialidade1 != null)
             {
                 EspecialidadeBuscada.Especialidade1 = EspecialidadeAtualizada.Especialidade1;
+
+                Ctx.Especialidades.Update(EspecialidadeBuscada);
+
+                Ctx.SaveChanges();
             }
-
-            Ctx.Especialidades.Update(EspecialidadeBuscada);
-
-            Ctx.SaveChanges();
         }
 
         public Especialidade BuscarPoId(int Id)

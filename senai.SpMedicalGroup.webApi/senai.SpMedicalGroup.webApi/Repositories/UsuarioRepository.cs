@@ -22,7 +22,9 @@ namespace senai.SpMedicalGroup.webApi.Repositories
 
         public Usuario BuscarPoId(int Id)
         {
-            return Ctx.Usuarios.FirstOrDefault(c => c.IdUsuario == Id);
+            return Ctx.Usuarios
+                .Include("IdTipoUsuarioNavigation")
+                .FirstOrDefault(c => c.IdUsuario == Id);
         }
 
         public void Cadastrar(Usuario UsuarioNovo)
@@ -49,7 +51,7 @@ namespace senai.SpMedicalGroup.webApi.Repositories
         {
             Usuario UsuarioBuscado = BuscarPoId(Id);
 
-            Ctx.Usuarios.Remove(UsuarioBuscado);
+            Ctx.Usuarios.Remove(UsuarioBuscado); 
 
             Ctx.SaveChanges();
         }

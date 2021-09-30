@@ -14,14 +14,25 @@ namespace senai.SpMedicalGroup.webApi.Controllers
     [ApiController]
     public class PerfilController : ControllerBase
     {
+        /// <summary>
+        /// Objeto _UsuarioRepository que irá receber todos os métodos definidos na interface IUsuarioRepository
+        /// </summary>
         private IUsuarioRepository _UsuarioRepository { get; set; }
 
+        /// <summary>
+        /// Instancia o objeto _UsuarioRepository para que haja referência às implementações feitas no repositório UsuarioRepository
+        /// </summary>
         public PerfilController()
         {
             _UsuarioRepository = new UsuarioRepository();
 
         }
 
+        /// <summary>
+        /// Salva uma foto de perfil do usuário
+        /// </summary>
+        /// <param name="Arquivo">Foto que é recebida do usuário</param>
+        /// <returns>Um status code 200 - Ok</returns>
         [HttpPost("Imagem")]
         public IActionResult Post(IFormFile Arquivo)
         {
@@ -49,6 +60,10 @@ namespace senai.SpMedicalGroup.webApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Consulta a imagem de perfil
+        /// </summary>
+        /// <returns>Uma Base64 da imagem</returns>
         [HttpGet("Imagem")]
         public IActionResult Get()
         {

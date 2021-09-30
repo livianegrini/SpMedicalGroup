@@ -30,9 +30,9 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         }
 
         /// <summary>
-        /// Lista todas os TipoUsuarios
+        /// Lista todos os Tipos de Usuarios
         /// </summary>
-        /// <returns>Uma lita de TipoUsuarios com o status code 200 - Ok</returns>
+        /// <returns>Uma lita de Tipos de Usuarios com o status code 200 - Ok</returns>
         [HttpGet]
         public IActionResult ListarTodos()
         {
@@ -42,8 +42,8 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         /// <summary>
         /// Busca um TipoUsuario pelo seu Id
         /// </summary>
-        /// <param name="Id">Id do TipoUsuario que será buscado</param>
-        /// <returns>Um TipoUsuario encontrado com o status code 200 - O</returns>
+        /// <param name="Id">Id do Tipo Usuario que será buscado</param>
+        /// <returns>Um Tipo Usuario encontrado com o status code 200 - Ok</returns>
         [HttpGet("{Id}")]
         public IActionResult BuscarPorId(int Id)
         {
@@ -57,9 +57,9 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         }
 
         /// <summary>
-        /// Atualiza um TipoUsuario existente
+        /// Atualiza um Tipo Usuario existente
         /// </summary>
-        /// <param name="Id">Id do TipoUsuario que será atualizado</param>
+        /// <param name="Id">Id do Tipo Usuario que será atualizado</param>
         /// <param name="TipoUsuarioAtualizado">>Objeto TipoUsuarioAtualizado com as novas informações</param>
         /// <returns>Um status code 200 - Ok</returns>
         [HttpPut("{Id}")]
@@ -71,10 +71,10 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         }
 
         /// <summary>
-        /// Cadastra um TipoUsuario
+        /// Cadastra um Tipo Usuario
         /// </summary>
         /// <param name="TipoUsuarioNovo">>Objeto TipoUsuarioNovo com as informações</param>
-        /// <returns>Um status code 200 - Ok </returns>
+        /// <returns>Um status code 200 - Ok</returns>
         [HttpPost]
         public IActionResult Cadastrar(TipoUsuario TipoUsuarioNovo)
         {
@@ -84,7 +84,7 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         }
 
         /// <summary>
-        /// Deleta um TipoUsuario existente
+        /// Deleta um Tipo Usuario existente
         /// </summary>
         /// <param name="Id">Id da TipoUsuario que será deletado</param>
         /// <returns>Um status code 200 - Ok</returns>

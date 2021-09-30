@@ -25,7 +25,11 @@ namespace senai.SpMedicalGroup.webApi.Repositories
 
         public Medico BuscarPoId(int Id)
         {
-            return Ctx.Medicos.FirstOrDefault(c => c.IdMedico == Id);
+            return Ctx.Medicos
+                .Include("IdClinicaNavigation")
+                .Include("IdEspecialidadeNavigation")
+                .Include("IdUsuarioNavigation")
+                .FirstOrDefault(c => c.IdMedico == Id);
         }
 
         public void Cadastrar(Medico MedicoNovo)

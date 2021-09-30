@@ -72,7 +72,11 @@ namespace senai.SpMedicalGroup.webApi.Repositories
 
         public Consultum BuscarPoId(int Id)
         {
-            return Ctx.Consulta.FirstOrDefault(c => c.IdConsulta == Id);
+            return Ctx.Consulta
+                .Include("IdPacienteNavigation")
+                .Include("IdMedicoNavigation")
+                .Include("IdSituacaoNavigation")
+                .FirstOrDefault(c => c.IdConsulta == Id);
         }
 
         public void Cadastrar(Consultum ConsultaNova)

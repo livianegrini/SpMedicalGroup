@@ -30,7 +30,7 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         }
 
         /// <summary>
-        /// Lista todas os Medicos
+        /// Lista todos os Medicos
         /// </summary>
         /// <returns>Uma lita de Medicos com o status code 200 - Ok</returns>
         [HttpGet]
@@ -43,7 +43,7 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         /// Busca um Medico pelo seu Id
         /// </summary>
         /// <param name="Id">Id do Medico que será buscado</param>
-        /// <returns>Um Medico encontrado com o status code 200 - O</returns>
+        /// <returns>Um Medico encontrado com o status code 200 - Ok</returns>
         [HttpGet("{Id}")]
         public IActionResult BuscarPorId(int Id)
         {
@@ -74,7 +74,7 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         /// Cadastra um Medico
         /// </summary>
         /// <param name="MedicoNovo">>Objeto MedicoNovo com as informações</param>
-        /// <returns>Um status code 200 - Ok </returns>
+        /// <returns>Um status code 200 - Ok</returns>
         [HttpPost]
         public IActionResult Cadastrar(Medico MedicoNovo)
         {
