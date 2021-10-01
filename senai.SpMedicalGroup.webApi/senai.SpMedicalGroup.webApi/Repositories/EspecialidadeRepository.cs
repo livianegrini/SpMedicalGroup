@@ -14,9 +14,11 @@ namespace senai.SpMedicalGroup.webApi.Repositories
 
         public void Atualizar(int Id, Especialidade EspecialidadeAtualizada)
         {
+            //Especialidade EspecialidadeBuscada = Ctx.Especialidades.Find(Id);
             Especialidade EspecialidadeBuscada = BuscarPoId(Id);
 
-            if (EspecialidadeAtualizada.Especialidade1 != null)
+
+            if (EspecialidadeAtualizada.Especialidade1 != null && Id > 0)
             {
                 EspecialidadeBuscada.Especialidade1 = EspecialidadeAtualizada.Especialidade1;
 

@@ -87,9 +87,27 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         [HttpPut("{Id}")]
         public IActionResult Atualizar(int Id, Consultum ConsultaAtualizada)
         {
-            _ConsultaRepository.Atualizar(Id, ConsultaAtualizada);
+            try
+            {
+                Consultum ConsultaBuscada = _ConsultaRepository.BuscarPoId(Id);
 
-            return Ok();
+                if (ConsultaBuscada != null)
+                {
+                    if (ConsultaAtualizada != null)
+                        _ConsultaRepository.Atualizar(Id, ConsultaAtualizada);
+                }
+                else
+                {
+                    return BadRequest(new { mensagem = "Consulta informada não encontrada" });
+                }
+
+                return Ok();
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
 
         /// <summary>
@@ -124,23 +142,35 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         [HttpGet("Minhas")]
         public IActionResult ListarMinhas()
         {
-            try
-            {
                 int IdUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
 
                 return Ok(_ConsultaRepository.ListarMinhas(IdUsuario));
-            }
-            catch (Exception Error)
-            {
-                return BadRequest(new
-                {
-                    mensagem = "Não é possível mostrar as consultas se o usuário não estiver logado!",
-                    Error
-
-                });
-            }
         }
 
+        [HttpPatch("Descricao/{Id}")]
+        public IActionResult AtualizarDescricao(int Id, string Descricao)
+        {
+            try
+            {
+                Consultum ConsultaBuscada = _ConsultaRepository.BuscarPoId(Id);
+
+                if (ConsultaBuscada != null)
+                {
+                    _ConsultaRepository.AtualizarDescricao(Id, Descricao);
+                }
+                else
+                {
+                    return BadRequest(new { mensagem = "Consulta informada não encontrada" });
+                }
+
+                return Ok();
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
     }
 }
 

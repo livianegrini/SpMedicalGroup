@@ -59,15 +59,33 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         /// <summary>
         /// Atualiza um Endereco existente
         /// </summary>
-        /// <param name="Id">Id de um Endereco que será atualizada</param>
+        /// <param name="Id">Id de um Endereco que será atualizado</param>
         /// <param name="EnderecoAtualizado">>Objeto EnderecoAtualizado com as novas informações</param>
         /// <returns>Um status code 200 - Ok</returns>
         [HttpPut("{Id}")]
         public IActionResult Atualizar(int Id, Endereco EnderecoAtualizado)
         {
-            _EnderecoRepository.Atualizar(Id, EnderecoAtualizado);
+            try
+            {
+                Endereco EnderecoBuscado = _EnderecoRepository.BuscarPoId(Id);
 
-            return Ok();
+                if (EnderecoBuscado != null)
+                {
+                    if (EnderecoAtualizado != null)
+                       _EnderecoRepository.Atualizar(Id, EnderecoAtualizado);
+                }
+                else
+                {
+                    return BadRequest(new { mensagem = "Endereco informado não encontrado" });
+                }
+
+                return Ok();
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
 
         /// <summary>

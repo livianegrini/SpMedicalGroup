@@ -65,9 +65,28 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         [HttpPut("{Id}")]
         public IActionResult Atualizar(int Id, Situacao SituacaoAtualizada)
         {
-            _SituacaoRepository.Atualizar(Id, SituacaoAtualizada);
+            try
+            {
+                Situacao SituacaoBuscada = _SituacaoRepository.BuscarPoId(Id);
 
-            return Ok();
+                if (SituacaoBuscada != null)
+                {
+                    if (SituacaoAtualizada != null)
+                        _SituacaoRepository.Atualizar(Id, SituacaoAtualizada);
+                }
+                else
+                {
+                    return BadRequest(new { mensagem = "Situacao informada não encontrada" });
+                }
+
+                return Ok();
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+
         }
 
         /// <summary>

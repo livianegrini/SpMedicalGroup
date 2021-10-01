@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using senai.SpMedicalGroup.webApi.Domains;
 using senai.SpMedicalGroup.webApi.Interfaces;
@@ -66,9 +67,27 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         [HttpPut("{Id}")]
         public IActionResult Atualizar(int Id, Clinica ClinicaAtualizada)
         {
-            _ClinicaRepository.Atualizar(Id, ClinicaAtualizada);
+            try
+            {
+                Clinica ClinicaBuscada = _ClinicaRepository.BuscarPoId(Id);
 
-            return Ok();
+                if (ClinicaBuscada != null)
+                {
+                    if (ClinicaAtualizada != null)
+                        _ClinicaRepository.Atualizar(Id, ClinicaAtualizada);
+                }
+                else
+                {
+                    return BadRequest(new { mensagem = "Clinica informada não encontrada" });
+                }
+
+                return Ok();
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
 
         /// <summary>
@@ -76,6 +95,7 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         /// </summary>
         /// <param name="ClinicaNova">>Objeto ClinicaNova com as informações</param>
         /// <returns>Um status code 200 - Ok</returns>
+        [Authorize(Roles = "1")]
         [HttpPost]
         public IActionResult Cadastrar(Clinica ClinicaNova)
         {
@@ -95,6 +115,6 @@ namespace senai.SpMedicalGroup.webApi.Controllers
             _ClinicaRepository.Deletar(Id);
             return Ok();
         }
-        
+
     }
 }

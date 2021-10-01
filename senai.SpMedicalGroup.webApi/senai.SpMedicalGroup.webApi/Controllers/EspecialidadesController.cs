@@ -67,15 +67,24 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         {
             try
             {
-                if (EspecialidadeAtualizada != null)
-                    _EspecialidadeRepository.Atualizar(Id, EspecialidadeAtualizada);
+                Especialidade EspecialidadeBuscada = _EspecialidadeRepository.BuscarPoId(Id);
 
-                    return Ok();
-                
+                if (EspecialidadeBuscada != null)
+                {
+                    if (EspecialidadeAtualizada != null)
+                        _EspecialidadeRepository.Atualizar(Id, EspecialidadeAtualizada);
+                }
+                else
+                {
+                    return BadRequest(new { mensagem = "Especialidade informada não encontrada" });
+                }
+
+                return Ok();
+
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return BadRequest( new { mensagem = "A especialidade informada não existe" });
+                return BadRequest(ex);
             }
             
         }

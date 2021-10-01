@@ -151,6 +151,9 @@ CREATE TABLE Paciente(
 );
 GO
 
+ALTER TABLE Consulta 
+ADD Descricao VARCHAR(200)
+
 
 
 

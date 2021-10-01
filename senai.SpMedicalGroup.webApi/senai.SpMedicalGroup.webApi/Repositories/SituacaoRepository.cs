@@ -14,7 +14,16 @@ namespace senai.SpMedicalGroup.webApi.Repositories
 
         public void Atualizar(int Id, Situacao SituacaoAtualizada)
         {
-            throw new NotImplementedException();
+            Situacao SituacaoBuscada = BuscarPoId(Id);
+
+            if (SituacaoAtualizada.TipoSituacao != null )
+            {
+                SituacaoBuscada.TipoSituacao = SituacaoAtualizada.TipoSituacao;
+
+                Ctx.Situacaos.Update(SituacaoBuscada);
+
+                Ctx.SaveChanges();
+            }
         }
 
         public Situacao BuscarPoId(int Id)

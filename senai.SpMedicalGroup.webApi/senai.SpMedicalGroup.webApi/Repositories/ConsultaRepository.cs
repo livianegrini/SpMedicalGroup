@@ -45,29 +45,46 @@ namespace senai.SpMedicalGroup.webApi.Repositories
         {
             Consultum ConsultaBuscada = BuscarPoId(Id);
 
-            var HorarioMinimo = new TimeSpan(5, 0, 0);
-            var HorarioMaximo = new TimeSpan(22, 0, 0);
+            var HorarioMinimo = new TimeSpan(8, 0, 0);
+            var HorarioMaximo = new TimeSpan(19, 0, 0);
 
-            if (ConsultaAtualizada.IdPaciente > 0)
+            if (ConsultaAtualizada.IdPaciente > 0 && ConsultaAtualizada.IdMedico > 0 && ConsultaAtualizada.IdSituacao > 0 && ConsultaAtualizada.DataCon != DateTime.Now && ConsultaAtualizada.Hora > HorarioMinimo && ConsultaAtualizada.Hora < HorarioMaximo && ConsultaAtualizada.Descricao != null)
             {
                 ConsultaBuscada.IdPaciente = ConsultaAtualizada.IdPaciente;
-            }
-            if (ConsultaAtualizada.IdMedico > 0)
-            {
                 ConsultaBuscada.IdMedico = ConsultaAtualizada.IdMedico;
-            }
-            if (ConsultaAtualizada.DataCon != DateTime.Now)
-            {
+                ConsultaBuscada.IdSituacao = ConsultaAtualizada.IdSituacao;
                 ConsultaBuscada.DataCon = ConsultaAtualizada.DataCon;
-            }
-            if (ConsultaAtualizada.Hora > HorarioMinimo && ConsultaAtualizada.Hora < HorarioMaximo)
-            {
                 ConsultaBuscada.Hora = ConsultaAtualizada.Hora;
+                ConsultaBuscada.Descricao = ConsultaAtualizada.Descricao;
+
+                Ctx.Consulta.Update(ConsultaBuscada);
+
+                Ctx.SaveChanges();
+            }  
+        }
+
+        //public void AtualizarDescricao(int IdConsulta)
+        //{
+        //    Consultum ConsultaBuscada = BuscarPoId(IdConsulta);
+
+        //    Ctx.Consulta.Update(ConsultaBuscada);
+
+        //    Ctx.SaveChanges();
+        //}
+
+        public void AtualizarDescricao(int IdConsulta, string Descricao)
+        {
+            Consultum ConsultaBuscada = BuscarPoId(IdConsulta);
+
+            if (Descricao != null)
+            {
+                Descricao = ConsultaBuscada.Descricao;
+
+                Ctx.Consulta.Update(ConsultaBuscada);
+
+                Ctx.SaveChanges();
             }
-
-            Ctx.Consulta.Update(ConsultaBuscada);
-
-            Ctx.SaveChanges();
+         
         }
 
         public Consultum BuscarPoId(int Id)
@@ -97,18 +114,91 @@ namespace senai.SpMedicalGroup.webApi.Repositories
         public List<Consultum> ListarMinhas(int IdUsuario)
         {
             return Ctx.Consulta
-                .Where(c => c.IdMedicoNavigation.IdUsuario == IdUsuario || c.IdPacienteNavigation.IdUsuario == IdUsuario)
-                       .Include(c => c.IdMedicoNavigation)
-                       .Include(c => c.IdPacienteNavigation)
-                       .Include(c => c.IdSituacaoNavigation)
-                .ToList();
+                .Select(c => new Consultum
+                {
+                    IdConsulta = c.IdConsulta,
+                    DataCon = c.DataCon,
+                    Hora = c.Hora,
+                    Descricao = c.Descricao,
+                    IdPacienteNavigation = new Paciente
+                    {
+                        IdUsuario = c.IdPacienteNavigation.IdUsuario,
+                        IdPaciente = c.IdPacienteNavigation.IdPaciente,
+                        Nome = c.IdPacienteNavigation.Nome,
+                        DataNascimento = c.IdPacienteNavigation.DataNascimento,
+                        Telefone = c.IdPacienteNavigation.Telefone,
+                        Rg = c.IdPacienteNavigation.Rg,
+                        Cpf = c.IdPacienteNavigation.Cpf,
+                    },
+                    IdMedicoNavigation = new Medico
+                    {
+                        IdUsuario = c.IdMedicoNavigation.IdUsuario,
+                        IdMedico = c.IdMedicoNavigation.IdMedico,
+                        Nome = c.IdMedicoNavigation.Nome,
+                        Crm = c.IdMedicoNavigation.Crm,
+                        IdEspecialidadeNavigation = new Especialidade
+                        {
+                            IdEspecialidade = c.IdMedicoNavigation.IdEspecialidadeNavigation.IdEspecialidade,
+                            Especialidade1 = c.IdMedicoNavigation.IdEspecialidadeNavigation.Especialidade1
+                        },
+                    },
+                    IdSituacaoNavigation = new Situacao
+                    {
+                        IdSituacao = c.IdSituacaoNavigation.IdSituacao,
+                        TipoSituacao = c.IdSituacaoNavigation.TipoSituacao
+                    }
+                })
+                 .Where(c => c.IdMedicoNavigation.IdUsuario == IdUsuario || c.IdPacienteNavigation.IdUsuario == IdUsuario)
+                 .ToList();
         }
 
    
 
         public List<Consultum> ListarTodos()
         {
-            return Ctx.Consulta.ToList();
+            return Ctx.Consulta
+                .Select(c => new Consultum
+                {
+                    IdConsulta = c.IdConsulta,
+                    DataCon = c.DataCon,
+                    Hora = c.Hora,
+                    Descricao = c.Descricao,
+                    IdPacienteNavigation = new Paciente
+                    {
+                        IdPaciente = c.IdPacienteNavigation.IdPaciente,
+                        Nome = c.IdPacienteNavigation.Nome,
+                        DataNascimento = c.IdPacienteNavigation.DataNascimento,
+                        Telefone = c.IdPacienteNavigation.Telefone,
+                        Rg = c.IdPacienteNavigation.Rg,
+                        Cpf = c.IdPacienteNavigation.Cpf,
+                    },
+                    IdMedicoNavigation = new Medico
+                    {
+                        IdMedico = c.IdMedicoNavigation.IdMedico,
+                        Nome = c.IdMedicoNavigation.Nome,
+                        Crm = c.IdMedicoNavigation.Crm,
+                        IdEspecialidadeNavigation = new Especialidade
+                        {
+                            IdEspecialidade = c.IdMedicoNavigation.IdEspecialidadeNavigation.IdEspecialidade,
+                            Especialidade1 = c.IdMedicoNavigation.IdEspecialidadeNavigation.Especialidade1
+                        },
+
+                        IdClinicaNavigation = new Clinica
+                        {
+                            IdClinica = c.IdMedicoNavigation.IdClinicaNavigation.IdClinica,
+                            HorarioInicio = c.IdMedicoNavigation.IdClinicaNavigation.HorarioInicio,
+                            HorarioFim = c.IdMedicoNavigation.IdClinicaNavigation.HorarioFim,
+                            Cnpj = c.IdMedicoNavigation.IdClinicaNavigation.Cnpj,
+                            NomeFantasia = c.IdMedicoNavigation.IdClinicaNavigation.NomeFantasia,
+                            RazaoSocial = c.IdMedicoNavigation.IdClinicaNavigation.RazaoSocial
+                        }
+                    },
+                    IdSituacaoNavigation = new Situacao
+                    {
+                       IdSituacao = c.IdSituacaoNavigation.IdSituacao,
+                       TipoSituacao = c.IdSituacaoNavigation.TipoSituacao
+                    }
+                }).ToList();
         }
     }
 }

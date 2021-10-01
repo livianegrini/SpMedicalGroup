@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using senai.SpMedicalGroup.webApi.Domains;
 using senai.SpMedicalGroup.webApi.Interfaces;
@@ -65,9 +66,28 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         [HttpPut("{Id}")]
         public IActionResult Atualizar(int Id, TipoUsuario TipoUsuarioAtualizado)
         {
-            _TipoUsuarioRepository.Atualizar(Id, TipoUsuarioAtualizado);
+            try
+            {
+                TipoUsuario TipoUsuarioBuscado = _TipoUsuarioRepository.BuscarPoId(Id);
 
-            return Ok();
+                if (TipoUsuarioBuscado != null)
+                {
+                    if (TipoUsuarioAtualizado != null)
+                        _TipoUsuarioRepository.Atualizar(Id, TipoUsuarioAtualizado);
+
+                }
+                else
+                {
+                    return BadRequest(new { mensagem = "TipoUsuario informado não encontrado" });
+                }
+
+                return Ok();
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
 
         /// <summary>
@@ -75,6 +95,7 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         /// </summary>
         /// <param name="TipoUsuarioNovo">>Objeto TipoUsuarioNovo com as informações</param>
         /// <returns>Um status code 200 - Ok</returns>
+        [Authorize(Roles = "1")]
         [HttpPost]
         public IActionResult Cadastrar(TipoUsuario TipoUsuarioNovo)
         {
@@ -88,6 +109,7 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         /// </summary>
         /// <param name="Id">Id da TipoUsuario que será deletado</param>
         /// <returns>Um status code 200 - Ok</returns>
+        [Authorize(Roles = "1")]
         [HttpDelete("{Id}")]
         public IActionResult Deletar(int Id)
         {

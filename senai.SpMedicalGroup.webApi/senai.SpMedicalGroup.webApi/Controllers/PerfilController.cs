@@ -63,7 +63,7 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         /// <summary>
         /// Consulta a imagem de perfil
         /// </summary>
-        /// <returns>Uma Base64 da imagem</returns>
+        /// <returns>Um código Base64 da imagem</returns>
         [HttpGet("Imagem")]
         public IActionResult Get()
         {

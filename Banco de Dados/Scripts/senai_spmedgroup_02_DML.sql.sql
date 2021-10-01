@@ -132,3 +132,12 @@ SELECT * FROM Consulta
 
 SELECT * FROM Consulta
 Where(IdMedico = 2)
+
+Select * FROM Consulta 
+INNER JOIN Paciente            
+ON Consulta.IdPaciente = Paciente.IdPaciente
+INNER JOIN Medico
+ON Consulta.IdMedico = Medico.IdMedico
+INNER JOIN Situacao
+ON Consulta.IdSituacao = Situacao.IdSituacao
+WHERE Medico.IdUsuario = 2 OR Paciente.IdUsuario = 6

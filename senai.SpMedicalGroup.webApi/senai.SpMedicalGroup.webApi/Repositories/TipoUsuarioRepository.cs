@@ -13,7 +13,16 @@ namespace senai.SpMedicalGroup.webApi.Repositories
         SpMedicalGroupContext Ctx = new SpMedicalGroupContext();
         public void Atualizar(int Id, TipoUsuario TipoUsuarioAtualizado)
         {
-            throw new NotImplementedException();
+            TipoUsuario TipoUsuarioBuscado = BuscarPoId(Id);
+
+            if (TipoUsuarioAtualizado.TipoUsuario1 != null )
+            {
+                TipoUsuarioBuscado.TipoUsuario1 = TipoUsuarioAtualizado.TipoUsuario1;
+
+                Ctx.TipoUsuarios.Update(TipoUsuarioBuscado);
+
+                Ctx.SaveChanges();
+            }
         }
 
         public TipoUsuario BuscarPoId(int Id)

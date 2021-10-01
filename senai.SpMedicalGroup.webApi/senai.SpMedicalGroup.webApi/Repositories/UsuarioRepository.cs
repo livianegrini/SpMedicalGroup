@@ -17,7 +17,18 @@ namespace senai.SpMedicalGroup.webApi.Repositories
 
         public void Atualizar(int Id, Usuario UsuarioAtualizado)
         {
-            throw new NotImplementedException();
+            Usuario UsuarioBuscado = BuscarPoId(Id);
+
+            if (UsuarioAtualizado.IdTipoUsuario > 0 && UsuarioAtualizado.Email != null && UsuarioAtualizado.Senha != null)
+            {
+                UsuarioBuscado.IdTipoUsuario = UsuarioAtualizado.IdTipoUsuario;
+                UsuarioBuscado.Email = UsuarioAtualizado.Email;
+                UsuarioBuscado.Senha = UsuarioAtualizado.Senha;
+
+                Ctx.Usuarios.Update(UsuarioBuscado);
+
+                Ctx.SaveChanges();
+            }
         }
 
         public Usuario BuscarPoId(int Id)
@@ -58,7 +69,18 @@ namespace senai.SpMedicalGroup.webApi.Repositories
 
         public List<Usuario> ListarTodos()
         {
-            return Ctx.Usuarios.Include("IdTipoUsuarioNavigation").ToList();
+          return Ctx.Usuarios
+                .Select(c => new Usuario
+                {
+                    IdUsuario = c.IdUsuario,
+                    Email = c.Email,
+                    Senha = c.Senha,
+                    IdTipoUsuarioNavigation = new TipoUsuario
+                    {
+                        IdTipoUsuario = c.IdTipoUsuarioNavigation.IdTipoUsuario,
+                        TipoUsuario1 = c.IdTipoUsuarioNavigation.TipoUsuario1
+                    }
+                }).ToList();
         }
 
         public Usuario Login(string Email, string Senha)

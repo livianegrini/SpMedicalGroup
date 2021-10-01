@@ -18,34 +18,21 @@ namespace senai.SpMedicalGroup.webApi.Repositories
         {
             Clinica ClinicaBuscada = BuscarPoId(Id);
 
-            var HorarioMinimo = new TimeSpan(5, 0, 0);
-            var HorarioMaximo = new TimeSpan(22, 0, 0);
+            var HorarioMinimo = new TimeSpan(8, 0, 0);
+            var HorarioMaximo = new TimeSpan(19, 0, 0);
 
-
-            if (ClinicaAtualizada.HorarioInicio < HorarioMinimo)
+            if (ClinicaAtualizada.HorarioInicio > HorarioMinimo && ClinicaAtualizada.HorarioFim < HorarioMaximo && ClinicaAtualizada.Cnpj != null && ClinicaAtualizada.NomeFantasia != null && ClinicaAtualizada.RazaoSocial != null)
             {
                 ClinicaBuscada.HorarioInicio = ClinicaAtualizada.HorarioInicio;
-            }
-            if (ClinicaAtualizada.HorarioFim > HorarioMaximo)
-            {
                 ClinicaBuscada.HorarioFim = ClinicaAtualizada.HorarioFim;
-            }
-            if (ClinicaAtualizada.Cnpj != null)
-            {
                 ClinicaBuscada.Cnpj = ClinicaAtualizada.Cnpj;
-            }
-            if (ClinicaAtualizada.NomeFantasia != null)
-            {
                 ClinicaBuscada.NomeFantasia = ClinicaAtualizada.NomeFantasia;
-            }
-            if (ClinicaAtualizada.RazaoSocial != null)
-            {
                 ClinicaBuscada.RazaoSocial = ClinicaAtualizada.RazaoSocial;
+
+                Ctx.Clinicas.Update(ClinicaBuscada);
+
+                Ctx.SaveChanges();
             }
-
-            Ctx.Clinicas.Update(ClinicaBuscada);
-
-            Ctx.SaveChanges();
         }
 
         public Clinica BuscarPoId(int Id)
