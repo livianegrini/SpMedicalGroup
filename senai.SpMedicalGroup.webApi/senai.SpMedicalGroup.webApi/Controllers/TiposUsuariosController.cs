@@ -63,6 +63,7 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         /// <param name="Id">Id do Tipo Usuario que será atualizado</param>
         /// <param name="TipoUsuarioAtualizado">>Objeto TipoUsuarioAtualizado com as novas informações</param>
         /// <returns>Um status code 200 - Ok</returns>
+        [Authorize(Roles = "1")]
         [HttpPut("{Id}")]
         public IActionResult Atualizar(int Id, TipoUsuario TipoUsuarioAtualizado)
         {

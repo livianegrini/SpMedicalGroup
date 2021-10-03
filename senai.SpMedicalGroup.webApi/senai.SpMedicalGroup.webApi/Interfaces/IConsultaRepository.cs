@@ -53,11 +53,12 @@ namespace senai.SpMedicalGroup.webApi.Interfaces
         /// <param name="IdUsuario">ID do usuário que participa das Consultas listadas</param>
         /// <returns>Uma lista de Consultas com os dados</returns>
         List<Consultum> ListarMinhas(int IdUsuario);
-
+   
         /// <summary>
-        /// Atualiza uma descricao para a consulta
+        /// Atualiza a descrição de uma consulta
         /// </summary>
-        /// <param name="IdConsulta">Id da Consulta que recebera a descricao</param>
-        void AtualizarDescricao(int IdConsulta, string Descricao);
+        /// <param name="IdConsulta">Id da consulta que terá a descrição atualizada</param>
+        /// <param name="DescricaoAtualizada">A descrição que será inserida</param>
+        void AtualizarDescricao(int IdConsulta, string DescricaoAtualizada);
     }
 }

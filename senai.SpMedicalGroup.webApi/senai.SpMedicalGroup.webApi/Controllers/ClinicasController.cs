@@ -64,6 +64,7 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         /// <param name="Id">Id da Clinica que será atualizada</param>
         /// <param name="ClinicaAtualizada">>Objeto ClinicaAtualizada com as novas informações</param>
         /// <returns>Um status code 200 - Ok</returns>
+        [Authorize(Roles = "1")]
         [HttpPut("{Id}")]
         public IActionResult Atualizar(int Id, Clinica ClinicaAtualizada)
         {
@@ -109,6 +110,7 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         /// </summary>
         /// <param name="Id">Id da Clinica que será deletada</param>
         /// <returns>Um status code 200 - Ok</returns>
+        [Authorize(Roles = "1")]
         [HttpDelete("{Id}")]
         public IActionResult Deletar(int Id)
         {

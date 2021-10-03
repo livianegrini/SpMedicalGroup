@@ -67,20 +67,29 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         {
             try
             {
-                Paciente PacienteBuscado = _PacienteRepository.BuscarPoId(Id);
-
-                if (PacienteBuscado != null)
+                if (PacienteAtualizado.DataNascimento < DateTime.Now)
                 {
-                    if (PacienteAtualizado != null)
-                        _PacienteRepository.Atualizar(Id, PacienteAtualizado);
+
+                    Paciente PacienteBuscado = _PacienteRepository.BuscarPoId(Id);
+
+
+                    if (PacienteBuscado != null)
+                    {
+                        if (PacienteAtualizado != null)
+                            _PacienteRepository.Atualizar(Id, PacienteAtualizado);
+
+                    }
+                    else
+                    {
+                        return BadRequest(new { mensagem = "Paciente informado não encontrado" });
+                    }
+
+                    return Ok();
                 }
                 else
                 {
-                    return BadRequest(new { mensagem = "Paciente informado não encontrado" });
-                }
-
-                return Ok();
-
+                    return BadRequest(new { mensagem = "A data de nascimento informada é inválida" });
+                }  
             }
             catch (Exception ex)
             {

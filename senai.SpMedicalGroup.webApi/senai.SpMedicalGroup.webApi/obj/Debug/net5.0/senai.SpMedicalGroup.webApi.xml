@@ -108,6 +108,14 @@
             </summary>
             <returns>Uma lista de Consultas</returns>
         </member>
+        <member name="M:senai.SpMedicalGroup.webApi.Controllers.ConsultasController.AtualizarDescricao(System.Int32,senai.SpMedicalGroup.webApi.ViewModels.AtualizarDescricaoViewModel)">
+            <summary>
+            Atualiza a descricao de uma consulta
+            </summary>
+            <param name="Id">Id da Consulta que terá a descrição atualizada</param>
+            <param name="AtualizarDescricao">Descrição que será atualizada</param>
+            <returns></returns>
+        </member>
         <member name="P:senai.SpMedicalGroup.webApi.Controllers.EnderecosController._EnderecoRepository">
             <summary>
             Objeto _EnderecoRepository que irá receber todos os métodos definidos na interface IEnderecoRepository
@@ -543,9 +551,10 @@
         </member>
         <member name="M:senai.SpMedicalGroup.webApi.Interfaces.IConsultaRepository.AtualizarDescricao(System.Int32,System.String)">
             <summary>
-            Atualiza uma descricao para a consulta
+            Atualiza a descrição de uma consulta
             </summary>
-            <param name="IdConsulta">Id da Consulta que recebera a descricao</param>
+            <param name="IdConsulta">Id da consulta que terá a descrição atualizada</param>
+            <param name="DescricaoAtualizada">A descrição que será inserida</param>
         </member>
         <member name="M:senai.SpMedicalGroup.webApi.Interfaces.IEnderecoRepository.ListarTodos">
             <summary>

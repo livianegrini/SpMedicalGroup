@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using senai.SpMedicalGroup.webApi.Domains;
 using senai.SpMedicalGroup.webApi.Interfaces;
 using senai.SpMedicalGroup.webApi.Repositories;
+using senai.SpMedicalGroup.webApi.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -53,6 +55,7 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         /// Lista todas as Consultas
         /// </summary>
         /// <returns>Uma lita de Consultas com o status code 200 - Ok</returns>
+        [Authorize(Roles = "1")]
         [HttpGet]
         public IActionResult ListarTodos()
         {
@@ -65,6 +68,7 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         /// </summary>
         /// <param name="Id">Id da Consulta que será buscada</param>
         /// <returns>Uma Consulta encontrada com o status code 200 - Ok</returns>
+        [Authorize(Roles = "1")]
         [HttpGet("{id}")]
         public  IActionResult BuscarPorId(int Id)
         {
@@ -84,6 +88,7 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         /// <param name="Id">Id da Consulta que será atualizada</param>
         /// <param name="ConsultaAtualizada">>Objeto ConsultaAtualizada com as novas informações</param>
         /// <returns>Um status code 200 - Ok</returns>
+        [Authorize(Roles = "1")]
         [HttpPut("{Id}")]
         public IActionResult Atualizar(int Id, Consultum ConsultaAtualizada)
         {
@@ -115,6 +120,7 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         /// </summary>
         /// <param name="ConsultaNova">>Objeto ConsultaNova com as informações</param>
         /// <returns>Um status code 200 - Ok</returns>
+        [Authorize(Roles = "1")]
         [HttpPost]
         public IActionResult Cadastrar(Consultum ConsultaNova)
         {
@@ -128,6 +134,7 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         /// </summary>
         /// <param name="Id">Id da Consulta que será deletada</param>
         /// <returns>Um status code 200 - Ok</returns>
+        [Authorize(Roles = "1")]
         [HttpDelete("{Id}")]
         public IActionResult Deletar(int Id)
         {
@@ -139,6 +146,7 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         /// Lista todas as Consultas de um determinado usuário 
         /// </summary>
         /// <returns>Uma lista de Consultas</returns>
+        [Authorize(Roles = "2, 3")]
         [HttpGet("Minhas")]
         public IActionResult ListarMinhas()
         {
@@ -147,8 +155,16 @@ namespace senai.SpMedicalGroup.webApi.Controllers
                 return Ok(_ConsultaRepository.ListarMinhas(IdUsuario));
         }
 
+
+        /// <summary>
+        /// Atualiza a descricao de uma consulta
+        /// </summary>
+        /// <param name="Id">Id da Consulta que terá a descrição atualizada</param>
+        /// <param name="AtualizarDescricao">Descrição que será atualizada</param>
+        /// <returns></returns>
+        [Authorize(Roles = "2")]
         [HttpPatch("Descricao/{Id}")]
-        public IActionResult AtualizarDescricao(int Id, string Descricao)
+        public IActionResult AtualizarDescricao(int Id, AtualizarDescricaoViewModel AtualizarDescricao)
         {
             try
             {
@@ -156,7 +172,9 @@ namespace senai.SpMedicalGroup.webApi.Controllers
 
                 if (ConsultaBuscada != null)
                 {
-                    _ConsultaRepository.AtualizarDescricao(Id, Descricao);
+
+                    _ConsultaRepository.AtualizarDescricao(Id, AtualizarDescricao.Descricao);
+
                 }
                 else
                 {
@@ -164,12 +182,12 @@ namespace senai.SpMedicalGroup.webApi.Controllers
                 }
 
                 return Ok();
-
             }
             catch (Exception ex)
             {
                 return BadRequest(ex);
             }
+
         }
     }
 }

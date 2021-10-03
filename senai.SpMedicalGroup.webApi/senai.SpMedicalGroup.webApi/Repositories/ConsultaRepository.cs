@@ -63,26 +63,18 @@ namespace senai.SpMedicalGroup.webApi.Repositories
             }  
         }
 
-        //public void AtualizarDescricao(int IdConsulta)
-        //{
-        //    Consultum ConsultaBuscada = BuscarPoId(IdConsulta);
 
-        //    Ctx.Consulta.Update(ConsultaBuscada);
-
-        //    Ctx.SaveChanges();
-        //}
-
-        public void AtualizarDescricao(int IdConsulta, string Descricao)
+        public void AtualizarDescricao(int IdConsulta, string DescricaoAtualizada)
         {
             Consultum ConsultaBuscada = BuscarPoId(IdConsulta);
 
-            if (Descricao != null)
+            if (DescricaoAtualizada != null && ConsultaBuscada != null)
             {
-                Descricao = ConsultaBuscada.Descricao;
+                   ConsultaBuscada.Descricao = DescricaoAtualizada;
 
-                Ctx.Consulta.Update(ConsultaBuscada);
+                    Ctx.Consulta.Update(ConsultaBuscada);
 
-                Ctx.SaveChanges();
+                   Ctx.SaveChanges(); 
             }
          
         }

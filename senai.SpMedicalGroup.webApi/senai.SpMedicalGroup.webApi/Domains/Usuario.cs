@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
@@ -15,7 +16,12 @@ namespace senai.SpMedicalGroup.webApi.Domains
 
         public int IdUsuario { get; set; }
         public int? IdTipoUsuario { get; set; }
+
+        [Required(ErrorMessage = "O email do usuário precisa ser informado")]
         public string Email { get; set; }
+
+        [Required(ErrorMessage = "A senha do usuário precisa ser informada")]
+        [StringLength(20, MinimumLength = 3, ErrorMessage = "A senha deve ter de 3 a 20 caracteres!")]
         public string Senha { get; set; }
 
         public virtual TipoUsuario IdTipoUsuarioNavigation { get; set; }

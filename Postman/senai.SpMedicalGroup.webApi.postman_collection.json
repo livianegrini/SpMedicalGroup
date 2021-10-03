@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\" : \"roberto.possarle@spmedicalgroup.com.br\",\r\n    \"senha\" : \"789\"\r\n}",
+							"raw": "{\r\n    \"email\" : \"helena.souza@spmedicalgroup.com.br\",\r\n    \"senha\" : \"910\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -23,15 +23,142 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/Login",
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Login",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
 							],
-							"port": "5000",
 							"path": [
 								"api",
 								"Login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario.ListarTodos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Usuarios",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario.Cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idTipoUsuario\": 3,\r\n        \"email\": \"teste@gmail.com\",\r\n        \"senha\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Usuarios",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario.BuscarPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Usuarios/2",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Usuarios",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario.Deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Usuarios/14",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Usuarios",
+								"14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario.Atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idTipoUsuario\": 3,\r\n        \"email\": \"testando@gmail.com\",\r\n        \"senha\": \"321\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Usuarios/15",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Usuarios",
+								"15"
 							]
 						}
 					},
@@ -49,7 +176,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"HorarioInicio\" : \"09:00\",\r\n    \"HorarioFim\" : \"10:00\",\r\n    \"Cnpj\" : \"14235671826121\",\r\n    \"NomeFantasia\" : \"Clinica Teste\",\r\n    \"RazaoSocial\" : \"SP Medical Group\",\r\n    \"Endereco\": {\r\n       \"IdEndereco\" : 16\r\n    }\r\n}",
+							"raw": "{\r\n    \"HorarioInicio\" : \"08:00\",\r\n    \"HorarioFim\" : \"10:00\",\r\n    \"Cnpj\" : \"14238787888888\",\r\n    \"NomeFantasia\" : \"Teste\",\r\n    \"RazaoSocial\" : \"SP Medical Group\",\r\n    \"IdEndereco\" : 15\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -57,12 +184,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/Clinicas",
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Clinicas",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
 							],
-							"port": "5000",
 							"path": [
 								"api",
 								"Clinicas"
@@ -77,16 +205,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5000/api/Clinicas/3",
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Clinicas/1",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
 							],
-							"port": "5000",
 							"path": [
 								"api",
 								"Clinicas",
-								"3"
+								"1"
 							]
 						}
 					},
@@ -99,7 +228,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"HorarioInicio\" : \"10:00\",\r\n    \"HorarioFim\" : \"19:00\",\r\n    \"Cnpj\" : \"14235671826121\",\r\n    \"NomeFantasia\" : \"Teste\",\r\n    \"RazaoSocial\" : \"SP Medical Group\",\r\n    \"Endereco\": {\r\n       \"IdEndereco\" : 16\r\n    }\r\n}",
+							"raw": "{\r\n    \"HorarioInicio\" : \"10:00:00\",\r\n    \"HorarioFim\" : \"20:00:00\",\r\n    \"Cnpj\" : \"14235671826121\",\r\n    \"NomeFantasia\" : \"Teste2\",\r\n    \"RazaoSocial\" : \"SP Medical Group\",\r\n    \"IdEndereco\" : 16\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -107,16 +236,17 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/Clinicas/3",
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Clinicas/6",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
 							],
-							"port": "5000",
 							"path": [
 								"api",
 								"Clinicas",
-								"3"
+								"6"
 							]
 						}
 					},
@@ -128,16 +258,17 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5000/api/Clinicas/3",
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Clinicas/7",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
 							],
-							"port": "5000",
 							"path": [
 								"api",
 								"Clinicas",
-								"3"
+								"7"
 							]
 						}
 					},
@@ -149,12 +280,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5000/api/Clinicas",
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Clinicas",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
 							],
-							"port": "5000",
 							"path": [
 								"api",
 								"Clinicas"
@@ -175,7 +307,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"DataCon\" : \"2020-05-03\",\r\n    \"Hora\" : \"05:00\",\r\n    \"IdPaciente\" : 7,\r\n    \"IdMedico\" : 2,\r\n    \"IdSituacao\" : 2\r\n}",
+							"raw": "{\r\n    \"DataCon\" : \"2021-07-07\",\r\n    \"Hora\" : \"17:00\",\r\n    \"IdPaciente\" : 6,\r\n    \"IdMedico\" : 1,\r\n    \"IdSituacao\" : 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -183,12 +315,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/Consultas",
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Consultas",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
 							],
-							"port": "5000",
 							"path": [
 								"api",
 								"Consultas"
@@ -204,7 +337,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"IdSituacao\" : 2\r\n}",
+							"raw": "{\r\n    \"IdSituacao\" : 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -212,16 +345,1089 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/Consultas/15",
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Consultas/18",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
 							],
-							"port": "5000",
 							"path": [
 								"api",
 								"Consultas",
+								"18"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta.AtualizarDescricao",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbGVuYS5zb3V6YUBzcG1lZGljYWxncm91cC5jb20uYnIiLCJqdGkiOiI1IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMiIsImV4cCI6MTYzMzE1NTI2MiwiaXNzIjoiU3BNZWRpY2FsR3JvdXAud2ViQXBpIiwiYXVkIjoiU3BNZWRpY2FsR3JvdXAud2ViQXBpIn0.pqTc3hIAuk1jpOciGLbIauseIwSMRcPxduD_mRXxesE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"descricao\" : \"testando\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Consultas/Descricao/20",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Consultas",
+								"Descricao",
+								"20"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta.BuscarPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Consultas/16",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Consultas",
+								"16"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta.Deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Consultas/18",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Consultas",
+								"18"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta.ListarMinhas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxpZ2lhQGdtYWlsLmNvbSIsImp0aSI6IjYiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiIzIiwiZXhwIjoxNjMzMDU3Njg0LCJpc3MiOiJTcE1lZGljYWxHcm91cC53ZWJBcGkiLCJhdWQiOiJTcE1lZGljYWxHcm91cC53ZWJBcGkifQ.5UoGuFhFhgLKnIlI5O5_YC6oBqdNif82CkV6s3uM-nY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Consultas/Minhas",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Consultas",
+								"Minhas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta.Atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"DataCon\" : \"2020-08-07\",\r\n    \"Hora\" : \"15:00:00\",\r\n    \"IdPaciente\" : 7,\r\n    \"IdMedico\" : 2,\r\n    \"IdSituacao\" : 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Consultas/16",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Consultas",
+								"16"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta.ListarTodos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbUBnbWFpbC5jb20iLCJqdGkiOiIxIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsImV4cCI6MTYzMzE1NTA1MCwiaXNzIjoiU3BNZWRpY2FsR3JvdXAud2ViQXBpIiwiYXVkIjoiU3BNZWRpY2FsR3JvdXAud2ViQXBpIn0.hQBxEIIoGO1K5f3M2gcQ_AaOLowyf9NBYrcujrVpYzw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Consultas",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Consultas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Especialidades",
+			"item": [
+				{
+					"name": "Especialidade.ListarTodos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Especialidades",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Especialidades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Especialidade.Cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Especialidade1\" : \"teste\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Especialidades",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Especialidades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Especialidade.Atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Especialidade1\" : \"testando\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Especialidades/35",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Especialidades",
+								"35"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Especialidade.BuscarPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Especialidades/2",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Especialidades",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Especialidade.Deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Especialidades/36",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Especialidades",
+								"36"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Perfil",
+			"item": [
+				{
+					"name": "Perfil.EnviarFoto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvYmVydG8ucG9zc2FybGVAc3BtZWRpY2FsZ3JvdXAuY29tLmJyIiwianRpIjoiNCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjIiLCJleHAiOjE2MzI5ODE1NTksImlzcyI6IlNwTWVkaWNhbEdyb3VwLndlYkFwaSIsImF1ZCI6IlNwTWVkaWNhbEdyb3VwLndlYkFwaSJ9.OCvHd9qipDu-10b5Qyf18xnxv8jh1yxKfC09JxAqgWE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "Arquivo",
+									"type": "file",
+									"src": "/C:/Users/livia/OneDrive/Desktop/Livia Perfil.png"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Perfil/Imagem",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Perfil",
+								"Imagem"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Perfil.LocalizarIagem",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvYmVydG8ucG9zc2FybGVAc3BtZWRpY2FsZ3JvdXAuY29tLmJyIiwianRpIjoiNCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjIiLCJleHAiOjE2MzI5ODE1NTksImlzcyI6IlNwTWVkaWNhbEdyb3VwLndlYkFwaSIsImF1ZCI6IlNwTWVkaWNhbEdyb3VwLndlYkFwaSJ9.OCvHd9qipDu-10b5Qyf18xnxv8jh1yxKfC09JxAqgWE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Perfil/Imagem",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Perfil",
+								"Imagem"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Enderecos",
+			"item": [
+				{
+					"name": "Endereco.ListarTodos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Enderecos",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Enderecos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Endereco.BuscarPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Enderecos/15",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Enderecos",
 								"15"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Endereco.Cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"logadouro\": \"Teste\",\r\n    \"numero\": 999,\r\n    \"bairro\": \"teste\",\r\n    \"municipio\": \"São Paulo\",\r\n    \"estado\": \"São Paulo\",\r\n    \"cep\": 1234567\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Enderecos",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Enderecos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Endereco.Deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Enderecos/18",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Enderecos",
+								"18"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Endereco.Atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idEndereco\": 19,\r\n    \"logadouro\": \"Testando\",\r\n    \"numero\": 220,\r\n    \"bairro\": \"testando\",\r\n    \"municipio\": \"São Paulo\",\r\n    \"estado\": \"São Paulo\",\r\n    \"cep\": 7777777\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Enderecos/19",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Enderecos",
+								"19"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Medicos",
+			"item": [
+				{
+					"name": "Medico.ListarTodos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Medicos",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Medicos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Medico.BuscarPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Medicos/1",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Medicos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Medico.Cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuario\": 5,\r\n    \"idClinica\": 1,\r\n    \"idEspecialidade\": 15,\r\n    \"crm\": \"12345-SP\",\r\n    \"nome\": \"teste\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Medicos",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Medicos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Medico.Deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Medicos/6",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Medicos",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Medico.Atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuario\": 5,\r\n    \"idClinica\": 1,\r\n    \"idEspecialidade\": 17,\r\n    \"crm\": \"12345-MG\",\r\n    \"nome\": \"testando\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Medicos/7",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Medicos",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pacientes",
+			"item": [
+				{
+					"name": "Paciente.ListarTodos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Pacientes",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Pacientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Paciente.BuscarPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Pacientes/1",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Pacientes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Paciente.Cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuario\": 12,\r\n    \"idEndereco\": 3,\r\n    \"nome\": \"testeee\",\r\n    \"dataNascimento\": \"2021-10-02T00:00:00\",\r\n    \"telefone\": \"11945543212\",\r\n    \"rg\": 511456789,\r\n    \"cpf\": \"16822123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Pacientes",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Pacientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Paciente.Deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Pacientes/19",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Pacientes",
+								"19"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Paciente.ListarTodos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Pacientes",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Pacientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Paciente.Atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dataNascimento\": \"1983-10-13T00:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Pacientes/1",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Pacientes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Situacoes",
+			"item": [
+				{
+					"name": "Situacao.ListarTodos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Situacoes",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Situacoes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Situacao.BuscarPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Situacoes/7",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Situacoes",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Situacao.Cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tipoSituacao\": \"Teste\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Situacoes",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Situacoes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Situacao.Deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Situacoes/8",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Situacoes",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Situacao.Atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tipoSituacao\": \"Testando\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/Situacoes/8",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Situacoes",
+								"8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TiposUsuarios",
+			"item": [
+				{
+					"name": "TipoUsuario.ListarTodos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/TiposUsuarios",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"TiposUsuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TipoUsuario.BuscarPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/TiposUsuarios/1",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"TiposUsuarios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TipoUsuario.Cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tipoUsuario1\": \"teste\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/TiposUsuarios",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"TiposUsuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TipoUsuario.Deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/TiposUsuarios/5",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"TiposUsuarios",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TipoUsuario.Atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tipoUsuario1\": \"testando\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://senai-spmedicalgroup.azurewebsites.net/api/TiposUsuarios/6",
+							"protocol": "http",
+							"host": [
+								"senai-spmedicalgroup",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"TiposUsuarios",
+								"6"
 							]
 						}
 					},

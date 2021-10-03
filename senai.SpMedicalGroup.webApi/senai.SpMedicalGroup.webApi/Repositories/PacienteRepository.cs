@@ -17,20 +17,39 @@ namespace senai.SpMedicalGroup.webApi.Repositories
         {
             Paciente PacienteBuscado = BuscarPoId(Id);
 
-            if (PacienteAtualizado.IdUsuario > 0 && PacienteAtualizado.IdEndereco > 0 && PacienteAtualizado.Nome != null && PacienteAtualizado.DataNascimento != DateTime.Now && PacienteAtualizado.Telefone != null && PacienteAtualizado.Rg > 0 && PacienteAtualizado.Cpf != null)
+
+            if (PacienteAtualizado.IdUsuario > 0)
             {
                 PacienteBuscado.IdUsuario = PacienteAtualizado.IdUsuario;
-                PacienteBuscado.IdEndereco = PacienteAtualizado.IdEndereco;
-                PacienteBuscado.Nome = PacienteAtualizado.Nome;
-                PacienteBuscado.DataNascimento = PacienteAtualizado.DataNascimento;
-                PacienteBuscado.Telefone = PacienteAtualizado.Telefone;
-                PacienteBuscado.Rg = PacienteAtualizado.Rg;
-                PacienteBuscado.Cpf = PacienteAtualizado.Cpf;
-
-                Ctx.Pacientes.Update(PacienteBuscado);
-
-                Ctx.SaveChanges();
             }
+            if (PacienteAtualizado.IdEndereco > 0)
+            {
+                PacienteBuscado.IdEndereco = PacienteAtualizado.IdEndereco;
+            }
+            if (PacienteAtualizado.Nome != null)
+            {
+                PacienteBuscado.Nome = PacienteAtualizado.Nome;
+            }
+            if (PacienteAtualizado.DataNascimento < DateTime.Now)
+            {
+                PacienteBuscado.DataNascimento = PacienteAtualizado.DataNascimento;
+            }
+            if (PacienteAtualizado.Telefone != null)
+            {
+                PacienteBuscado.Telefone = PacienteAtualizado.Telefone;
+            }
+            if (PacienteAtualizado.Rg > 0)
+            {
+                PacienteBuscado.Rg = PacienteAtualizado.Rg;
+            }
+            if (PacienteAtualizado.Cpf != null)
+            {
+                PacienteBuscado.Cpf = PacienteAtualizado.Cpf;
+            }
+
+            Ctx.Pacientes.Update(PacienteBuscado);
+
+            Ctx.SaveChanges();
         }
 
         public Paciente BuscarPoId(int Id)
