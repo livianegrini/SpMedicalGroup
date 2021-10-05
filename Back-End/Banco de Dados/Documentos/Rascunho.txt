@@ -1,0 +1,59 @@
+Tipos de Usuário
+- idTipoUsuario(PK)
+- tipoUsuario
+
+Usuário
+- idUsuario(PK)
+- idTipoUsuario(FK)
+- email
+- senha
+
+Paciente
+- idPaciente(PK)
+- idUsuario(FK)
+- idEndereco(FK)
+- nome
+- data nascimento
+- telefone
+- rg
+- cpf
+
+Médico
+- idMédico(PK)
+- idUsuario(FK)
+- idEspecialidade(FK)
+- idClinica(FK)
+- crm
+- nome
+
+Endereco
+- idEndereco(PK)
+- logadouro
+- número
+- bairro
+- municipio
+- estado
+- cep
+
+Especialidades
+- idEspecialidades(PK)
+- tipoEspecialidades
+
+Consultas(agendamento)
+- idConsulta(PK)
+- idPaciente(FK)
+- idMedico(FK)
+- idSituacao(FK)
+- data e hora 
+
+Clinica
+- idClinica(PK)
+- idEndereço(FK)
+- horário de funcionamento
+- CNPJ
+- nome fantasia
+- razão social
+
+Situacao
+- idSituacao(PK)
+- tipoSituacao

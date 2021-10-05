@@ -129,3 +129,15 @@ VALUES (1,3,1,'20/01/2020','15:00'),
 	   (6,3,2,'08/03/2020','15:00'),
 	   (7,1,2,'09/03/2020','11:00')
 SELECT * FROM Consulta
+
+SELECT * FROM Consulta
+Where(IdMedico = 2)
+
+Select * FROM Consulta 
+INNER JOIN Paciente            
+ON Consulta.IdPaciente = Paciente.IdPaciente
+INNER JOIN Medico
+ON Consulta.IdMedico = Medico.IdMedico
+INNER JOIN Situacao
+ON Consulta.IdSituacao = Situacao.IdSituacao
+WHERE Medico.IdUsuario = 2 OR Paciente.IdUsuario = 6
