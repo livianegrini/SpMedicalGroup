@@ -23,8 +23,9 @@
 }
 
 .TabelaLogin{
-    display: flex;
     border: black;
+    display: flex;
+    justify-content: center;
 }
 
 .TabelaLogin input{
@@ -34,6 +35,23 @@
     height: 720px;
     background-image: url("./Imagens/Imagem4.jpg");
     
+}
+
+.FundoLogin section{
+ display: flex;
+ justify-content:  flex-end;
+}
+
+.Div_Login{
+    display: flex;
+    justify-content: center;
+    border: white;
+    flex-direction: column;
+    background-color: violet;
+}
+
+..Div_Login{
+
 }
 
 /* Cadastrar */
