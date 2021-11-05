@@ -1,0 +1,57 @@
+* {
+    margin:0;
+    padding: 0;
+    box-sizing: 0;
+}
+
+.Header{
+    background-color: #436A89;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ImagemLogo{
+    height: 160px;
+    display: flex;
+}
+
+/* Login */
+.LinearGradient{
+ background: linear-gradient();
+}
+
+.TabelaLogin{
+    display: flex;
+    border: black;
+}
+
+.TabelaLogin input{
+    background-color: none;
+}
+.FundoLogin{
+    height: 720px;
+    background-image: url("./Imagens/Imagem4.jpg");
+    
+}
+
+/* Cadastrar */
+.FundoCadastrar{
+    height: 720px;
+    background-image: url("./Imagens/imagem9.jpg");
+}
+
+
+/* Listar Consultas Paciente */
+.FundoListarPaciente{
+    height: 720px;
+    background-image: url("./Imagens/imagem6.jpg");
+}
+
+/* Listar Consultas Médico */
+.FundoListarMedico{
+    height: 720px;
+    background-image: url("./Imagens/Imagem3.jpg");
+}
+
