@@ -10,6 +10,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 1.0) !important;
+    
 }
 
 .ImagemLogo{
@@ -44,6 +46,7 @@
     margin-bottom: 43px;
     display: inline-block;
     justify-content: space-between;
+    
 }
 
 .Espacamento{
@@ -60,6 +63,8 @@
     width: 614px;
     align-items: center;
     border-radius: 22px;
+    margin-top: 165px;
+    margin-right: 120px;
 }
 
 .Div_Login h1{
@@ -102,7 +107,11 @@
 /* Cadastrar */
 .FundoCadastrar{
     height: 720px;
-    background-image: url("./Imagens/imagem9.jpg");
+    background: linear-gradient(
+     257.65deg, rgba(0, 0, 0, 0.7) 29.27%, rgba(0, 0, 0, 0.63) 53.66%, rgba(0, 0, 0, 0) 99.98%), url("./Imagens/imagem9.jpg");
+    min-height: 100%;
+    background-size: cover;
+    background-position: 50% 0; 
 }
 
 
