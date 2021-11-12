@@ -1,9 +1,6 @@
 import { Component } from "react";
-import axios from "axios"
-import { parse } from "yargs";
-
-
-export default class Login extends Component {
+import axios from "axios";
+import {parseJwt} from ''
     constructor(props) {
         super(props)
         this.state = {
@@ -42,14 +39,14 @@ export default class Login extends Component {
                     // console.log('Meu token é: ' + resposta.data.token);
                     // salva o valor do token no localStorage
 
-                    localStorage.setItem('usuario-login', Resposta)
+                    localStorage.setItem('Usuario-Login', Resposta)
 
                     // definindo que a requisição terminou
                     this.setState({ IsLoading: false });
 
                     // definindo a variável base64 que vai receber o payload do token
                     // estamos pegando o token, separando por . para conseguirmos pega a segunda propriedade do token, que é o JTI
-                    let Base64 = localStorage.getItem('usuario-login').split('.')[1];
+                    let Base64 = localStorage.getItem('Usuario-Login').split('.')[1];
                     // exibe no console do navegador o valor em base64
                     console.log(Base64);
 
@@ -95,7 +92,65 @@ export default class Login extends Component {
                 // define o valor do state erroMensagem com uma mensagem personalizada
                 this.setState({ erroMensagem: 'E-mail e/ou senha inválidos!', isLoading: false })
             })
+    }
 
+    // Target = alvo
+    AtualizarStateCampo = (Campo) => {
+        //                  nomeState : novoValor
+        // this.setState({ email : 'adm@adm' })
+        this.setState({ [Campo.target.name]: [Campo.target.value] })
+    };
 
+    render() {
+        return (
+            <div>
+                <header>
+                    <div class="Header">
+                        <img class="ImagemLogo" src="./Imagens/logo.png" alt="Imagem do logo" />
+                    </div>
+                </header>
+
+                <main class="LinearGradient">
+                    <div class="FundoLogin">
+                        <section class="container">
+                            <div class="Div_Login">
+                                <h1>Login</h1>
+                                <div class="Espacamento">
+                                    <div class="box_form">
+                                        <input
+                                            class=""
+                                            name="Email"
+                                            type="text"
+                                            value={this.state.Email}
+                                            onChange={this.AtualizarStateCampo}
+                                            placeholder="Email"
+                                        />
+
+                                        <input
+                                            type="text"
+                                            name="Senha"
+                                            value={this.state.Senha}
+                                            onChange={this.AtualizarStateCampo}
+                                            placeholder="Senha"
+                                        />
+
+                                        <button class="botao">Entrar</button>
+                                    </div>
+
+                                    <div>
+                                        {
+                                            this.state.isLoading === false &&
+                                            <button disabled={ this.state.Email === '' || this.state.Senha === '' ? 'none' : '' }>
+                                                Entrar
+                                            </button>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </main>
+            </div>
+        )
     }
 }
