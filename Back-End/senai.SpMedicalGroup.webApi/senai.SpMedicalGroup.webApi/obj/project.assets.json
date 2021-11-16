@@ -7534,19 +7534,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\46755453862\\.nuget\\packages\\": {}
+    "C:\\Users\\livia\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\46755453862\\Desktop\\SpMedicalGroup\\Back-End\\senai.SpMedicalGroup.webApi\\senai.SpMedicalGroup.webApi\\senai.SpMedicalGroup.webApi.csproj",
+      "projectUniqueName": "C:\\Users\\livia\\OneDrive\\Desktop\\Sp Medical Group\\Back-End\\senai.SpMedicalGroup.webApi\\senai.SpMedicalGroup.webApi\\senai.SpMedicalGroup.webApi.csproj",
       "projectName": "senai.SpMedicalGroup.webApi",
-      "projectPath": "C:\\Users\\46755453862\\Desktop\\SpMedicalGroup\\Back-End\\senai.SpMedicalGroup.webApi\\senai.SpMedicalGroup.webApi\\senai.SpMedicalGroup.webApi.csproj",
-      "packagesPath": "C:\\Users\\46755453862\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\46755453862\\Desktop\\SpMedicalGroup\\Back-End\\senai.SpMedicalGroup.webApi\\senai.SpMedicalGroup.webApi\\obj\\",
+      "projectPath": "C:\\Users\\livia\\OneDrive\\Desktop\\Sp Medical Group\\Back-End\\senai.SpMedicalGroup.webApi\\senai.SpMedicalGroup.webApi\\senai.SpMedicalGroup.webApi.csproj",
+      "packagesPath": "C:\\Users\\livia\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\livia\\OneDrive\\Desktop\\Sp Medical Group\\Back-End\\senai.SpMedicalGroup.webApi\\senai.SpMedicalGroup.webApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\46755453862\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\livia\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7621,7 +7621,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
