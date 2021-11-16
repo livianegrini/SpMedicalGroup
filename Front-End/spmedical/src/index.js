@@ -1,5 +1,4 @@
 //Components
-import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
@@ -15,7 +14,9 @@ import { ParseJwt, UsuarioAutenticado } from './services/auth';
 
 // Pages
 import App from './App';
-import Login from './pages/Login/login';
+import Login from './pages/Login/Login';
+import ListarMinhas from './pages/ListarMinhas/ListarMinhas.jsx';
+import CadastrarConsulta from './pages/CadastrarConsulta/CadastrarConsulta';
 
 const PermissaoAdm = ({ component: Component }) => (
   <Route
@@ -25,7 +26,7 @@ const PermissaoAdm = ({ component: Component }) => (
         //estamos copiando todas  as propriedades da tela anterior
         <Component {...Props} />
       ) : (
-        <Redirect to="Login" />
+        <Redirect to="/CadastrarConsulta" />
       )
     }
   />
@@ -34,7 +35,7 @@ const PermissaoAdm = ({ component: Component }) => (
 const PermissaoMedico = ({ component: Component }) => (
   <Route
     render={(Props) =>
-      usuarioAutenticado() && parseJwt().role === '2' ? (
+      UsuarioAutenticado() && ParseJwt().role === '2' ? (
         // operador spread
         <Component {...Props} />
       ) : (
@@ -47,7 +48,7 @@ const PermissaoMedico = ({ component: Component }) => (
 const PermissaoPaciente = ({ component: Component }) => (
   <Route
     render={(Props) =>
-      usuarioAutenticado() && parseJwt().role === '3' ? (
+      UsuarioAutenticado() && ParseJwt().role === '3' ? (
         // operador spread
         <Component {...Props} />
       ) : (
@@ -61,17 +62,18 @@ const routing = (
 <Router>
   <div>
    <Switch>
-       <Route exact path="/login" component={Login} /> 
-       //Ir fazneod conforme faz as paginas
+       <Route path="/Login" component={Login} /> 
+       <Route path="/MinhasConsultas" component={ListarMinhas} /> 
+       <Route path="/CadastrarConsulta" component={CadastrarConsulta} /> 
+
+       {/* //Ir fazneod conforme faz as paginas */}
    </Switch>
   </div>
 </Router>
 );
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  routing,
   document.getElementById('root')
 );
 

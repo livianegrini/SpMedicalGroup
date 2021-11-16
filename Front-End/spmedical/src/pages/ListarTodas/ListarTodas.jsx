@@ -1,19 +1,18 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { Link } from 'react-router-dom';
 
 export default function MinhasConsultas(){
     const [ ListaMinhasConsultas, SetListaMinhasConsultas] = useState( [] );
 
     function BuscarMinhasConsultas(){
-        axios('http://localhost:5000/api/Consultas/Minhas', {
+        axios('http://localhost:5000/api/Consultas', {
             headers : {
                 'Authorization' : 'Bearer ' + localStorage.getItem('Usuario-Login')
             }
         })
         .then(Resposta => {
             if (Resposta.status === 200) {
-                console.log(Resposta.data)
+                // console.log(resposta.data)
                 SetListaMinhasConsultas( Resposta.data )
             };
         })
@@ -36,7 +35,7 @@ export default function MinhasConsultas(){
                                 {/* <th>idPresença</th> */}
                                 <th>Data Consulta</th>
                                 <th>Hora</th>
-                                <th>Descrição</th>
+                                <th></th>
                                 <th></th>
                                 <th></th>
                             </tr>
@@ -47,22 +46,18 @@ export default function MinhasConsultas(){
                             {
                                 ListaMinhasConsultas.map( (MinhaConsulta) => {
                                     return(
-                                        <span>{MinhaConsulta.dataCon}</span>,
-                                        <span>{MinhaConsulta.hora}</span>,
-                                        <span>{MinhaConsulta.descricao}</span>
-                                        // <tr key={MinhaConsulta.idPresenca}>
-                                        //     <td>{minhaPresenca.idPresenca}</td>
-                                        //     <td>{MinhaConsulta.idInstituicaoNavigation}</td>
-                                        //     <td>{ Intl.DateTimeFormat("pt-BR", {
-                                        //         year: 'numeric', month: 'short', day: 'numeric',
-                                        //         hour: 'numeric', minute: 'numeric',
-                                        //         hour12: true                                                
-                                        //     }).format(new Date(minhaPresenca.idEventoNavigation.dataEvento)) }</td>
-                                            /* <td>{minhaPresenca.idEventoNavigation.acessoLivre ? 'Livre' : 'Restrito'}</td>
+                                        <tr key={MinhaConsulta.idPresenca}>
+                                            <td>{MinhaConsulta.idInstituicaoNavigation}</td>
+                                            <td>{ Intl.DateTimeFormat("pt-BR", {
+                                                year: 'numeric', month: 'short', day: 'numeric',
+                                                hour: 'numeric', minute: 'numeric',
+                                                hour12: true                                                
+                                            }).format(new Date(minhaPresenca.idEventoNavigation.dataEvento)) }</td>
+                                            <td>{minhaPresenca.idEventoNavigation.acessoLivre ? 'Livre' : 'Restrito'}</td>
                                             <td>{minhaPresenca.idSituacaoNavigation.descricao}</td>
                                             <td>{minhaPresenca.idEventoNavigation.idTipoEventoNavigation.tituloTipoEvento}</td>
-                                            <td>{minhaPresenca.idEventoNavigation.idInstituicaoNavigation.endereco}</td> */
-                                        //</tr>
+                                            <td>{minhaPresenca.idEventoNavigation.idInstituicaoNavigation.endereco}</td>
+                                        </tr>
                                     )
                                 } )
                             }

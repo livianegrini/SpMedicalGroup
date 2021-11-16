@@ -55,7 +55,10 @@ namespace senai.SpMedicalGroup.webApi.Controllers
                 {
                     new Claim(JwtRegisteredClaimNames.Email, UsuarioBuscado.Email),
                     new Claim(JwtRegisteredClaimNames.Jti, UsuarioBuscado.IdUsuario.ToString()),
-                    new Claim(ClaimTypes.Role, UsuarioBuscado.IdTipoUsuario.ToString())
+                    new Claim(ClaimTypes.Role, UsuarioBuscado.IdTipoUsuario.ToString()),
+
+                    // armazena na Claim personalizada role o tipo de usuário que está logado
+                    new Claim("role", UsuarioBuscado.IdTipoUsuario.ToString())
                 };
 
                 var Key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("SpMedicalGroup-chave-autenticacao"));

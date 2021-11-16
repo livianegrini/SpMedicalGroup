@@ -1,0 +1,137 @@
+* {
+    margin:0;
+    padding: 0;
+    box-sizing: 0;
+}
+
+.Header{
+    background-color: #436A89;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 1.0) !important;
+    
+}
+
+.ImagemLogo{
+    height: 160px;
+    display: flex;
+}
+
+/* Login */
+.LinearGradient{
+    background: linear-gradient(257.65deg, rgba(0, 0, 0, 0.7) 29.27%, rgba(0, 0, 0, 0.63) 53.66%, rgba(0, 0, 0, 0) 99.98%), url("../Imagens/Imagem4.jpg");
+    min-height: 100%;
+    background-size: cover;
+    background-position: 50% 0;
+}
+
+.FundoLogin{
+    height: 720px;
+}
+
+.FundoLogin section{
+    display: flex;
+    justify-content:  flex-end;
+}
+
+.box_form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.box_form input{
+    margin-bottom: 43px;
+    display: inline-block;
+    justify-content: space-between;
+    
+}
+
+.Espacamento{
+    padding: 20px;
+}
+
+
+.Div_Login{
+    display: flex;
+    justify-content: center;
+    border: white solid 1px;
+    flex-direction: column;
+    height: 330px;
+    width: 614px;
+    align-items: center;
+    border-radius: 22px;
+    margin-top: 165px;
+    margin-right: 120px;
+}
+
+.Div_Login h1{
+    color: white;
+}
+
+.Div_Login input{
+    background-color: unset;
+    outline: none;
+    border-color: transparent;
+    border-bottom-color: white;
+    width: 444px;
+    color: white;
+}
+
+.botao{
+    width: 145px;
+    height: 30px;
+    background-color: #2686CC;
+    border-color: transparent;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.botao:disabled{
+    background-color: rgba(184,184,184,1);
+    color:white;
+    cursor: not-allowed;
+}
+
+.Div_Login input::placeholder{
+    color: white;
+}
+
+
+
+/* .{
+    color: white;
+} */
+
+.Div_Login hr{
+    color: white;
+    size: 1px;
+    width: 444px;
+}
+
+/* Cadastrar */
+.FundoCadastrar{
+    height: 720px;
+    background: linear-gradient(
+     257.65deg, rgba(0, 0, 0, 0.7) 29.27%, rgba(0, 0, 0, 0.63) 53.66%, rgba(0, 0, 0, 0) 99.98%), url("../Imagens/imagem9.jpg");
+    min-height: 100%;
+    background-size: cover;
+    background-position: 50% 0; 
+}
+
+
+/* Listar Consultas Paciente */
+.FundoListarPaciente{
+    height: 720px;
+    background-image: url("../Imagens/imagem6.jpg");
+}
+
+/* Listar Consultas Médico */
+.FundoListarMedico{
+    height: 720px;
+    background-image: url("../Imagens/Imagem3.jpg");
+}
+
