@@ -5,64 +5,64 @@ import reportWebVitals from './reportWebVitals';
 import {
   Route,
   BrowserRouter as Router,
-  Redirect,
+  // Redirect,
   Switch,
 } from 'react-router-dom';
 
 //fazer services
-import { ParseJwt, UsuarioAutenticado } from './services/auth';
+// import { ParseJwt, UsuarioAutenticado } from './services/auth';
 
 // Pages
-import App from './App';
+// import App from './App';
 import Login from './pages/Login/Login';
 import ListarMinhas from './pages/ListarMinhas/ListarMinhas.jsx';
 import CadastrarConsulta from './pages/CadastrarConsulta/CadastrarConsulta';
 
-const PermissaoAdm = ({ component: Component }) => (
-  <Route
-    render={(Props) =>
-      //If ternário para verificar o tipo de usuário e suas permissoes
-      UsuarioAutenticado() && ParseJwt().role === '1' ? (
-        //estamos copiando todas  as propriedades da tela anterior
-        <Component {...Props} />
-      ) : (
-        <Redirect to="/CadastrarConsulta" />
-      )
-    }
-  />
-);
+// const PermissaoAdm = ({ component: Component }) => (
+//   <Route
+//     render={(Props) =>
+//       //If ternário para verificar o tipo de usuário e suas permissoes
+//       UsuarioAutenticado() && ParseJwt().role === '1' ? (
+//         //estamos copiando todas  as propriedades da tela anterior
+//         <Component {...Props} />
+//       ) : (
+//         <Redirect to="/CadastrarConsulta" />
+//       )
+//     }
+//   />
+// );
 
-const PermissaoMedico = ({ component: Component }) => (
-  <Route
-    render={(Props) =>
-      UsuarioAutenticado() && ParseJwt().role === '2' ? (
-        // operador spread
-        <Component {...Props} />
-      ) : (
-        <Redirect to="Login" />
-      )
-    }
-  />
-);
+// const PermissaoMedico = ({ component: Component }) => (
+//   <Route
+//     render={(Props) =>
+//       UsuarioAutenticado() && ParseJwt().role === '2' ? (
+//         // operador spread
+//         <Component {...Props} />
+//       ) : (
+//         <Redirect to="Login" />
+//       )
+//     }
+//   />
+// );
 
-const PermissaoPaciente = ({ component: Component }) => (
-  <Route
-    render={(Props) =>
-      UsuarioAutenticado() && ParseJwt().role === '3' ? (
-        // operador spread
-        <Component {...Props} />
-      ) : (
-        <Redirect to="Login" />
-      )
-    }
-  />
-);
+// const PermissaoPaciente = ({ component: Component }) => (
+//   <Route
+//     render={(Props) =>
+//       UsuarioAutenticado() && ParseJwt().role === '3' ? (
+//         // operador spread
+//         <Component {...Props} />
+//       ) : (
+//         <Redirect to="Login" />
+//       )
+//     }
+//   />
+// );
 
 const routing = (
 <Router>
   <div>
    <Switch>
-       <Route path="/Login" component={Login} /> 
+       <Route exact path="/" component={Login} /> 
        <Route path="/MinhasConsultas" component={ListarMinhas} /> 
        <Route path="/CadastrarConsulta" component={CadastrarConsulta} /> 
 

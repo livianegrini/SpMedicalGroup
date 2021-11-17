@@ -7,8 +7,8 @@ export default class Login extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            Email: 'adm@gmail.com',
-            Senha: '123',
+            Email: 'ligia@gmail.com',
+            Senha: '101',
             ErrorMessage: '',
             IsLoading: false
         };
@@ -67,7 +67,6 @@ export default class Login extends Component {
 
                     // exibe as propriedades da página
                     console.log(this.props)
-
 
                     switch (ParseJwt().role) {
                         case '1':
@@ -143,7 +142,7 @@ export default class Login extends Component {
                                             placeholder="Senha"
                                         />
 
-                                        {/* {
+                                        {
                                             // Caso seja true, renderiza o botão desabilitado com o texto 'Loading...'
                                             this.state.IsLoading === true &&
                                             <button type="submit" disabled className="botao">
@@ -156,9 +155,9 @@ export default class Login extends Component {
                                             <button className="botao" disabled={this.state.Email === '' || this.state.Senha === '' ? 'none' : ''}>
                                                 Entrar
                                             </button>
-                                        } */}
+                                        }
 
-                                        <button type="submit" className="botao">Entrar</button>
+                                        {/* <button type="submit" className="botao">Entrar</button> */}
                                         </form>
                                         
                                     </div>
