@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+
 * {
     margin:0;
     padding: 0;
@@ -69,6 +71,8 @@
 
 .Div_Login h1{
     color: white;
+    font-family: Roboto;
+    font-weight: bold;
 }
 
 .Div_Login input{
@@ -123,15 +127,41 @@
 }
 
 
-/* Listar Consultas Paciente */
-.FundoListarPaciente{
+/* Listar Consultas */
+.FundoListar{
     height: 720px;
-    background-image: url("./Imagens/imagem6.jpg");
+    background: linear-gradient(
+     257.65deg, rgba(0, 0, 0, 0.7) 29.27%, rgba(0, 0, 0, 0.63) 53.66%, rgba(0, 0, 0, 0) 99.98%), url("./Imagens/Imagem3.jpg");
+    min-height: 100%;
+    background-size: cover;
+    background-position: 50% 0; 
 }
 
-/* Listar Consultas Médico */
-.FundoListarMedico{
-    height: 720px;
-    background-image: url("./Imagens/Imagem3.jpg");
+.ListarDiv{
+    width: 495px;
+    height: 844px;
+    color: white;
+    flex-direction: column;
 }
 
+.DivsListar input{background-color: unset;
+    outline: none;
+    border-color: transparent;
+    border-bottom-color: white;
+    width: 444px;
+    color: white;
+    display: flex;
+}
+
+.DivsListar select{background-color: unset;
+    outline: none;
+    border-color: transparent;
+    border-bottom-color: white;
+    width: 444px;
+    color: white;
+    display: flex;
+}
+
+.BottomMenor{
+    width: 160px;
+}

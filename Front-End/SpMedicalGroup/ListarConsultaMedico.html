@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,17 +8,42 @@
     <title>Listar Consulta Médico</title>
     <link href="./SpMedical.css" rel="stylesheet">
 </head>
+
 <body>
     <header>
         <div class="Header">
-          <img class="ImagemLogo" src="./Imagens/logo.png" alt="Imagem do logo">
+            <img class="ImagemLogo" src="./Imagens/logo.png" alt="Imagem do logo">
         </div>
     </header>
 
-    <main class="FundoListarMedico">
-        <section>
-            
+    <main class="FundoListar">
+        <section class="ListarDiv">
+            <div class="DivsListar">
+                <h2>Consulta</h2>
+                <input class="BottomMenor" type="date" placeholder="Data" />
+                <input type="time" placeholder="Hora" />
+                <select>
+                    <option value="">Situação</option>
+                </select>
+            </div>
+
+            <div DivsListar>
+                <!-- Medico -->
+                <h2>Médico</h2>
+                <input type="text" placeholder="Nome" />
+                <select>
+                    <option value="">Especialidade</option>
+                </select>
+                <select>
+                    <option value="">Situação</option>
+                </select>
+            </div>
+
+            <div>
+                Descrição
+            </div>
         </section>
     </main>
 </body>
+
 </html>
