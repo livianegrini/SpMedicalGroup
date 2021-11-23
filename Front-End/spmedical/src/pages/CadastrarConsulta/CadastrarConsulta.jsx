@@ -68,7 +68,7 @@ export default function CadastrarConsulta() {
   useEffect(BuscarMedico, [])
 
 
-  BuscarClinica = () => {
+  function BuscarClinica () {
     //o método por padrão será o GET.
     axios('http://localhost:5000/api/Clinica', {
       headers: {
@@ -89,7 +89,7 @@ export default function CadastrarConsulta() {
   };
   useEffect(BuscarClinica, [])
 
-  BuscarSituacao = () => {
+  function BuscarSituacao () {
     //o método por padrão será o GET.
     axios('http://localhost:5000/api/Situacao', {
       headers: {
@@ -111,9 +111,9 @@ export default function CadastrarConsulta() {
 
   useEffect(BuscarSituacao, [])
 
-  AtualizaStateCampo = (Campo) => {
-    this.setState({ [Campo.target.name]: Campo.target.value });
-  };
+  // AtualizaStateCampo = (Campo) => {
+  //   this.setState({ [Campo.target.name]: Campo.target.value });
+  // };
 
   function CadastrarConsulta(Evento) {
     Evento.preventDefault();
