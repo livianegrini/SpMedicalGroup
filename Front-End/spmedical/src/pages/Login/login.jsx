@@ -71,7 +71,7 @@ export default class Login extends Component {
                     switch (ParseJwt().role) {
                         case '1':
                             //redireciona para a página de cadastro de consulta
-                            this.props.history.push('/CadastroConsulta');
+                            this.props.history.push('/CadastrarConsulta');
                             console.log('Estou logado: ' + UsuarioAutenticado())
                             break;
 
