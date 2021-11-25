@@ -122,6 +122,16 @@
     background-position: 50% 0; 
 }
 
+.TituloCadastro{
+    color: white;
+}
+
+.DivsListar{
+    display: flex;
+    flex-direction: column;
+    width: 477px;
+}
+
 
 /* Listar Consultas Paciente */
 .FundoListarPaciente{

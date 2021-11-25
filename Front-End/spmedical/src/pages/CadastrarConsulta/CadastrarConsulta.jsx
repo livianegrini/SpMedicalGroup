@@ -4,6 +4,8 @@
 import axios from 'axios';
 import { useState, useEffect } from "react";
 
+import Logo from '../assets/Imagens/logo.png'
+
 export default function CadastrarConsulta() {
 
   const [hora, sethora] = useState(new Date());
@@ -68,7 +70,7 @@ export default function CadastrarConsulta() {
   useEffect(BuscarMedico, [])
 
 
-  function BuscarClinica () {
+  function BuscarClinica() {
     //o método por padrão será o GET.
     axios('http://localhost:5000/api/Clinica', {
       headers: {
@@ -89,7 +91,7 @@ export default function CadastrarConsulta() {
   };
   useEffect(BuscarClinica, [])
 
-  function BuscarSituacao () {
+  function BuscarSituacao() {
     //o método por padrão será o GET.
     axios('http://localhost:5000/api/Situacao', {
       headers: {
@@ -152,38 +154,45 @@ export default function CadastrarConsulta() {
 
   return (
     <div>
-      <main class="FundoCadastrar">
-        <section class="ListarDiv">
-          <div class="DivsListar">
-            <h2>Consulta</h2>
-            <input class="BottomMenor" type="date" placeholder="Data" />
-            <input type="time" placeholder="Hora" />
-            <select>
-              <option value="">Situação</option>
-            </select>
-          </div>
 
-          <div DivsListar>
-            <h2>Médico</h2>
-            <input type="text" placeholder="Nome" />
-            <select>
-              <option value="">Especialidade</option>
-            </select>
-            <select>
-              <option value="">Situação</option>
-            </select>
-          </div>
+      <header>
+        <div class="Header">
+          <img class="ImagemLogo" src={Logo} alt="Imagem do logo"/>
+        </div>
+      </header>
 
-          <div>
-            Descrição
-          </div>
-        </section>
-      </main>
+
+        <main class="FundoCadastrar">
+          <section class="ListarDiv">
+            <div class="TituloCadastro">
+              <h2>Cadastrar Consulta</h2>
+            </div>
+
+            <div className="DivsListar">
+              <input class="BottomMenor" type="date" placeholder="Data" />
+              <input type="time" placeholder="Hora" />
+              <select>
+                <option value="">Médico</option>
+              </select>
+              <select>
+                <option value="">Especialidade</option>
+              </select>
+              <select>
+                <option value="">Situação</option>
+              </select>
+            </div>
+
+            <div>
+              Descrição
+            </div>
+          </section>
+        </main>
     </div>
   );
 
 
 };
+
 
 
 
