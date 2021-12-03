@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React, { Component } from 'react'
 import { AsyncStorage } from '@react-native-async-storage/async-storage';
 
 import {
@@ -10,8 +10,6 @@ import {
     ImageBackground,
     TextInput,
 } from 'react-native';
-
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import api from '../services/api';
 
@@ -39,16 +37,59 @@ export default class Login extends Component {
     render() {
         return (
             <View>
-                <TextInput
-                    placeholder="Username"
-                    placeholderTextColor="#000"
-                    keyboardType="email-address"
-                    // Evento para fazermos algo enquanto o texto muda
-                    onChangeText={Email => this.setState({ Email })}
-                />
+                <ImageBackground
+                    source={require('../../assets/FundoLogin.png')}
+                    style={styles.BackGround}
+                >
+                    <View style={styles.Container}>
+                        <View style={styles.DivConteudos}>
+                            <Image
+                                source={require('../../assets/iconlogin.png')}
+                            />
+                            <TextInput style={styles.Inputs}
+                                placeholder="Email"
+                                placeholderTextColor="#fff"
+                                keyboardType="email-address"
+                                onChangeText={Email => this.setState({ Email })}
+                            />
+                            <TextInput style={styles.Inputs}
+                                placeholder="Senha"
+                                placeholderTextColor="#fff"
+                                keyboardType="senha-address"
+                                onChangeText={Email => this.setState({ Email })}
+                            />
+                        </View>
+                    </View>
+
+                </ImageBackground>
             </View>
         )
     }
 }
 
+const styles = StyleSheet.create({
+
+    BackGround: {
+        height: '100%'
+    },
+
+    Inputs: {
+        color: 'white',
+        fontSize: 18,
+        fontWeight: 'bold',
+        borderBottomColor: 'white',
+        borderBottomWidth: 2,
+    },
+
+    Container: {
+        marginLeft: 63,
+        marginRight: 63,
+        justifyContent: 'center',
+        flex:1
+    },
+
+    DivConteudos: {
+      
+    }
+})
 

@@ -1,17 +1,20 @@
-const bottomTab = createBottomTabNavigator();
 
+import React ,{ Component } from 'react'
 import {
     Image,
-    StatusBar,
     StyleSheet,
     View,
 } from 'react-native';
-
 
 import Login from './login';
 import ListarConsultas from './listarconsultas';
 import { isFlowBaseAnnotation } from '@babel/types';
 import { StatusBar } from 'react-native';
+
+
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+const bottomTab = createBottomTabNavigator();
 
 class Main extends Component {
 
