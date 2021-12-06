@@ -1,70 +1,64 @@
 import { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-export default function MinhasConsultas(){
-    const [ ListaMinhasConsultas, SetListaMinhasConsultas] = useState( [] );
+export default function Consultas() {
+    const [ListaConsultas, SetListaConsultas] = useState([]);
 
-    function BuscarMinhasConsultas(){
-        axios('http://localhost:5000/api/Consultas', {
-            headers : {
-                'Authorization' : 'Bearer ' + localStorage.getItem('Usuario-Login')
+    function BuscarConsultas() {
+        axios('http://192.168.0.15:5000/api/Consultas', {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('Usuario-Login')
             }
         })
-        .then(Resposta => {
-            if (Resposta.status === 200) {
-                // console.log(resposta.data)
-                SetListaMinhasConsultas( Resposta.data )
-            };
-        })
-        .catch( Erro => console.log(Erro) );
+            .then(Resposta => {
+                if (Resposta.status === 200) {
+                    // console.log(resposta.data)
+                    SetListaConsultas(Resposta.data)
+                };
+            })
+            .catch(Erro => console.log(Erro));
     };
 
-    useEffect( BuscarMinhasConsultas, [] );
+    useEffect(BuscarConsultas, []);
 
-    return(
+    return (
         <div>
 
             <main>
                 <section>
-                    <h2>Minhas Consultas</h2>
+                    <article>
 
-                    <table>
+                        <h2>Consultas</h2>
 
-                        <thead>
-                            <tr>
-                                {/* <th>idPresença</th> */}
-                                <th>Data Consulta</th>
-                                <th>Hora</th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
+                        <div>
 
                             {
-                                ListaMinhasConsultas.map( (MinhaConsulta) => {
-                                    return(
-                                        <tr key={MinhaConsulta.idPresenca}>
-                                            <td>{MinhaConsulta.idInstituicaoNavigation}</td>
-                                            <td>{ Intl.DateTimeFormat("pt-BR", {
-                                                year: 'numeric', month: 'short', day: 'numeric',
-                                                hour: 'numeric', minute: 'numeric',
-                                                hour12: true                                                
-                                            }).format(new Date(minhaPresenca.idEventoNavigation.dataEvento)) }</td>
-                                            <td>{minhaPresenca.idEventoNavigation.acessoLivre ? 'Livre' : 'Restrito'}</td>
-                                            <td>{minhaPresenca.idSituacaoNavigation.descricao}</td>
-                                            <td>{minhaPresenca.idEventoNavigation.idTipoEventoNavigation.tituloTipoEvento}</td>
-                                            <td>{minhaPresenca.idEventoNavigation.idInstituicaoNavigation.endereco}</td>
-                                        </tr>
-                                    )
-                                } )
-                            }
-                            
-                        </tbody>
+                                ListaConsultas.map((Consulta) => {
+                                    return (
+                                        <div key={MinhaConsulta.idConsulta}>
+                                            <p>Data Consulta</p>
+                                            <p>{Intl.DateTimeFormat("pt-BR", {
+                                                year: 'numeric', month: 'short', day: 'numeric'
+                                            }).format(new Date(MinhaConsulta.dataCon))}</p>
 
-                    </table>
+                                            <p>Hora</p>
+                                            <p>{MinhaConsulta.hora}</p>
+
+                                            <p>Situação</p>
+                                            <p>{MinhaConsulta.situacao}</p>
+
+                                            
+
+                                            <p>Descrição</p>
+                                            <p>{MinhaConsulta.descricao === undefined ? 'Sem descrição' : MinhaConsulta.descricao}</p>
+                                        </div>
+                                    )
+                                })
+                            }
+
+                        </div>
+
+                    </article>
                 </section>
             </main>
 

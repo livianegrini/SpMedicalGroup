@@ -7,8 +7,8 @@ export default class Login extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            Email: 'roberto.possarle@spmedicalgroup.com.br',
-            Senha: '789',
+            Email: 'adm@gmail.com',
+            Senha: '123',
             ErrorMessage: '',
             IsLoading: false
         };
@@ -26,13 +26,13 @@ export default class Login extends Component {
         this.setState({ ErrorMessage: '', IsLoading: true });
 
         //fazendo a parte de requisições para a API
-        axios.post('http://localhost:5000/api/Login', {
+        axios.post('http://192.168.0.15:5000/api/Login', {
 
             //onchange : dizendo que o email que vai ser pedido na requisição é o que está no state, estamos pegando o que usuário 
             //estamos apenas chamando o email
-            Email: this.state.Email,
+            email: this.state.Email,
             //estamos apenas chamando a senha
-            Senha: this.state.Senha
+            senha: this.state.Senha
         })
 
             // recebendo todo o conteúdo da resposta da requisição na variável resposta
@@ -71,24 +71,24 @@ export default class Login extends Component {
                     switch (ParseJwt().role) {
                         case '1':
                             //redireciona para a página de cadastro de consulta
-                            this.props.history.push('/CadastrarConsulta');
+                            window.location.href('/CadastrarConsulta');
                             console.log('Estou logado: ' + UsuarioAutenticado())
                             break;
 
                         case '2':
                             //redireciona para a página de listagem de consultas de médico
-                            this.props.history.push('/MinhasConsultas');
+                            window.location.href('/MinhasConsultas');
                             console.log('Estou logado: ' + UsuarioAutenticado())
                             break;
 
                         case '3':
                             //redireciona para a página de cadastro de consulta
-                            this.props.history.push('/MinhasConsultas');
+                            window.location.href('/MinhasConsultas');
                             console.log('Estou logado: ' + UsuarioAutenticado())
                             break;
 
                         default:
-                            this.props.history.push('/')
+                            window.location.href('/')
                             break;
                     }
                 }
@@ -125,45 +125,41 @@ export default class Login extends Component {
                                 <div className="Espacamento">
                                     <div className="box_form">
                                         <form onSubmit={this.FazLogin}>
-                                        <input
-                                            className=""
-                                            name="Email"
-                                            type="text"
-                                            value={this.state.Email}
-                                            onChange={this.AtualizarStateCampo}
-                                            placeholder="Email"
-                                        />
+                                            <input
+                                                className=""
+                                                name="Email"
+                                                type="text"
+                                                value={this.state.Email}
+                                                onChange={this.AtualizarStateCampo}
+                                                placeholder="Email"
+                                            />
 
-                                        <input
-                                            type="password"
-                                            name="Senha"
-                                            value={this.state.Senha}
-                                            onChange={this.AtualizarStateCampo}
-                                            placeholder="Senha"
-                                        />
+                                            <input
+                                                type="password"
+                                                name="Senha"
+                                                value={this.state.Senha}
+                                                onChange={this.AtualizarStateCampo}
+                                                placeholder="Senha"
+                                            />
 
-                                        {
-                                            // Caso seja true, renderiza o botão desabilitado com o texto 'Loading...'
-                                            this.state.IsLoading === true &&
-                                            <button type="submit" disabled className="botao">
-                                                Loading...
-                                            </button>
-                                        }
+                                            {
+                                                // Caso seja true, renderiza o botão desabilitado com o texto 'Loading...'
+                                                this.state.IsLoading === true &&
+                                                <button type="submit" disabled className="botao">
+                                                    Loading...
+                                                </button>
+                                            }
 
-                                        {
-                                            this.state.IsLoading === false &&
-                                            <button className="botao" disabled={this.state.Email === '' || this.state.Senha === '' ? 'none' : ''}>
-                                                Entrar
-                                            </button>
-                                        }
+                                            {
+                                                this.state.IsLoading === false &&
+                                                <button type="submit" className="botao" disabled={this.state.Email === '' || this.state.Senha === '' ? 'none' : ''}>
+                                                    Entrar
+                                                </button>
+                                            }
 
-                                        {/* <button type="submit" className="botao">Entrar</button> */}
+                                            {/* <button type="submit" className="botao">Entrar</button> */}
                                         </form>
-                                        
-                                    </div>
 
-                                    <div>
-                                        
                                     </div>
                                 </div>
                             </div>

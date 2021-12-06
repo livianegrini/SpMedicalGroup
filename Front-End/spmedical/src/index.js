@@ -14,7 +14,7 @@ import {
 
 // Pages
 // import App from './App';
-import Login from './pages/Login/Login';
+import Login from './pages/Login/login';
 import ListarMinhas from './pages/ListarMinhas/ListarMinhas.jsx';
 import CadastrarConsulta from './pages/CadastrarConsulta/CadastrarConsulta';
 

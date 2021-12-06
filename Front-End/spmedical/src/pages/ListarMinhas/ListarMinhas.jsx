@@ -7,7 +7,7 @@ export default function MinhasConsultas() {
     const [ListaMinhasConsultas, SetListaMinhasConsultas] = useState([]);
 
     function BuscarMinhasConsultas() {
-        axios('http://localhost:5000/api/Consultas/Minhas', {
+        axios('http://192.168.0.15:5000/api/Consultas/Minhas', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('Usuario-Login')
             }

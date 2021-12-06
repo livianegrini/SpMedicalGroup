@@ -38,10 +38,10 @@ namespace senai.SpMedicalGroup.webApi.Context
                 //optionsBuilder.UseSqlServer("Server=tcp:spmedicalgroup-livia.database.windows.net,1433;Initial Catalog=SPMEDICALGROUP_Livia;Persist Security Info=False;User ID=senai;Password=spmedicalgroup@132;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 
                 //                                            Senai
-                optionsBuilder.UseSqlServer("Data Source=NOTE0113F4\\SQLEXPRESS; Initial Catalog=SPMEDICALGROUP_Livia; integrated security=true;");
+                //optionsBuilder.UseSqlServer("Data Source=NOTE0113F4\\SQLEXPRESS; Initial Catalog=SPMEDICALGROUP_Livia; integrated security=true;");
 
                 //                                            Casa
-                //optionsBuilder.UseSqlServer("Data Source=DESKTOP-9F56DG6\\SQLEXPRESS; Initial Catalog=SPMEDICALGROUP_Livia; integrated security=true;");
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-9F56DG6\\SQLEXPRESS; Initial Catalog=SPMEDICALGROUP_Livia; integrated security=true;");
             }
         }
 
