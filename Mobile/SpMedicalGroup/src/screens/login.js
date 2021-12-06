@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { AsyncStorage } from '@react-native-async-storage/async-storage';
+import React, { Component } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {
     StyleSheet,
@@ -17,20 +17,33 @@ export default class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            Email: "",
-            Senha: ""
-        }
+            Email: 'adm@gmail.com',
+            Senha: '123'
+        };
     }
 
+   
+
     FazerLogin = async () => {
-        const Resposta = await applicationCache.post('/Login', {
-            Email: this.state.Email,
-            Senha: this.state.Senha
+
+        // console.warn(this.state.Email + ' ' + this.state.Senha);
+
+
+        const Resposta = await api.post('/login', {
+            email: this.state.Email,
+            senha: this.state.Senha
         });
 
-        const Token = Resposta.data.Token;
-        await AsyncStorage.setItem('Usuario-Token', Token)
-        console.warn(Token)
+        const token = Resposta.data.token;
+        console.warn(token)
+
+        await AsyncStorage.setItem('UsuarioToken', token);
+
+        if (Resposta.status === 200) {
+
+            console.warn("token")
+            this.props.navigation.navigate('ListarConsultas');
+        }
     };
 
 
@@ -43,9 +56,12 @@ export default class Login extends Component {
                 >
                     <View style={styles.Container}>
                         <View style={styles.DivConteudos}>
-                            <Image
-                                source={require('../../assets/iconlogin.png')}
-                            />
+                            <View style={styles.ImagemLogo}>
+                                <Image
+                                    source={require('../../assets/iconlogin.png')}
+                                />
+                            </View>
+
                             <TextInput style={styles.Inputs}
                                 placeholder="Email"
                                 placeholderTextColor="#fff"
@@ -55,9 +71,15 @@ export default class Login extends Component {
                             <TextInput style={styles.Inputs}
                                 placeholder="Senha"
                                 placeholderTextColor="#fff"
-                                keyboardType="senha-address"
-                                onChangeText={Email => this.setState({ Email })}
+                                keyboardType="default"
+                                secureTextEntry={true} //para proteger a senha
+                                onChangeText={Senha => this.setState({ Senha })}
                             />
+                            <TouchableOpacity
+                                style={styles.BotaoLogin}
+                                onPress={this.FazerLogin}>
+                                <Text style={styles.BotaoLoginConteudo}>Login</Text>
+                            </TouchableOpacity>
                         </View>
                     </View>
 
@@ -85,11 +107,35 @@ const styles = StyleSheet.create({
         marginLeft: 63,
         marginRight: 63,
         justifyContent: 'center',
-        flex:1
+        flex: 1
     },
 
-    DivConteudos: {
-      
-    }
+    // ImagemLogo: {
+    //     width: 10,
+    //     height: 10,
+    //     alignItems: 'center',
+    //     justifyContent: 'center'
+    // },
+
+    BotaoLogin: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: 35,
+        width: 120,
+        backgroundColor: '#3B92D8',
+        borderColor: '#3B92D8',
+        borderWidth: 1,
+        borderRadius: 4,
+        shadowOffset: { height: 1, width: 1 },
+    },
+
+    BotaoLoginConteudo: {
+        fontSize: 18,
+        fontFamily: 'Open Sans Light', 
+        color: 'white',
+        fontWeight: 'bold'
+    },
+
+
 })
 
