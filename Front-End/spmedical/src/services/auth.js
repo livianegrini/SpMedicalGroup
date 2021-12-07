@@ -1,5 +1,5 @@
 // Definindo a constante UsuarioAutenticado para verificar se o usuário está logado
-export const UsuarioAutenticado = () => localStorage.setItem('Usuario-Login') !== null;
+export const UsuarioAutenticado = () => localStorage.getItem('Usuario-Login') !== null;
 
 // Definindo a constante parseJwt que retorn o payload do usuário logado convertido em JSON
 export const ParseJwt = () => {

@@ -1,8 +1,8 @@
 import { Component } from "react";
 import Logo from '../assets/Imagens/logo.png'
 import '../assets/css/SpMedical.css'
-import axios from "axios";
 import { ParseJwt, UsuarioAutenticado } from '../../services/auth';
+import api from "../../services/api";
 export default class Login extends Component {
     constructor(props) {
         super(props)
@@ -26,7 +26,7 @@ export default class Login extends Component {
         this.setState({ ErrorMessage: '', IsLoading: true });
 
         //fazendo a parte de requisições para a API
-        axios.post('http://192.168.0.15:5000/api/Login', {
+        api.post('/Login', {
 
             //onchange : dizendo que o email que vai ser pedido na requisição é o que está no state, estamos pegando o que usuário 
             //estamos apenas chamando o email
@@ -38,7 +38,6 @@ export default class Login extends Component {
             // recebendo todo o conteúdo da resposta da requisição na variável resposta
             .then(Resposta => {
 
-                //estamos validando se o status da resposta for igual ao status code 200(Ok)
                 if (Resposta.status === 200) {
 
                     // se sim, exibe no console do navegador o token do usuário logado,
@@ -71,24 +70,24 @@ export default class Login extends Component {
                     switch (ParseJwt().role) {
                         case '1':
                             //redireciona para a página de cadastro de consulta
-                            window.location.href('/CadastrarConsulta');
+                            this.props.history.push('/CadastrarConsulta');
                             console.log('Estou logado: ' + UsuarioAutenticado())
                             break;
 
                         case '2':
                             //redireciona para a página de listagem de consultas de médico
-                            window.location.href('/MinhasConsultas');
+                            this.props.history.push('/MinhasConsultas');
                             console.log('Estou logado: ' + UsuarioAutenticado())
                             break;
 
                         case '3':
                             //redireciona para a página de cadastro de consulta
-                            window.location.href('/MinhasConsultas');
+                            this.props.history.push('/MinhasConsultas');
                             console.log('Estou logado: ' + UsuarioAutenticado())
                             break;
 
                         default:
-                            window.location.href('/')
+                            this.props.history.push('/minhasConsultas')
                             break;
                     }
                 }

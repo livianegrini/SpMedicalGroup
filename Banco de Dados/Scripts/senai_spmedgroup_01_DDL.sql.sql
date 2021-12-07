@@ -127,17 +127,6 @@ CREATE TABLE Medico(
 );
 GO
 
---Criação Tabela Consulta Arrumada
-CREATE TABLE Consulta(
-   IdConsulta INT PRIMARY KEY IDENTITY(1,1),
-   IdPaciente INT FOREIGN KEY REFERENCES Paciente(IdPaciente),
-   IdMedico INT FOREIGN KEY REFERENCES Medico(IdMedico),
-   IdSituacao INT FOREIGN KEY REFERENCES Situacao(IdSituacao),
-   DataCon DATE NOT NULL,
-   Hora TIME NOT NULL
-);
-GO
-
 --Criação Tabela Paciente Arrumada
 CREATE TABLE Paciente(
    IdPaciente INT PRIMARY KEY IDENTITY(1,1),
@@ -151,6 +140,16 @@ CREATE TABLE Paciente(
 );
 GO
 
+--Criação Tabela Consulta Arrumada
+CREATE TABLE Consulta(
+   IdConsulta INT PRIMARY KEY IDENTITY(1,1),
+   IdPaciente INT FOREIGN KEY REFERENCES Paciente(IdPaciente),
+   IdMedico INT FOREIGN KEY REFERENCES Medico(IdMedico),
+   IdSituacao INT FOREIGN KEY REFERENCES Situacao(IdSituacao),
+   DataCon DATE NOT NULL,
+   Hora TIME NOT NULL
+);
+GO
 
 
 

@@ -22,7 +22,7 @@ export default class Login extends Component {
         };
     }
 
-   
+
 
     FazerLogin = async () => {
 
@@ -35,13 +35,10 @@ export default class Login extends Component {
         });
 
         const token = Resposta.data.token;
-        console.warn(token)
 
         await AsyncStorage.setItem('UsuarioToken', token);
 
         if (Resposta.status === 200) {
-
-            console.warn("token")
             this.props.navigation.navigate('ListarConsultas');
         }
     };
@@ -56,25 +53,27 @@ export default class Login extends Component {
                 >
                     <View style={styles.Container}>
                         <View style={styles.DivConteudos}>
-                            <View style={styles.ImagemLogo}>
-                                <Image
+                            <View>
+                                <Image style={styles.IconLogin}
                                     source={require('../../assets/iconlogin.png')}
                                 />
                             </View>
 
-                            <TextInput style={styles.Inputs}
-                                placeholder="Email"
-                                placeholderTextColor="#fff"
-                                keyboardType="email-address"
-                                onChangeText={Email => this.setState({ Email })}
-                            />
-                            <TextInput style={styles.Inputs}
-                                placeholder="Senha"
-                                placeholderTextColor="#fff"
-                                keyboardType="default"
-                                secureTextEntry={true} //para proteger a senha
-                                onChangeText={Senha => this.setState({ Senha })}
-                            />
+                            <View style={{ width: '100%', alignItems: 'center' }}>
+                                <TextInput style={styles.Inputs}
+                                    placeholder="Email"
+                                    placeholderTextColor="#fff"
+                                    keyboardType="email-address"
+                                    onChangeText={Email => this.setState({ Email })}
+                                />
+                                <TextInput style={styles.Inputs}
+                                    placeholder="Senha"
+                                    placeholderTextColor="#fff"
+                                    keyboardType="default"
+                                    secureTextEntry={true} //para proteger a senha
+                                    onChangeText={Senha => this.setState({ Senha })}
+                                />
+                            </View>
                             <TouchableOpacity
                                 style={styles.BotaoLogin}
                                 onPress={this.FazerLogin}>
@@ -97,10 +96,13 @@ const styles = StyleSheet.create({
 
     Inputs: {
         color: 'white',
-        fontSize: 18,
+        fontSize: 21,
         fontWeight: 'bold',
         borderBottomColor: 'white',
         borderBottomWidth: 2,
+        width: 280,
+        marginBottom: 20
+        // backgroundColor: 'blue'
     },
 
     Container: {
@@ -110,18 +112,16 @@ const styles = StyleSheet.create({
         flex: 1
     },
 
-    // ImagemLogo: {
-    //     width: 10,
-    //     height: 10,
-    //     alignItems: 'center',
-    //     justifyContent: 'center'
-    // },
+    IconLogin: {
+        width: 100,
+        height: 100
+    },
 
     BotaoLogin: {
         alignItems: 'center',
         justifyContent: 'center',
-        height: 35,
-        width: 120,
+        height: 40,
+        width: 180,
         backgroundColor: '#3B92D8',
         borderColor: '#3B92D8',
         borderWidth: 1,
@@ -129,12 +129,24 @@ const styles = StyleSheet.create({
         shadowOffset: { height: 1, width: 1 },
     },
 
-    BotaoLoginConteudo: {
-        fontSize: 18,
-        fontFamily: 'Open Sans Light', 
-        color: 'white',
-        fontWeight: 'bold'
+    Alinhamento: {
+        alignItems: 'center'
     },
+
+    BotaoLoginConteudo: {
+        fontSize: 20,
+        fontFamily: 'Open Sans Light',
+        color: 'white',
+        fontWeight: 'bold',
+        textTransform: 'uppercase'
+    },
+
+    DivConteudos: {
+        flex: 0.7,
+        // backgroundColor: 'red',
+        alignItems: 'center',
+        justifyContent: 'space-evenly'
+    }
 
 
 })

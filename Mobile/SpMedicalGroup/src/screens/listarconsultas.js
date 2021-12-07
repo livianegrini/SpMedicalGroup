@@ -63,8 +63,9 @@ export default class Consultas extends Component {
                     </View>
 
                     <FlatList
+                        style={styles.ListarConsultas}
                         data={this.state.ListarConsultas}
-                        keyExtractor={item => item.idProjeto}
+                        keyExtractor={item => item.idConsulta}
                         renderItem={this.renderItem}
                     />
                 </View>
@@ -199,6 +200,10 @@ const styles = StyleSheet.create({
         marginRight: 35
     },
 
+    ListarConsultas:{   
+        marginTop: 30
+    },
+
     Titulo: {
         color: 'white',
         fontWeight: 'bold',
@@ -217,15 +222,14 @@ const styles = StyleSheet.create({
     ListarTitulo: {
         color: 'white',
         fontWeight: 'bold',
-        fontSize: 18,
+        fontSize: 25,
         marginRight: 8,
         margin: 3
     },
 
     ListarConteudo: {
         color: 'white',
-        fontSize: 15,
-        marginLeft: 8,
+        fontSize: 20,
         marginTop: 8
     },
 
@@ -236,7 +240,7 @@ const styles = StyleSheet.create({
     TituloListar: {
         color: 'white',
         fontWeight: 'bold',
-        fontSize: 25
+        fontSize: 30
     },
 
     Consulta: {
