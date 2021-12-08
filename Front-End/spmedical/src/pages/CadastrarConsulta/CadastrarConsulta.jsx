@@ -10,44 +10,42 @@ export default function CadastrarConsulta() {
 
   const [hora, sethora] = useState(new Date());
   const [dataCon, setdataCon] = useState(new Date());
-  const [descricao, setdescricao] = useState("");
   const [idMedico, setidMedico] = useState(0);
   const [idSituacao, setidSituacao] = useState(0);
   const [idPaciente, setidPaciente] = useState(0);
-
-
+  // const [mensagem, setmensagem] = useState('');
+  const [sucesso, setsucesso] = useState(false);
+  
   const [ListaConsultas, setListaConsultas] = useState([]);
   const [ListaPacientes, setListaPacientes] = useState([]);
   const [ListaMedicos, setListaMedicos] = useState([]);
-  const [ListaClinicas, setListaClinicas] = useState([]);
   const [ListaSituacao, setListaSituacao] = useState([]);
   const [IsLoading, setIsLoading] = useState(false);
 
 
 
   function BuscarPaciente() {
-    //o método por padrão será o GET.
-    api.get('/Paciente', {
+    api.get('/Pacientes', {
       headers: {
         //comunicação JWT, o padrao da api Bearer + token.
         Authorization: 'Bearer ' + localStorage.getItem('Usuario-Login'),
       },
     })
       .then((Resposta) => {
-        // caso a requisição retorno um status code 200
         if (Resposta.status === 200) {
           setListaPacientes(Resposta.data);
           console.log(Resposta.data);
         }
       })
-      //caso ocorroa algum erro, mostra no console do navegador.
       .catch((Erro) => console.log(Erro));
   };
 
   useEffect(BuscarPaciente, [])
 
+
+
   function BuscarMedico() {
-    api.get('/Medico', {
+    api.get('/Medicos', {
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('Usuario-Login'),
       },
@@ -55,6 +53,7 @@ export default function CadastrarConsulta() {
       .then((Resposta) => {
         if (Resposta.status === 200) {
           setListaMedicos(Resposta.data);
+          console.log('qualquer coisa');
           console.log(Resposta.data);
         }
       })
@@ -64,24 +63,9 @@ export default function CadastrarConsulta() {
   useEffect(BuscarMedico, [])
 
 
-  function BuscarClinica() {
-    api.get('/Clinica', {
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('Usuario-Login'),
-      },
-    })
-      .then((Resposta) => {
-        if (Resposta.status === 200) {
-          setListaClinicas(Resposta.data);
-          console.log(Resposta.data);
-        }
-      })
-      .catch((Erro) => console.log(Erro));
-  };
-  useEffect(BuscarClinica, [])
 
   function BuscarSituacao() {
-    api.get('/Situacao', {
+    api.get('/Situacoes', {
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('Usuario-Login'),
       },
@@ -94,50 +78,35 @@ export default function CadastrarConsulta() {
       })
       .catch((Erro) => console.log(Erro));
   };
-
-  function BuscarConsulta() {
-    api.get('/Consultas', {
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('Usuario-Login'),
-      },
-    })
-      .then((Resposta) => {
-        if (Resposta.status === 200) {
-          setListaConsultas(Resposta.data);
-          console.log(Resposta.data);
-        }
-      })
-      .catch((Erro) => console.log(Erro));
-  };
-
-  useEffect(BuscarConsulta, [])
-
-  // AtualizaStateCampo = (Campo) => {
-  //   this.setState({ [Campo.target.name]: Campo.target.value });
-  // };
+  useEffect(BuscarSituacao, [])
 
   function CadastrarConsulta(Evento) {
+    console.log(idPaciente);
+    console.log(idMedico);
+    console.log(idSituacao);
+    console.log(dataCon);
+    console.log(hora);
     Evento.preventDefault();
-    api.post('/Consulta', {
+    api.post('/Consultas', {
       idPaciente: idPaciente,
       idMedico: idMedico,
       idSituacao: idSituacao,
-      dataCon: dataCon,
-      descricao: descricao
+      dataCon: new Date(dataCon),
+      hora: hora
     }, {
       headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('Usuario-Login'),
+        'Authorization': 'Bearer ' + localStorage.getItem('Usuario-Login'),
       },
     })
       .then(Resposta => {
-        if (Resposta.status === 201) {
-          console.log('Consulta Cadastrada');
-          BuscarConsulta();
+        if (Resposta.status === 200) {
+          console.log("Consulta Cadastrada");
           setidPaciente(0);
           setidMedico(0);
           setidSituacao(0);
           setdataCon("");
-          setdescricao("");
+          sethora("");
+          setsucesso(true);
         }
       })
       .catch((Erro) => {
@@ -148,27 +117,44 @@ export default function CadastrarConsulta() {
       })
   }
 
-
-
   return (
     <div>
 
       <header>
         <div className="Header">
-          <img className="ImagemLogo" src={Logo} alt="Imagem do logo"/>
+          <img className="ImagemLogo" src={Logo} alt="Imagem do logo" />
         </div>
       </header>
 
 
-        <main className="FundoCadastrar">
-          <section className="ListarDiv">
-            <div className="TituloCadastro">
-              <h2>Cadastrar Consulta</h2>
-            </div>
+      <main className="FundoCadastrar">
+        <section className="ListarDiv">
 
+          <div className="TituloCadastro">
+            <h2>Cadastrar Consulta</h2>
+          </div>
+
+          <form onSubmit={CadastrarConsulta}>
             <div className="DivsListar">
-              <input className="BottomMenor" type="date" placeholder="Data" />
-              <input type="time" placeholder="Hora" />
+
+              <input className="BottomMenor" type="date" placeholder="Data" value={dataCon} onChange={(Campo) => setdataCon(Campo.target.value)}/>
+
+              <input type="time" placeholder="Hora" value={hora} onChange={(Campo) => sethora(Campo.target.value)} />
+
+              <select name="Paciente" id="Paciente" value={idPaciente} defaultValue={0} onChange={(Campo) => setidPaciente(Campo.target.value)}>
+                <option value="0" disabled>Paciente</option>
+                {
+                  ListaPacientes.map((Paciente) => {
+                    return (
+                      <option key={Paciente.idPaciente} value={Paciente.idPaciente}>
+                        {Paciente.nome}
+                      </option>
+                    )
+                  })
+                }
+              </select>
+
+
               <select name="Medico" id="Medico" value={idMedico} defaultValue={0} onChange={(Campo) => setidMedico(Campo.target.value)}>
                 <option value="0" disabled>Médico</option>
                 {
@@ -181,22 +167,47 @@ export default function CadastrarConsulta() {
                   })
                 }
               </select>
-              <select>
-                <option value="">Especialidade</option>
-              </select>
-              <select>
-                <option value="">Situação</option>
+
+              <select name="Situação" id="Situação" value={idSituacao} defaultValue={0} onChange={(Campo) => setidSituacao(Campo.target.value)}>
+                <option value="0" disabled>Situação</option>
+                {
+                  ListaSituacao.map((Situacao) => {
+                    return (
+                      <option key={Situacao.Situacao} value={Situacao.idSituacao}>
+                        {Situacao.tipoSituacao}
+                      </option>
+                    )
+                  })
+                }
               </select>
             </div>
 
-            <div>
-              Descrição
-            </div>
-          </section>
-        </main>
+            {IsLoading === false && (
+              <button type="submit">
+                Cadastrar
+              </button>
+            )}
+
+            {IsLoading === true && (
+              <button type="submit">
+                Loading...
+              </button>
+            )}
+
+          </form>
+
+          {
+            sucesso === true && (
+              <p>
+                Consulta cadastrada com sucesso!
+              </p>
+            )
+          }
+
+        </section>
+      </main>
     </div>
   );
-
 
 };
 
