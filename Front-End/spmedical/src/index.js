@@ -16,6 +16,7 @@ import {
 // import App from './App';
 import Login from './pages/Login/login';
 import ListarMinhas from './pages/ListarMinhas/ListarMinhas.jsx';
+import ListarTodas from './pages/ListarTodas/ListarTodas';
 import CadastrarConsulta from './pages/CadastrarConsulta/CadastrarConsulta';
 
 // const PermissaoAdm = ({ component: Component }) => (
@@ -64,6 +65,7 @@ const routing = (
    <Switch>
        <Route exact path="/" component={Login} /> 
        <Route path="/MinhasConsultas" component={ListarMinhas} /> 
+       <Route path="/Consultas" component={ListarTodas} /> 
        <Route path="/CadastrarConsulta" component={CadastrarConsulta} /> 
 
        {/* //Ir fazneod conforme faz as paginas */}

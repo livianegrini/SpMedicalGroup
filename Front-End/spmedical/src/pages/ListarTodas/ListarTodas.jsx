@@ -1,65 +1,150 @@
 import { useState, useEffect } from "react";
-import axios from 'axios';
+import axios from "axios";
+// import { Link } from 'react-router-dom';
+import Logo from '../assets/Imagens/logo.png'
 
-export default function Consultas() {
-    const [ListaConsultas, SetListaConsultas] = useState([]);
+export default function MinhasConsultas() {
 
-    function BuscarConsultas() {
-        axios('http://192.168.0.15:5000/api/Consultas', {
+    const [ListaMinhasConsultas, SetListaMinhasConsultas] = useState([]);
+
+    function BuscarMinhasConsultas() {
+
+        axios('http://192.168.7.133:5000/api/Consultas', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('Usuario-Login')
             }
         })
             .then(Resposta => {
                 if (Resposta.status === 200) {
-                    // console.log(resposta.data)
-                    SetListaConsultas(Resposta.data)
+                    console.log(Resposta.data)
+                    SetListaMinhasConsultas(Resposta.data)
                 };
             })
             .catch(Erro => console.log(Erro));
     };
 
-    useEffect(BuscarConsultas, []);
+    useEffect(BuscarMinhasConsultas, []);
+
+
 
     return (
         <div>
 
-            <main>
-                <section>
-                    <article>
+            <header>
+                <div className="Header">
+                    <img className="ImagemLogo" src={Logo} alt="Imagem do logo" />
+                </div>
+            </header>
 
-                        <h2>Consultas</h2>
+            <main className="FundoListarTodos">
 
-                        <div>
+                <article>
 
-                            {
-                                ListaConsultas.map((Consulta) => {
-                                    return (
-                                        <div key={MinhaConsulta.idConsulta}>
-                                            <p>Data Consulta</p>
-                                            <p>{Intl.DateTimeFormat("pt-BR", {
-                                                year: 'numeric', month: 'short', day: 'numeric'
-                                            }).format(new Date(MinhaConsulta.dataCon))}</p>
+                    <div>
+                        {
+                            ListaMinhasConsultas.map((MinhasConsultas) => {
+                                console.log(MinhasConsultas)
+                                return (
+                                    <div>
+                                        <article className="ConteudoListar">
 
-                                            <p>Hora</p>
-                                            <p>{MinhaConsulta.hora}</p>
+                                            <div className="ConteudoListarConsulta">
 
-                                            <p>Situação</p>
-                                            <p>{MinhaConsulta.situacao}</p>
+                                                <p className="TituloListarMinhas">Consulta</p>
 
-                                            
+                                                <div className="ConteudoListarDentro">
 
-                                            <p>Descrição</p>
-                                            <p>{MinhaConsulta.descricao === undefined ? 'Sem descrição' : MinhaConsulta.descricao}</p>
-                                        </div>
-                                    )
-                                })
-                            }
+                                                    <div className="DataHora">
+                                                        <div className="ConteudoLinhas">
+                                                            <p className="ChaveListar">
+                                                                Data:
+                                                            </p>
 
-                        </div>
+                                                            <div className="valorListar">
+                                                                {Intl.DateTimeFormat("pt-BR", {
+                                                                    year: 'numeric', month: 'numeric', day: 'numeric',
+                                                                }).format(new Date(MinhasConsultas.dataCon))}
+                                                            </div>
+                                                        </div>
 
-                    </article>
-                </section>
+                                                        <div className="ConteudoLinhas ListarHora">
+                                                            <p className="ChaveListar">
+                                                                Hora:
+                                                            </p>
+
+                                                            <div className="valorListar">
+                                                                {MinhasConsultas.hora}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div className="ConteudoLinhas">
+                                                        <p className="ChaveListar">
+                                                            Situação:
+                                                        </p>
+
+                                                        <div className="valorListar">
+                                                            {MinhasConsultas.idSituacaoNavigation.tipoSituacao}
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+
+                                            <div>
+                                                <p className="TituloListarMinhas">Paciente</p>
+
+                                                <div className="ConteudoListarConsulta">
+
+                                                    <div className="ConteudoLinhas">
+                                                        <p className="ChaveListar">
+                                                            Nome:
+                                                        </p>
+
+                                                        <div className="valorListar">
+                                                            {MinhasConsultas.idPacienteNavigation.nome}
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                            <div>
+                                                <p className="TituloListarMinhas">Médico</p>
+
+                                                <div className="ConteudoListarConsulta">
+
+                                                    <div className="ConteudoLinhas">
+                                                        <p className="ChaveListar">
+                                                            Nome:
+                                                        </p>
+
+                                                        <div className="valorListar">
+                                                            {MinhasConsultas.idMedicoNavigation.nome}
+                                                        </div>
+                                                    </div>
+
+                                                    <p>
+                                                        Especialidade: {MinhasConsultas.idMedicoNavigation.idEspecialidadeNavigation.especialidade1}
+                                                    </p>
+                                                    
+                                                </div>
+
+                                            </div>
+
+                                        </article>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+
+                </article>
             </main>
 
         </div>
