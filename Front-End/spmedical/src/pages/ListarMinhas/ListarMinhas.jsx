@@ -8,6 +8,8 @@ export default function MinhasConsultas() {
 
     const [ListaMinhasConsultas, SetListaMinhasConsultas] = useState([]);
     const [TipoLogado, setTipoLogado] = useState(null);
+    const [idConsultaAlterada, setidConsultaAlterada] = useState(0);
+    const [NovaDescricao, setNovaDescricao] = useState('')
 
     function BuscarMinhasConsultas() {
 
@@ -29,7 +31,23 @@ export default function MinhasConsultas() {
 
     console.log(TipoLogado);
 
-    
+    function AlterarDescricao(Evento) {
+        Evento.preventDefault();
+        axios.patch('http://192.168.7.133:5000/api/Consultas/Descricao' + idConsultaAlterada, {
+            Descricao: NovaDescricao
+        }, {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('Usuario-Login')
+            }
+        })
+            .then(Resposta => {
+                if (Resposta.status === 200) {
+                    console.log('Descrição alterada')
+                }
+            })
+            .catch(Erro => console.log(Erro))
+        BuscarMinhasConsultas();
+    }
 
     useEffect(BuscarMinhasConsultas, []);
 
@@ -121,7 +139,7 @@ export default function MinhasConsultas() {
                                             </div>
 
 
-                                            <div>
+                                            <div className="ConteudoEspacamento">
                                                 <p className="TituloListarMinhas">Paciente</p>
 
                                                 <div className="ConteudoListarConsulta">
@@ -133,6 +151,51 @@ export default function MinhasConsultas() {
 
                                                         <div className="valorListar">
                                                             {MinhasConsultas.idPacienteNavigation.nome}
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                            <div className="ConteudoEspacamento">
+                                                <p className="TituloListarMinhas">Descrição</p>
+
+                                                <form onSubmit={AlterarDescricao}>
+                                                    <div className="ConteudoDescricao">
+
+                                                        <select name="paciente" id="" onChange={(Evento) => setidConsultaAlterada(Evento.target.value)}>
+                                                            <option value="#">Escolha uma consulta</option>
+                                                            {
+                                                                ListaMinhasConsultas.map((Evento) => {
+
+                                                                    return (
+
+                                                                        <option key={Evento.idConsulta} value={Evento.idConsulta}>{Evento.idPacienteNavigation.nome + ', ' + Intl.DateTimeFormat("pt-BR", {
+                                                                            year: 'numeric', month: 'short', day: 'numeric'
+                                                                        }).format(new Date(Evento.dataCon))}</option>
+                                                                    )
+                                                                })
+                                                            }
+                                                        </select>
+                                                        <input className="DivDescricao" type="text" name="" id="" placeholder="" onChange={(Evento) => setNovaDescricao(Evento.target.value)} />
+                                                        <button
+                                                            type="submit"
+                                                            className="BotaoAtualizarDescricao"
+                                                        >
+                                                            Atualizar
+                                                        </button>
+                                                    </div>
+                                                </form>
+
+
+
+
+                                                <div className="ConteudoListarConsulta Descricao">
+
+                                                    <div className="ConteudoLinhas">
+                                                        <div className="valorListar">
+                                                            {MinhasConsultas.descricao}
                                                         </div>
                                                     </div>
 
@@ -221,7 +284,7 @@ export default function MinhasConsultas() {
                                                     <p>
                                                         Especialidade: {MinhasConsultas.idEspecialidadeNavigation.especialidade1}
                                                     </p>
-                                                    
+
                                                 </div>
 
                                             </div>

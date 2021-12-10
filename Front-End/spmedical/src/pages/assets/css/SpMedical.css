@@ -166,7 +166,7 @@
 
 .TituloListarMinhas{
     color: white;
-    font-size: 25px;
+    font-size: 32px;
     font-weight: bolder;
     padding-top: 15px;
 }
@@ -198,8 +198,8 @@
     border-radius: 12px;
     height: 82%;
     margin-left: 15px;
-    padding-right: 30px;
-    padding-left: 30px;
+    padding-right: 90px;
+    padding-left: 90px;
     margin-top: 55px;
 }
 
@@ -232,3 +232,28 @@
     justify-content: space-evenly;
 }
 
+.ConteudoEspacamento{
+    padding-top: 25px
+}
+
+.DivDescricao{
+    width: 300px;
+    height: 200px;
+    border: white solid 2px;
+    border-radius: 12px;
+    justify-content: center;
+}
+
+.ConteudoDescricao{
+    display: flex;
+    flex-direction: column;
+}
+
+.BotaoAtualizarDescricao{
+    background-color: blue;
+    color: white;
+    width: 145px;
+    height: 35px;
+    border: white solid 2px;
+    border-radius: 5px;
+}
