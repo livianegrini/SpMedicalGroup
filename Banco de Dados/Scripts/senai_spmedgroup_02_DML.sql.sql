@@ -128,4 +128,8 @@ VALUES (1,3,1,'20/01/2020','15:00'),
 	   (5,1,3,'07/02/2019','11:00'),
 	   (6,3,2,'08/03/2020','15:00'),
 	   (7,1,2,'09/03/2020','11:00')
+
+
+INSERT INTO Consulta(IdPaciente,IdMedico,IdSituacao,DataCon,Hora,Descricao)
+VALUES (1,3,1,'25/01/2021','19:00','Retorno para verificar os exames do paciente')
 SELECT * FROM Consulta

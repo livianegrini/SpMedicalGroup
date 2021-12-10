@@ -3,13 +3,14 @@ import axios from "axios";
 // import { Link } from 'react-router-dom';
 import { ParseJwt, usuarioAutenticado } from '../../services/auth';
 import Logo from '../assets/Imagens/logo.png'
+import Lapis from '../assets/Imagens/lapis.png'
 
 export default function MinhasConsultas() {
 
     const [ListaMinhasConsultas, SetListaMinhasConsultas] = useState([]);
     const [TipoLogado, setTipoLogado] = useState(null);
     const [idConsultaAlterada, setidConsultaAlterada] = useState(0);
-    const [NovaDescricao, setNovaDescricao] = useState('')
+    const [Descricao, setDescricao] = useState('')
 
     function BuscarMinhasConsultas() {
 
@@ -31,10 +32,9 @@ export default function MinhasConsultas() {
 
     console.log(TipoLogado);
 
-    function AlterarDescricao(Evento) {
-        Evento.preventDefault();
-        axios.patch('http://192.168.7.133:5000/api/Consultas/Descricao' + idConsultaAlterada, {
-            Descricao: NovaDescricao
+    function AlterarDescricao(idConsultaAlterada) {
+        axios.patch('http://192.168.7.133:5000/api/Consultas/Descricao/' + idConsultaAlterada, {
+            descricao: Descricao
         }, {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('Usuario-Login')
@@ -43,6 +43,15 @@ export default function MinhasConsultas() {
             .then(Resposta => {
                 if (Resposta.status === 200) {
                     console.log('Descrição alterada')
+                    var btn = document.getElementById("btn" + idConsultaAlterada)
+                    var p = document.getElementById("desc" + idConsultaAlterada);
+                    var textarea = document.getElementById("descricao" + idConsultaAlterada)
+                    btn.style.display = "none";
+                    p.style.display = "";
+                    textarea.style.display = "none";
+
+                    BuscarMinhasConsultas();
+                    setDescricao("")
                 }
             })
             .catch(Erro => console.log(Erro))
@@ -50,6 +59,39 @@ export default function MinhasConsultas() {
     }
 
     useEffect(BuscarMinhasConsultas, []);
+
+    function PermitirTextArea(idConsultaAlterada) {
+
+        // setDescricao(Descricao);
+        // console.log(Descricao)
+        // var textoDescricao = document.getElementById("descricao" + IdConsulta)
+        // document.getElementById("descricao" + IdConsulta).value = Descricao
+
+        // if (textoDescricao.value === null || textoDescricao.value === "") {
+        //     textoDescricao.value = "Consulta sem descrição";
+
+        // }
+        var btn = document.getElementById("btn" + idConsultaAlterada);
+        var p = document.getElementById("desc" + idConsultaAlterada);
+        var textarea = document.getElementById("descricao" + idConsultaAlterada);
+
+        if (btn.style.display === "none") {
+            btn.style.display = "";
+            p.style.display = "none";
+            textarea.style.display = "";
+        } else {
+
+
+            p.style.display = "";
+            textarea.style.display = "none";
+
+            setDescricao("")
+            btn.style.display = "none";
+        }
+
+
+    }
+
 
 
 
@@ -78,7 +120,7 @@ export default function MinhasConsultas() {
 
             <main className="FundoListarMedico">
 
-                <article>
+                <article className="AlinhamentoDivs">
 
                     <div className="ContainerCards">
 
@@ -161,40 +203,26 @@ export default function MinhasConsultas() {
                                             <div className="ConteudoEspacamento">
                                                 <p className="TituloListarMinhas">Descrição</p>
 
+                                                <button className="LapisIcon" onClick={() => PermitirTextArea(MinhasConsultas.idConsulta)}><img src={Lapis} alt="Imagem do lapis" /></button>
+
                                                 <form onSubmit={AlterarDescricao}>
                                                     <div className="ConteudoDescricao">
-
-                                                        <select name="paciente" id="" onChange={(Evento) => setidConsultaAlterada(Evento.target.value)}>
-                                                            <option value="#">Escolha uma consulta</option>
-                                                            {
-                                                                ListaMinhasConsultas.map((Evento) => {
-
-                                                                    return (
-
-                                                                        <option key={Evento.idConsulta} value={Evento.idConsulta}>{Evento.idPacienteNavigation.nome + ', ' + Intl.DateTimeFormat("pt-BR", {
-                                                                            year: 'numeric', month: 'short', day: 'numeric'
-                                                                        }).format(new Date(Evento.dataCon))}</option>
-                                                                    )
-                                                                })
-                                                            }
-                                                        </select>
-                                                        <input className="DivDescricao" type="text" name="" id="" placeholder="" onChange={(Evento) => setNovaDescricao(Evento.target.value)} />
+                                                        <input className="DivDescricao" type="text" name="Descricao" style={{ display: "none" }} id={"descricao" + MinhasConsultas.idConsulta} placeholder="" onChange={(Evento) => setDescricao(Evento.target.value)} />
                                                         <button
                                                             type="submit"
                                                             className="BotaoAtualizarDescricao"
+                                                            onClick={() => AlterarDescricao(MinhasConsultas.idConsulta)} style={{ display: "none" }}
+                                                            id={"btn" + MinhasConsultas.idConsulta}
                                                         >
                                                             Atualizar
                                                         </button>
                                                     </div>
                                                 </form>
 
-
-
-
                                                 <div className="ConteudoListarConsulta Descricao">
 
                                                     <div className="ConteudoLinhas">
-                                                        <div className="valorListar">
+                                                        <div className="valorListar" id={"desc" + MinhasConsultas.idConsulta} style={{ display: " " }}>
                                                             {MinhasConsultas.descricao}
                                                         </div>
                                                     </div>
@@ -217,7 +245,7 @@ export default function MinhasConsultas() {
                                 console.log(MinhasConsultas)
                                 return (
                                     <div>
-                                        <article className="ConteudoListar">
+                                        {/* <article className="ConteudoListar">
 
                                             <div className="ConteudoListarConsulta">
 
@@ -282,8 +310,93 @@ export default function MinhasConsultas() {
                                                     </div>
 
                                                     <p>
-                                                        Especialidade: {MinhasConsultas.idEspecialidadeNavigation.especialidade1}
+                                                        Especialidade: {MinhasConsultas.idMedicoNavigation.idEspecialidadeNavigation.especialidade1}
                                                     </p>
+
+                                                </div>
+
+                                            </div>
+
+                                        </article> */}
+
+                                        <article className="ConteudoListar">
+
+                                            <div className="ConteudoListarConsulta">
+
+                                                <p className="TituloListarMinhas">Consulta</p>
+
+                                                <div className="ConteudoListarDentro">
+
+                                                    <div className="DataHora">
+                                                        <div className="ConteudoLinhas">
+                                                            <p className="ChaveListar">
+                                                                Data:
+                                                            </p>
+
+                                                            <div className="valorListar">
+                                                                {Intl.DateTimeFormat("pt-BR", {
+                                                                    year: 'numeric', month: 'numeric', day: 'numeric',
+                                                                }).format(new Date(MinhasConsultas.dataCon))}
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="ConteudoLinhas ListarHora">
+                                                            <p className="ChaveListar">
+                                                                Hora:
+                                                            </p>
+
+                                                            <div className="valorListar">
+                                                                {MinhasConsultas.hora}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div className="ConteudoLinhas">
+                                                        <p className="ChaveListar">
+                                                            Situação:
+                                                        </p>
+
+                                                        <div className="valorListar">
+                                                            {MinhasConsultas.idSituacaoNavigation.tipoSituacao}
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+
+                                            <div className="ConteudoEspacamento">
+                                                <p className="TituloListarMinhas">Medico</p>
+
+                                                <div className="ConteudoListarConsulta">
+
+                                                    <div className="ConteudoLinhas">
+                                                        <p className="ChaveListar">
+                                                            Nome:
+                                                        </p>
+
+                                                        <div className="valorListar">
+                                                            {MinhasConsultas.idMedicoNavigation.nome}
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                            <div className="ConteudoEspacamento">
+                                                <p className="TituloListarMinhas">Descrição</p>
+
+                                                <div className="ConteudoListarConsulta Descricao">
+
+                                                    <div className="ConteudoLinhas">
+                                                        <div className="valorListar" id={"desc" + MinhasConsultas.idConsulta} style={{ display: " " }}>
+                                                            {MinhasConsultas.descricao}
+                                                        </div>
+                                                    </div>
 
                                                 </div>
 
