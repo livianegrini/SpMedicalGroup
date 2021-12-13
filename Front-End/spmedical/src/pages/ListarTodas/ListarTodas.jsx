@@ -38,14 +38,14 @@ export default function MinhasConsultas() {
 
             <main className="FundoListarTodos">
 
-                <article>
+                <article className="AlinhamentoDivs">
 
-                    <div>
+                    <div className="ContainerCards">
                         {
                             ListaMinhasConsultas.map((MinhasConsultas) => {
                                 console.log(MinhasConsultas)
                                 return (
-                                    <div>
+                                    <div> 
                                         <article className="ConteudoListar">
 
                                             <div className="ConteudoListarConsulta">
@@ -95,7 +95,26 @@ export default function MinhasConsultas() {
                                             </div>
 
 
-                                            <div>
+                                            <div className="ConteudoEspacamento">
+                                                <p className="TituloListarMinhas">Medico</p>
+
+                                                <div className="ConteudoListarConsulta">
+
+                                                    <div className="ConteudoLinhas">
+                                                        <p className="ChaveListar">
+                                                            Nome:
+                                                        </p>
+
+                                                        <div className="valorListar">
+                                                            {MinhasConsultas.idMedicoNavigation.nome}
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                            <div className="ConteudoEspacamento">
                                                 <p className="TituloListarMinhas">Paciente</p>
 
                                                 <div className="ConteudoListarConsulta">
@@ -114,25 +133,17 @@ export default function MinhasConsultas() {
 
                                             </div>
 
-                                            <div>
-                                                <p className="TituloListarMinhas">Médico</p>
+                                            <div className="ConteudoEspacamento">
+                                                <p className="TituloListarMinhas">Descrição</p>
 
-                                                <div className="ConteudoListarConsulta">
+                                                <div className="ConteudoListarConsulta Descricao">
 
                                                     <div className="ConteudoLinhas">
-                                                        <p className="ChaveListar">
-                                                            Nome:
-                                                        </p>
-
-                                                        <div className="valorListar">
-                                                            {MinhasConsultas.idMedicoNavigation.nome}
+                                                        <div className="valorListar" id={"desc" + MinhasConsultas.idConsulta} style={{ display: " " }}>
+                                                            {MinhasConsultas.descricao}
                                                         </div>
                                                     </div>
 
-                                                    <p>
-                                                        Especialidade: {MinhasConsultas.idMedicoNavigation.idEspecialidadeNavigation.especialidade1}
-                                                    </p>
-                                                    
                                                 </div>
 
                                             </div>
@@ -141,9 +152,10 @@ export default function MinhasConsultas() {
                                     </div>
                                 )
                             })
-                        }
-                    </div>
 
+                        }
+
+                    </div>
                 </article>
             </main>
 

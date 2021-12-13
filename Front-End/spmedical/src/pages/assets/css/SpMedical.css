@@ -42,11 +42,17 @@
     align-items: center;
 }
 
+.EstilizacaoLogin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .box_form input{
-    margin-bottom: 43px;
+    /* margin-bottom: 43px; */
     display: inline-block;
     justify-content: space-between;
-    
+    display: flex;
 }
 
 .Espacamento{
@@ -69,6 +75,7 @@
 
 .Div_Login h1{
     color: white;
+    font-size: 35px;
 }
 
 .Div_Login input{
@@ -78,10 +85,11 @@
     border-bottom-color: white;
     width: 444px;
     color: white;
+    font-size: 15px;
 }
 
 .botao{
-    width: 145px;
+    width: 130px;
     height: 30px;
     background-color: #2686CC;
     border-color: transparent;
@@ -122,8 +130,33 @@
     background-position: 50% 0; 
 }
 
+.BordaCadastrar{
+    border: white solid 1px;
+    width: 40%;
+    height: 50%;
+    border-radius: 10px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.ConteudoDivCadastrar{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
 .TituloCadastro{
     color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 22px;
 }
 
 .DivsListar{
@@ -132,6 +165,61 @@
     width: 477px;
 }
 
+.ConteudoDivCadastrar input{
+    background-color: unset;
+    outline: none;
+    border-color: transparent;
+    border-bottom-color: white;
+    color: white;
+    font-size: 15px;
+}
+
+.ConteudoDivCadastrar .BottomMenor{
+    color: white;
+}
+
+.ConteudoDivCadastrar .BottomMenor::placeholder{
+    content: 'teste';
+}
+
+.ConteudoDivCadastrar select{
+    background-color: unset;
+    outline: none;
+    border-color: transparent;
+    border-bottom-color: white;
+    color: white;
+    border-width: 2px;
+    font-size: 15px;
+}
+
+.input[type="date" i] {
+    color: white;
+}
+
+
+.AlinhamentoCadastrar{
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+
+.ConteudoDivCadastrar option{
+    background-color: #B3B3B3;
+    color: #FFFFFF;
+}
+
+.BotaoCadastrar{
+    width: 130px;
+    height: 28px;
+    background-color: #2686CC;
+    border-color: white;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+}
 
 /* Listar Consultas Paciente */
 .FundoListarPaciente{
@@ -141,11 +229,6 @@
 
 /* Listar Consultas Médico */
 .FundoListarMedico{
-    /* height: 720px;
-    background-image: url("../Imagens/Imagem3.jpg");
-    background-repeat: no-repeat;
-    width: 100%; */
-
     background: linear-gradient(
      257.65deg, rgba(0, 0, 0, 0.7) 29.27%, rgba(0, 0, 0, 0.63) 53.66%, rgba(0, 0, 0, 0) 99.98%), url("../Imagens/Imagem3.jpg");
     min-height: 100%;
@@ -154,7 +237,6 @@
 }
 
 .FundoListarTodos{
-    height: 720px;
     background: linear-gradient(
      257.65deg, rgba(0, 0, 0, 0.7) 29.27%, rgba(0, 0, 0, 0.63) 53.66%, rgba(0, 0, 0, 0) 99.98%), url("../Imagens/Imagem3.jpg");
     min-height: 100%;

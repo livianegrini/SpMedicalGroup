@@ -127,7 +127,7 @@ export default class Login extends Component {
                                 <h1>Login</h1>
                                 <div className="Espacamento">
                                     <div className="box_form">
-                                        <form onSubmit={this.FazLogin}>
+                                        <form className="EstilizacaoLogin" onSubmit={this.FazLogin}>
                                             <input
                                                 className=""
                                                 name="Email"

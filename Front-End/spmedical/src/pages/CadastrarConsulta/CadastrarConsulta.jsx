@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import api from "../../services/api";
 
 import Logo from '../assets/Imagens/logo.png'
+import Calendario from '../assets/Imagens/calendario.png'
 
 export default function CadastrarConsulta() {
 
@@ -15,7 +16,7 @@ export default function CadastrarConsulta() {
   const [idPaciente, setidPaciente] = useState(0);
   // const [mensagem, setmensagem] = useState('');
   const [sucesso, setsucesso] = useState(false);
-  
+
   const [ListaConsultas, setListaConsultas] = useState([]);
   const [ListaPacientes, setListaPacientes] = useState([]);
   const [ListaMedicos, setListaMedicos] = useState([]);
@@ -80,6 +81,7 @@ export default function CadastrarConsulta() {
   };
   useEffect(BuscarSituacao, [])
 
+
   function CadastrarConsulta(Evento) {
     console.log(idPaciente);
     console.log(idMedico);
@@ -128,82 +130,84 @@ export default function CadastrarConsulta() {
 
 
       <main className="FundoCadastrar">
-        <section className="ListarDiv">
-
-          <div className="TituloCadastro">
-            <h2>Cadastrar Consulta</h2>
-          </div>
-
-          <form onSubmit={CadastrarConsulta}>
-            <div className="DivsListar">
-
-              <input className="BottomMenor" type="date" placeholder="Data" value={dataCon} onChange={(Campo) => setdataCon(Campo.target.value)}/>
-
-              <input type="time" placeholder="Hora" value={hora} onChange={(Campo) => sethora(Campo.target.value)} />
-
-              <select name="Paciente" id="Paciente" value={idPaciente} defaultValue={0} onChange={(Campo) => setidPaciente(Campo.target.value)}>
-                <option value="0" disabled>Paciente</option>
-                {
-                  ListaPacientes.map((Paciente) => {
-                    return (
-                      <option key={Paciente.idPaciente} value={Paciente.idPaciente}>
-                        {Paciente.nome}
-                      </option>
-                    )
-                  })
-                }
-              </select>
-
-
-              <select name="Medico" id="Medico" value={idMedico} defaultValue={0} onChange={(Campo) => setidMedico(Campo.target.value)}>
-                <option value="0" disabled>Médico</option>
-                {
-                  ListaMedicos.map((Medico) => {
-                    return (
-                      <option key={Medico.idMedico} value={Medico.idMedico}>
-                        {Medico.nome}
-                      </option>
-                    )
-                  })
-                }
-              </select>
-
-              <select name="Situação" id="Situação" value={idSituacao} defaultValue={0} onChange={(Campo) => setidSituacao(Campo.target.value)}>
-                <option value="0" disabled>Situação</option>
-                {
-                  ListaSituacao.map((Situacao) => {
-                    return (
-                      <option key={Situacao.Situacao} value={Situacao.idSituacao}>
-                        {Situacao.tipoSituacao}
-                      </option>
-                    )
-                  })
-                }
-              </select>
+        <section className="AlinhamentoCadastrar">
+          <div className="BordaCadastrar">
+            <div className="TituloCadastro">
+              <h2>Cadastrar Consulta</h2>
+              <img className="ImagemCalendario" src={Calendario} alt="Imagem do calendário" />
             </div>
 
-            {IsLoading === false && (
-              <button type="submit">
-                Cadastrar
-              </button>
-            )}
+            <form className="ConteudoDivCadastrar" onSubmit={CadastrarConsulta}>
+              <div className="DivsListar">
 
-            {IsLoading === true && (
-              <button type="submit">
-                Loading...
-              </button>
-            )}
+                <input className="BottomMenor" type="date" placeholder="Data" value={dataCon} onChange={(Campo) => setdataCon(Campo.target.value)} />
 
-          </form>
+                <input type="time" placeholder="Hora" value={hora} onChange={(Campo) => sethora(Campo.target.value)} />
 
-          {
-            sucesso === true && (
-              <p>
-                Consulta cadastrada com sucesso!
-              </p>
-            )
-          }
+                <select name="Paciente" id="Paciente" value={idPaciente} defaultValue={0} onChange={(Campo) => setidPaciente(Campo.target.value)}>
+                  <option value="0" disabled>Paciente</option>
+                  {
+                    ListaPacientes.map((Paciente) => {
+                      return (
+                        <option key={Paciente.idPaciente} value={Paciente.idPaciente}>
+                          {Paciente.nome}
+                        </option>
+                      )
+                    })
+                  }
+                </select>
 
+
+                <select name="Medico" id="Medico" value={idMedico} defaultValue={0} onChange={(Campo) => setidMedico(Campo.target.value)}>
+                  <option value="0" disabled>Médico</option>
+                  {
+                    ListaMedicos.map((Medico) => {
+                      return (
+                        <option key={Medico.idMedico} value={Medico.idMedico}>
+                          {Medico.nome}
+                        </option>
+                      )
+                    })
+                  }
+                </select>
+
+                <select name="Situação" id="Situação" value={idSituacao} defaultValue={0} onChange={(Campo) => setidSituacao(Campo.target.value)}>
+                  <option value="0" disabled>Situação</option>
+                  {
+                    ListaSituacao.map((Situacao) => {
+                      return (
+                        <option key={Situacao.Situacao} value={Situacao.idSituacao}>
+                          {Situacao.tipoSituacao}
+                        </option>
+                      )
+                    })
+                  }
+                </select>
+              </div>
+
+              {IsLoading === false && (
+                <button className="BotaoCadastrar" type="submit">
+                  Cadastrar
+                </button>
+              )}
+
+              {IsLoading === true && (
+                <button type="submit">
+                  Loading...
+                </button>
+              )}
+
+            </form>
+
+            {
+              sucesso === true && (
+                <p>
+                  Consulta cadastrada com sucesso!
+                </p>
+              )
+            }
+
+          </div>
         </section>
       </main>
     </div>
