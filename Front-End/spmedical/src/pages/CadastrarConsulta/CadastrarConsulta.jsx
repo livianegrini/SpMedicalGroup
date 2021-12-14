@@ -6,6 +6,7 @@ import api from "../../services/api";
 
 import Logo from '../assets/Imagens/logo.png'
 import Calendario from '../assets/Imagens/calendario.png'
+import { useHistory } from "react-router-dom";
 
 export default function CadastrarConsulta() {
 
@@ -23,7 +24,7 @@ export default function CadastrarConsulta() {
   const [ListaSituacao, setListaSituacao] = useState([]);
   const [IsLoading, setIsLoading] = useState(false);
 
-
+  const history = useHistory();
 
   function BuscarPaciente() {
     api.get('/Pacientes', {
@@ -79,8 +80,7 @@ export default function CadastrarConsulta() {
       })
       .catch((Erro) => console.log(Erro));
   };
-  useEffect(BuscarSituacao, [])
-
+  useEffect(BuscarSituacao, []);
 
   function CadastrarConsulta(Evento) {
     console.log(idPaciente);
@@ -113,7 +113,7 @@ export default function CadastrarConsulta() {
       })
       .catch((Erro) => {
         if (Erro.toJSON().status === 401) {
-          this.props.Props.history.push('/Login')
+          useHistory.push('/Login')
         }
         else console.log(Erro)
       })
@@ -185,32 +185,45 @@ export default function CadastrarConsulta() {
                 </select>
               </div>
 
-              {IsLoading === false && (
-                <button className="BotaoCadastrar" type="submit">
-                  Cadastrar
-                </button>
-              )}
+              <div className="Botoes">
+                {IsLoading === false && (
+                  <button className="BotaoCadastrar" type="submit">
+                    Cadastrar
+                  </button>
+                )}
+
+                {IsLoading === true && (
+                  <button type="submit">
+                    Loading...
+                  </button>
+                )}
+
+                {IsLoading === false && (
+                  <button className="BotaoCadastrar" type="button" onClick={() => history.push('/consultas')}>
+                    Listar Consultas
+                  </button>
+                )}
 
               {IsLoading === true && (
                 <button type="submit">
                   Loading...
                 </button>
               )}
-
+              </div>
             </form>
 
-            {
-              sucesso === true && (
-                <p>
-                  Consulta cadastrada com sucesso!
-                </p>
-              )
-            }
+          {
+            sucesso === true && (
+              <p>
+                Consulta cadastrada com sucesso!
+              </p>
+            )
+          }
 
           </div>
         </section>
       </main>
-    </div>
+    </div >
   );
 
 };
