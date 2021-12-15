@@ -115,7 +115,7 @@ export default class Login extends Component {
         return (
             <div>
                 <header>
-                    <div className="Header">
+                    <div className="HeaderLogin">
                         <img className="ImagemLogo" src={Logo} alt="Imagem do logo" />
                     </div>
                 </header>

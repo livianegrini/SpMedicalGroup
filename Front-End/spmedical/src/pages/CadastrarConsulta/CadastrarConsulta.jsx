@@ -7,6 +7,7 @@ import api from "../../services/api";
 import Logo from '../assets/Imagens/logo.png'
 import Calendario from '../assets/Imagens/calendario.png'
 import { useHistory } from "react-router-dom";
+import Logout from '../assets/Imagens/logout.png'
 
 export default function CadastrarConsulta() {
 
@@ -124,8 +125,11 @@ export default function CadastrarConsulta() {
 
       <header>
         <div className="Header">
-          <img className="ImagemLogo" src={Logo} alt="Imagem do logo" />
+          <img className="ImagemLogo" onClick={() => history.push('/')} src={Logo} alt="Imagem do logo" />
         </div>
+        <button className="BotoesHeader" type="button" onClick={() => history.push('/')}>
+          <img className="ImagensHeaderCadastro" src={Logout} alt="Imagem do logout" />
+        </button>
       </header>
 
 
@@ -204,21 +208,21 @@ export default function CadastrarConsulta() {
                   </button>
                 )}
 
-              {IsLoading === true && (
-                <button type="submit">
-                  Loading...
-                </button>
-              )}
+                {IsLoading === true && (
+                  <button type="submit">
+                    Loading...
+                  </button>
+                )}
               </div>
             </form>
 
-          {
-            sucesso === true && (
-              <p>
-                Consulta cadastrada com sucesso!
-              </p>
-            )
-          }
+            {
+              sucesso === true && (
+                <p>
+                  Consulta cadastrada com sucesso!
+                </p>
+              )
+            }
 
           </div>
         </section>

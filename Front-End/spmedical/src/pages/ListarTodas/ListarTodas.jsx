@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Logo from '../assets/Imagens/logo.png'
+import Logout from '../assets/Imagens/logout.png'
+import Back from '../assets/Imagens/back.png'
+import { useHistory } from "react-router-dom";
 
 export default function MinhasConsultas() {
 
     const [ListaMinhasConsultas, SetListaMinhasConsultas] = useState([]);
+    const history = useHistory();
 
     function BuscarMinhasConsultas() {
 
@@ -25,15 +29,21 @@ export default function MinhasConsultas() {
 
     useEffect(BuscarMinhasConsultas, []);
 
-
-
     return (
         <div>
 
             <header>
-                <div className="Header">
-                    <img className="ImagemLogo" src={Logo} alt="Imagem do logo" />
-                </div>
+                    <div className="HeaderListarTodas">
+                        <img className="ImagemLogo" onClick={() => history.push('/CadastrarConsulta')} src={Logo} alt="Imagem do logo" />
+                    </div>
+                    <div className="AlinhamnetoLinks">
+                        <Link className="BotoesHeader" to='/CadastrarConsulta'>
+                            <img className="ImagensHeaderListarTodos" src={Back} alt="Imagem do back" />
+                        </Link>
+                        <Link className="BotoesHeader" to='/'>
+                            <img className="ImagensHeaderListarTodos" src={Logout} alt="Imagem do logout" />
+                        </Link>
+                    </div>
             </header>
 
             <main className="FundoListarTodos">
@@ -45,7 +55,7 @@ export default function MinhasConsultas() {
                             ListaMinhasConsultas.map((MinhasConsultas) => {
                                 console.log(MinhasConsultas)
                                 return (
-                                    <div> 
+                                    <div>
                                         <article className="ConteudoListar">
 
                                             <div className="ConteudoListarConsulta">
@@ -145,7 +155,6 @@ export default function MinhasConsultas() {
                                                     </div>
 
                                                 </div>
-
                                             </div>
 
                                         </article>
@@ -159,6 +168,6 @@ export default function MinhasConsultas() {
                 </article>
             </main>
 
-        </div>
+        </div >
     )
 };

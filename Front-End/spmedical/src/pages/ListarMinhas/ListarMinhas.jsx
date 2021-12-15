@@ -4,6 +4,8 @@ import axios from "axios";
 import { ParseJwt, usuarioAutenticado } from '../../services/auth';
 import Logo from '../assets/Imagens/logo.png'
 import Lapis from '../assets/Imagens/lapis.png'
+import Logout from '../assets/Imagens/logout.png'
+import { useHistory } from "react-router-dom";
 
 export default function MinhasConsultas() {
 
@@ -11,6 +13,7 @@ export default function MinhasConsultas() {
     const [TipoLogado, setTipoLogado] = useState(null);
     const [idConsultaAlterada, setidConsultaAlterada] = useState(0);
     const [Descricao, setDescricao] = useState('')
+    const history = useHistory();
 
     function BuscarMinhasConsultas() {
 
@@ -113,8 +116,13 @@ export default function MinhasConsultas() {
             } */}
 
             <header>
-                <div className="Header">
-                    <img className="ImagemLogo" src={Logo} alt="Imagem do logo" />
+                <div className="HeaderListarMinhas">
+                    <img className="ImagemLogo" onClick={() => history.push('/')} src={Logo} alt="Imagem do logo" />
+                </div>
+                <div className="BotaoLogout">
+                    <button className="BotoesHeader" type="button" onClick={() => history.push('/')}>
+                        <img className="ImagensHeaderMinhas" src={Logout} alt="Imagem do logout" />
+                    </button>
                 </div>
             </header>
 

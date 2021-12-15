@@ -4,18 +4,27 @@
     box-sizing: 0;
 }
 
-.Header{
+header{
     background-color: #436A89;
     height: 64px;
     display: flex;
     align-items: center;
-    justify-content: center;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 1.0) !important;
-    
+    width: 100%;
+    justify-content: flex-end;
 }
 
 .ImagemLogo{
-    height: 160px;
+    height: 50px;
+    display: flex;
+    position: absolute;
+    left: 685px;
+    top: 6px;
+}
+
+.BotaoLogout{
+    justify-content: flex-end;
+    width: 100%;
     display: flex;
 }
 
@@ -28,12 +37,15 @@
 }
 
 .FundoLogin{
-    height: 720px;
+    height: 92vh;
 }
 
 .FundoLogin section{
     display: flex;
     justify-content:  flex-end;
+    height: 90vh;
+    align-items: center;
+    margin-right: 5vw;
 }
 
 .box_form{
@@ -73,8 +85,6 @@
     width: 614px;
     align-items: center;
     border-radius: 22px;
-    margin-top: 165px;
-    margin-right: 120px;
 }
 
 .Div_Login h1{
@@ -137,8 +147,8 @@
 
 .BordaCadastrar{
     border: white solid 1px;
-    width: 40%;
-    height: 50%;
+    width: 45%;
+    height: 55%;
     border-radius: 10px;
     align-items: center;
     display: flex;
@@ -163,7 +173,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    font-size: 22px;
+    font-size: 25px;
     padding-top: 15px;
 }
 
@@ -182,6 +192,7 @@
     border-bottom-color: white;
     color: white;
     font-size: 18px;
+    font-weight: bold;
 }
 
 .ConteudoDivCadastrar .BottomMenor{
@@ -192,6 +203,11 @@
     content: 'teste';
 }
 
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
 .ConteudoDivCadastrar select{
     background-color: unset;
     outline: none;
@@ -200,6 +216,7 @@
     color: white;
     border-width: 2px;
     font-size: 18px;
+    font-weight: bold;
 }
 
 .Botoes{
@@ -232,7 +249,8 @@
 
 .BotaoCadastrar{
     width: 130px;
-    height: 28px;
+    height: 30px;
+    font-size: 14px;
     background-color: #2686CC;
     border-color: white;
     color: white;
@@ -241,7 +259,13 @@
     font-weight: bold;
 }
 
-/* Listar Consultas Paciente */
+.AlinhamnetoLinks{
+    display: flex;
+    width: 200px;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
 .FundoListarPaciente{
     height: 720px;
     background-image: url("../Imagens/imagem6.jpg");
@@ -254,6 +278,12 @@
     min-height: 100%;
     background-size: cover;
     background-position: 50% 0;
+}
+
+
+.ImagemLogout{
+    width: 15%;
+    height: 15%;
 }
 
 .ImagemCalendario{
@@ -374,6 +404,38 @@
     border-radius: 7px;
 }
 
+.BotoesHeader{
+    background-color: unset;
+    border: none;
+    width: 30px;
+}
+
+.HeaderListarMinhas{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+.HeaderListarTodas{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.HeaderLogin{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.ImagensHeaderListarTodos{
+    width: 100%;
+    padding-left: 25px;
+}
+
+.ImagensHeaderCadastro, .ImagensHeaderMinhas{
+    width: 12%;
+}
+
 .LapisIcon{
     background-color: unset;
     text-decoration: unset;
@@ -386,17 +448,43 @@
     padding-bottom: 5%;
 }
 
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+}
+
+.BotaoListar{
+    width: 18vw;
+}
+
+.BotoesListar{
+    width: 20vw;
+    display: flex;
+    justify-content: space-around;
+}
+
 /* Responsivo */
 
 @media(max-width: 1024px){
     .FundoCadastrar{
-        height: 98vh;
+        height: 105vh;
     }
 
     .BordaCadastrar{
-        width: 65%;
+        width: 90%;
     }
 
+    .TituloCadastro{
+        width: 82%;
+        font-size: 35px;
+    }
+
+    .ImagemLogo{
+        position: unset;
+    }
+    .ImagemCalendario{
+        height: 70px;
+        width: 68px;
+    }
     .DivsListar{
         width: 40vw;
     }
@@ -421,12 +509,67 @@
         font-size: 50px;
     }
 
+    .Div_Login{
+        margin-top: 254px;
+        margin-right: 110px;
+    }
+
     .Div_Login input{
         font-size: 25px;
         height: 32px;
     }
 
     .botao{
-        font-size: 18px;
+        font-size: 22px;
+        height: 41px;
+        font-weight: bold;
+    }
+
+    .Botoes{
+        width: 45vw;
+    }
+
+    .TituloListarMinhas{
+        font-size: 45px;
+    }
+
+    .ConteudoLinhas{
+        font-size: 28px;
+    }
+
+    .BotoesListar{
+        font-size: 28px;
+        width: 52vw;
+    }
+
+    .Espacamento{
+        padding: 7px;
+    }
+
+    .Div_Login h1{
+        font-size: 57px;
+    }
+
+    .BotaoCadastrar{
+        width: 21vw;
+        height: 4vh;
+    }
+
+    .BordaCadastrar{
+        width: 90%;
+    }
+
+    .ConteudoDivCadastrar input{
+        font-size: 32px;
+        border-width: 3px;
+    }
+
+    .ConteudoDivCadastrar select{
+        font-size: 32px;
+        border-width: 3px;
+    }
+
+    .DivsListar{
+        width: 65vw;
     }
 }
