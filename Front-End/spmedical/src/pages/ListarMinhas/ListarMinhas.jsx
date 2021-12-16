@@ -65,38 +65,23 @@ export default function MinhasConsultas() {
 
     function PermitirTextArea(idConsultaAlterada) {
 
-        // setDescricao(Descricao);
-        // console.log(Descricao)
-        // var textoDescricao = document.getElementById("descricao" + IdConsulta)
-        // document.getElementById("descricao" + IdConsulta).value = Descricao
-
-        // if (textoDescricao.value === null || textoDescricao.value === "") {
-        //     textoDescricao.value = "Consulta sem descrição";
-
-        // }
         var btn = document.getElementById("btn" + idConsultaAlterada);
+        var btnCancelar = document.getElementById("btnCancelar" + idConsultaAlterada)
         var p = document.getElementById("desc" + idConsultaAlterada);
         var textarea = document.getElementById("descricao" + idConsultaAlterada);
 
         if (btn.style.display === "none") {
             btn.style.display = "";
+            btnCancelar.style.display = "";
             p.style.display = "none";
             textarea.style.display = "";
         } else {
-
-
             p.style.display = "";
             textarea.style.display = "none";
-
             setDescricao("")
             btn.style.display = "none";
         }
-
-
     }
-
-
-
 
     return (
         <div>
@@ -121,7 +106,7 @@ export default function MinhasConsultas() {
                 </div>
                 <div className="BotaoLogout">
                     <button className="BotoesHeader" type="button" onClick={() => history.push('/')}>
-                        <img className="ImagensHeaderMinhas" src={Logout} alt="Imagem do logout" />
+                        <img className="ImagensHeaderMinhas" onClick={() => localStorage.clear()} src={Logout} alt="Imagem do logout" />
                     </button>
                 </div>
             </header>
@@ -140,7 +125,7 @@ export default function MinhasConsultas() {
                                 console.log(MinhasConsultas)
                                 return (
                                     <div>
-                                        <article className="ConteudoListar">
+                                        <article className="ConteudoListarMinhas">
 
                                             <div className="ConteudoListarConsulta">
 
@@ -209,21 +194,31 @@ export default function MinhasConsultas() {
                                             </div>
 
                                             <div className="ConteudoEspacamento">
-                                                <p className="TituloListarMinhas">Descrição</p>
+                                                <p className="TituloListarMinhas">Descrição <button className="LapisIcon" onClick={() => PermitirTextArea(MinhasConsultas.idConsulta)}><img src={Lapis} alt="Imagem do lapis" /></button></p>
 
-                                                <button className="LapisIcon" onClick={() => PermitirTextArea(MinhasConsultas.idConsulta)}><img src={Lapis} alt="Imagem do lapis" /></button>
+                                                
 
                                                 <form onSubmit={AlterarDescricao}>
                                                     <div className="ConteudoDescricao">
                                                         <input className="DivDescricao" type="text" name="Descricao" style={{ display: "none" }} id={"descricao" + MinhasConsultas.idConsulta} placeholder="" onChange={(Evento) => setDescricao(Evento.target.value)} />
-                                                        <button
-                                                            type="submit"
-                                                            className="BotaoAtualizarDescricao"
-                                                            onClick={() => AlterarDescricao(MinhasConsultas.idConsulta)} style={{ display: "none" }}
-                                                            id={"btn" + MinhasConsultas.idConsulta}
-                                                        >
-                                                            Atualizar
-                                                        </button>
+                                                        <div className="EstilizacaoBotoesAtualizar">
+                                                            <button
+                                                                type="submit"
+                                                                className="BotaoAtualizarDescricao"
+                                                                onClick={() => AlterarDescricao(MinhasConsultas.idConsulta)} style={{ display: "none" }}
+                                                                id={"btn" + MinhasConsultas.idConsulta}
+                                                            >
+                                                                Atualizar
+                                                            </button>
+                                                            <button
+                                                                type="buttom"
+                                                                className="BotaoAtualizarDescricao"
+                                                                onClick={() => window.reload(true)} style={{ display: "none" }}
+                                                                id={"btnCancelar" + MinhasConsultas.idConsulta}
+                                                            >
+                                                                Cancelar
+                                                            </button>
+                                                        </div>
                                                     </div>
                                                 </form>
 
@@ -254,7 +249,7 @@ export default function MinhasConsultas() {
                                 return (
                                     <div>
 
-                                        <article className="ConteudoListar">
+                                        <article className="ConteudoListarPaciente">
 
                                             <div className="ConteudoListarConsulta">
 

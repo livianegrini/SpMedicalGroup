@@ -128,7 +128,7 @@ export default function CadastrarConsulta() {
           <img className="ImagemLogo" onClick={() => history.push('/')} src={Logo} alt="Imagem do logo" />
         </div>
         <button className="BotoesHeader" type="button" onClick={() => history.push('/')}>
-          <img className="ImagensHeaderCadastro" src={Logout} alt="Imagem do logout" />
+          <img className="ImagensHeaderCadastro" onClick={ () => localStorage.clear() } src={Logout} alt="Imagem do logout" />
         </button>
       </header>
 

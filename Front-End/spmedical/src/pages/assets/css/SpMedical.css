@@ -18,7 +18,7 @@ header{
     height: 50px;
     display: flex;
     position: absolute;
-    left: 685px;
+    left: 46%;
     top: 6px;
 }
 
@@ -137,7 +137,7 @@ header{
 
 /* Cadastrar */
 .FundoCadastrar{
-    height: 720px;
+    height: 91.5vh;
     background: linear-gradient(
      257.65deg, rgba(0, 0, 0, 0.7) 29.27%, rgba(0, 0, 0, 0.63) 53.66%, rgba(0, 0, 0, 0) 99.98%), url("../Imagens/imagem9.jpg");
     min-height: 100%;
@@ -261,9 +261,10 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 .AlinhamnetoLinks{
     display: flex;
-    width: 200px;
+    width: 76px;
+    margin-right: 24px;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 .FundoListarPaciente{
@@ -302,7 +303,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 .TituloListarMinhas{
     color: white;
-    font-size: 32px;
+    font-size: 31px;
     font-weight: bolder;
     padding-top: 15px;
 }
@@ -315,6 +316,14 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 .ConteudoLinhas{
     display: flex;
     padding-top: 5px;
+    width: 20vw;
+    font-size: 21.5px;
+}
+
+.ConteudoLinhasHora{
+    display: flex;
+    padding-top: 5px;
+    width: 20vw;
 }
 
 .ListarConsultas{
@@ -328,36 +337,86 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 }
 
 .ConteudoListar{
-    padding-top: 15px;
-    padding-bottom: 15px;
+    width: 30vw;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
     border: white solid 2px;
     border-radius: 12px;
     height: 90%;
     margin-left: 15px;
-    padding-right: 90px;
-    padding-left: 90px;
     margin-top: 55px;
-    min-height: 45vh;
+    min-height: 78vh;
+    align-items: center;
 }
+
+.ConteudoListarPaciente{
+    width: 30vw;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    border: white solid 2px;
+    border-radius: 12px;
+    height: 90%;
+    margin-left: 15px;
+    margin-top: 55px;
+    min-height: 60vh;
+    align-items: center;
+}
+
+.ConteudoListarMinhas{
+    width: 35vw;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    border: white solid 2px;
+    border-radius: 12px;
+    height: 90%;
+    margin-left: 15px;
+    margin-top: 55px;
+    align-items: center;
+    min-height: 60vh;
+}
+
+
 
 .ConteudoListarMedico{
     padding-top: 5px;
 }
 
 .ConteudoListarDentro{
-    padding-top: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 80%;
 }
 
 .ConteudoListarConsulta{
+    width: 60%;
     padding-top: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.ConteudoListarConsultaM{
+    width: 80%;
+    padding-top: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .valorListar{
-    padding-left: 10px;
+    padding-left: 5px;
+    color: white;
 }
 
 .DataHora{
     display: flex;
+    width: 124%;
 }
 
 .ListarHora{
@@ -373,7 +432,11 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 }
 
 .ConteudoEspacamento{
-    padding-top: 25px
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 60%;
 }
 
 .DivDescricao{
@@ -393,18 +456,33 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     align-items: center;
 }
 
+.EstilizacaoBotoesAtualizar{
+    display: flex;
+    width: 110%;
+    justify-content: space-evenly;
+}
+
 .BotaoAtualizarDescricao{
     background-color: #2686CC;
     margin-top: 15px;
     font-weight: bold;
     color: white;
-    width: 145px;
+    width: 130px;
     height: 35px;
     border: white solid 2px;
     border-radius: 7px;
 }
 
 .BotoesHeader{
+    background-color: unset;
+    border: none;
+    width: 260px;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 24px;
+}
+
+.BotoesHeaderListarTodas{
     background-color: unset;
     border: none;
     width: 30px;
@@ -429,11 +507,10 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 .ImagensHeaderListarTodos{
     width: 100%;
-    padding-left: 25px;
 }
 
 .ImagensHeaderCadastro, .ImagensHeaderMinhas{
-    width: 12%;
+    width: 30px;
 }
 
 .LapisIcon{
@@ -498,7 +575,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
 
     .FundoLogin {
-        height: 106vh;
+        height: 91.5vh;
     }
 
     .Div_Login{
@@ -510,13 +587,18 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
 
     .Div_Login{
-        margin-top: 254px;
-        margin-right: 110px;
+        margin-top: 45px;
+        margin-right: 68px;
     }
 
     .Div_Login input{
         font-size: 25px;
         height: 32px;
+        -webkit-text-fill-color: yellow !important;
+    }
+
+    .InputEmail{
+        background-color: transparent;
     }
 
     .botao{
@@ -534,7 +616,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
 
     .ConteudoLinhas{
-        font-size: 28px;
+        display: flex;
+        padding-top: 5px;
     }
 
     .BotoesListar{

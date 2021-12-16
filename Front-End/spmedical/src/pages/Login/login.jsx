@@ -11,8 +11,10 @@ export default class Login extends Component {
             // Senha: '101',
             // Email: 'ricardo.lemos@spmedicalgroup.com.br',
             // Senha: '567',
-            Email: 'adm@gmail.com',
-            Senha: '123',
+            // Email: 'adm@gmail.com',
+            // Senha: '123',
+            Email: '',
+            Senha: '',
             ErrorMessage: '',
             IsLoading: false
         };
@@ -20,11 +22,13 @@ export default class Login extends Component {
 
     FazLogin = (Event) => {
 
-        console.log(this.state.Email, this.state.Senha)
-        console.log(ParseJwt())
-
         // ignora o comportamento padrão do navegador (recarregar a página, por exemplo)
         Event.preventDefault();
+
+        console.log("Token")
+
+        console.log(this.state.Email, this.state.Senha)
+        // console.log(ParseJwt())
 
         //setando o state
         this.setState({ ErrorMessage: '', IsLoading: true });
@@ -45,7 +49,7 @@ export default class Login extends Component {
                 if (Resposta.status === 200) {
 
                     // se sim, exibe no console do navegador o token do usuário logado,
-                    // console.log('Meu token é: ' + resposta.data.token);
+                    console.log('Meu token é: ' + Resposta.data.token);
                     // salva o valor do token no localStorage
 
                     localStorage.setItem('Usuario-Login', Resposta.data.token)
@@ -129,12 +133,13 @@ export default class Login extends Component {
                                     <div className="box_form">
                                         <form className="EstilizacaoLogin" onSubmit={this.FazLogin}>
                                             <input
-                                                className=""
+                                                className="InputEmail"
                                                 name="Email"
-                                                type="text"
+                                                type="email"
                                                 value={this.state.Email}
                                                 onChange={this.AtualizarStateCampo}
                                                 placeholder="Email"
+                                                autoComplete="off"
                                             />
 
                                             <input

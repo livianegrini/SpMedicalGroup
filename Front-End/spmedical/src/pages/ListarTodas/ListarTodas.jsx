@@ -37,11 +37,11 @@ export default function MinhasConsultas() {
                         <img className="ImagemLogo" onClick={() => history.push('/CadastrarConsulta')} src={Logo} alt="Imagem do logo" />
                     </div>
                     <div className="AlinhamnetoLinks">
-                        <Link className="BotoesHeader" to='/CadastrarConsulta'>
+                        <Link className="BotoesHeaderListarTodas" to='/CadastrarConsulta'>
                             <img className="ImagensHeaderListarTodos" src={Back} alt="Imagem do back" />
                         </Link>
-                        <Link className="BotoesHeader" to='/'>
-                            <img className="ImagensHeaderListarTodos" src={Logout} alt="Imagem do logout" />
+                        <Link className="BotoesHeaderListarTodas" to='/'>
+                            <img className="ImagensHeaderListarTodos" onClick={ () => localStorage.clear() } src={Logout} alt="Imagem do logout" />
                         </Link>
                     </div>
             </header>
@@ -77,7 +77,7 @@ export default function MinhasConsultas() {
                                                             </div>
                                                         </div>
 
-                                                        <div className="ConteudoLinhas ListarHora">
+                                                        <div className="ConteudoLinhasHora ListarHora">
                                                             <p className="ChaveListar">
                                                                 Hora:
                                                             </p>
@@ -108,7 +108,7 @@ export default function MinhasConsultas() {
                                             <div className="ConteudoEspacamento">
                                                 <p className="TituloListarMinhas">Medico</p>
 
-                                                <div className="ConteudoListarConsulta">
+                                                <div className="ConteudoListarConsultaM">
 
                                                     <div className="ConteudoLinhas">
                                                         <p className="ChaveListar">
