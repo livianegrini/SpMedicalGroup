@@ -101,13 +101,13 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         /// Cadastra um Paciente
         /// </summary>
         /// <param name="PacienteNovo">>Objeto PacienteNovo com as informações</param>
-        /// <returns>Um status code 200 - Ok</returns>
+        /// <returns>Um status code 201 - Created</returns>
         [HttpPost]
         public IActionResult Cadastrar(Paciente PacienteNovo)
         {
             _PacienteRepository.Cadastrar(PacienteNovo);
 
-            return Ok();
+            return StatusCode(201);
         }
 
         /// <summary>

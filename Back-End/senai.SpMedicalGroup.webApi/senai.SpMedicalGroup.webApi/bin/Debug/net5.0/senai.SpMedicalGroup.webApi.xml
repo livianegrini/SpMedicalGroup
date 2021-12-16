@@ -93,7 +93,7 @@
             Cadastra uma Consulta
             </summary>
             <param name="ConsultaNova">>Objeto ConsultaNova com as informações</param>
-            <returns>Um status code 200 - Ok</returns>
+            <returns>Um status code 201 - Created</returns>
         </member>
         <member name="M:senai.SpMedicalGroup.webApi.Controllers.ConsultasController.Deletar(System.Int32)">
             <summary>
@@ -152,7 +152,7 @@
             Cadastra um Endereco
             </summary>
             <param name="EnderecoNovo">>Objeto EnderecoNovo com as informações</param>
-            <returns>Um status code 200 - Ok</returns>
+            <returns>Um status code 201 - Created</returns>
         </member>
         <member name="M:senai.SpMedicalGroup.webApi.Controllers.EnderecosController.Deletar(System.Int32)">
             <summary>
@@ -197,7 +197,7 @@
             Cadastra uma Especialidade
             </summary>
             <param name="EspecialidadeNova">>Objeto EspecialidadeNova com as informações</param>
-            <returns>Um status code 200 - Ok</returns>
+            <returns>Um status code 201 - Created</returns>
         </member>
         <member name="M:senai.SpMedicalGroup.webApi.Controllers.EspecialidadesController.Deletar(System.Int32)">
             <summary>
@@ -205,6 +205,19 @@
             </summary>
             <param name="Id">Id da Especialidade que será deletada</param>
             <returns>Um status code 200 - Ok</returns>
+        </member>
+        <member name="M:senai.SpMedicalGroup.webApi.Controllers.LocalizacoesController.ListarTodas">
+            <summary>
+            Lista todas as Localizações
+            </summary>
+            <returns>Uma lita de Localizações com o status code 200 - Ok</returns>
+        </member>
+        <member name="M:senai.SpMedicalGroup.webApi.Controllers.LocalizacoesController.Cadastrar(senai.SpMedicalGroup.webApi.Domains.Localizacao)">
+            <summary>
+            Cadastra uma Localização
+            </summary>
+            <param name="NovaLocalizacao">>Objeto NovaLocalização com as informações</param>
+            <returns>Um status code 201 - Created</returns>
         </member>
         <member name="P:senai.SpMedicalGroup.webApi.Controllers.LoginController._UsuarioRepository">
             <summary>
@@ -259,7 +272,7 @@
             Cadastra um Medico
             </summary>
             <param name="MedicoNovo">>Objeto MedicoNovo com as informações</param>
-            <returns>Um status code 200 - Ok</returns>
+            <returns>Um status code 201 - Created</returns>
         </member>
         <member name="M:senai.SpMedicalGroup.webApi.Controllers.MedicosController.Deletar(System.Int32)">
             <summary>
@@ -304,7 +317,7 @@
             Cadastra um Paciente
             </summary>
             <param name="PacienteNovo">>Objeto PacienteNovo com as informações</param>
-            <returns>Um status code 200 - Ok</returns>
+            <returns>Um status code 201 - Created</returns>
         </member>
         <member name="M:senai.SpMedicalGroup.webApi.Controllers.PacientesController.Deletar(System.Int32)">
             <summary>
@@ -372,7 +385,7 @@
             Cadastra uma Situacao
             </summary>
             <param name="SituacaoNova">>Objeto SituacaoNova com as informações</param>
-            <returns>Um status code 200 - Ok</returns>
+            <returns>Um status code 201 - Created</returns>
         </member>
         <member name="M:senai.SpMedicalGroup.webApi.Controllers.SituacoesController.Deletar(System.Int32)">
             <summary>
@@ -417,7 +430,7 @@
             Cadastra um Tipo Usuario
             </summary>
             <param name="TipoUsuarioNovo">>Objeto TipoUsuarioNovo com as informações</param>
-            <returns>Um status code 200 - Ok</returns>
+            <returns>Um status code 201 - Created</returns>
         </member>
         <member name="M:senai.SpMedicalGroup.webApi.Controllers.TiposUsuariosController.Deletar(System.Int32)">
             <summary>
@@ -462,7 +475,7 @@
             Cadastra um Usuario
             </summary>
             <param name="UsuarioNovo">>Objeto UsuarioNovo com as informações</param>
-            <returns>Um status code 200 - Ok</returns>
+            <returns>Um status code 201 - Created</returns>
         </member>
         <member name="M:senai.SpMedicalGroup.webApi.Controllers.UsuariosController.Deletar(System.Int32)">
             <summary>

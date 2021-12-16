@@ -93,13 +93,14 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         /// Cadastra uma Situacao
         /// </summary>
         /// <param name="SituacaoNova">>Objeto SituacaoNova com as informações</param>
-        /// <returns>Um status code 200 - Ok</returns>
+        /// <returns>Um status code 201 - Created</returns>
         [HttpPost]
         public IActionResult Cadastrar(Situacao SituacaoNova)
         {
             _SituacaoRepository.Cadastrar(SituacaoNova);
 
-            return Ok();
+
+            return StatusCode(201);
         }
 
         /// <summary>

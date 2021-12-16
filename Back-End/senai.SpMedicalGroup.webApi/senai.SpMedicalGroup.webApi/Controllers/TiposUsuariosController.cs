@@ -95,14 +95,14 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         /// Cadastra um Tipo Usuario
         /// </summary>
         /// <param name="TipoUsuarioNovo">>Objeto TipoUsuarioNovo com as informações</param>
-        /// <returns>Um status code 200 - Ok</returns>
+        /// <returns>Um status code 201 - Created</returns>
         [Authorize(Roles = "1")]
         [HttpPost]
         public IActionResult Cadastrar(TipoUsuario TipoUsuarioNovo)
         {
             _TipoUsuarioRepository.Cadastrar(TipoUsuarioNovo);
 
-            return Ok();
+            return StatusCode(201);
         }
 
         /// <summary>

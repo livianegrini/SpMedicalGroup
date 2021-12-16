@@ -119,14 +119,14 @@ namespace senai.SpMedicalGroup.webApi.Controllers
         /// Cadastra uma Consulta
         /// </summary>
         /// <param name="ConsultaNova">>Objeto ConsultaNova com as informações</param>
-        /// <returns>Um status code 200 - Ok</returns>
+        /// <returns>Um status code 201 - Created</returns>
         [Authorize(Roles = "1")]
         [HttpPost]
         public IActionResult Cadastrar(Consultum ConsultaNova)
         {
             _ConsultaRepository.Cadastrar(ConsultaNova);
 
-            return Ok();
+            return StatusCode(201);
         }
 
         /// <summary>
