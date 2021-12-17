@@ -33,7 +33,7 @@ namespace senai.SpMedicalGroup.webApi
                 options.AddPolicy("CorPolicy",
                                 builder =>
                                 {
-                                    builder.WithOrigins("http://localhost:3000", "http://localhost:3001")
+                                    builder.WithOrigins("*")
                                     .AllowAnyHeader()
                                     .AllowAnyMethod();
                                 });
